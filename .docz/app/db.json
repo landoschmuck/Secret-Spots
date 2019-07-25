@@ -1,0 +1,61 @@
+{
+  "config": {
+    "title": "Secret Spots",
+    "description": "My awesome app using docz",
+    "menu": [],
+    "version": "0.1.0",
+    "repository": null,
+    "native": false,
+    "codeSandbox": true,
+    "themeConfig": {},
+    "separator": "-",
+    "htmlContext": {
+      "head": {
+        "links": [
+          {
+            "rel": "stylesheet",
+            "href": "https://fonts.googleapis.com/css?family=Roboto&display=swap"
+          },
+          {
+            "rel": "stylesheet",
+            "href": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css"
+          }
+        ]
+      }
+    }
+  },
+  "entries": [
+    {
+      "key": "src/index.mdx",
+      "value": {
+        "name": "Welcome",
+        "route": "/",
+        "id": "6576455a124f9aaefd860597f03a8fe4",
+        "filepath": "src/index.mdx",
+        "link": "",
+        "slug": "src-index",
+        "menu": "",
+        "headings": [
+          {
+            "slug": "welcome-to-the-styleguide",
+            "depth": 1,
+            "value": "Welcome to the Styleguide"
+          }
+        ]
+      }
+    }
+  ],
+  "props": [
+    {
+      "key": "src/App.js",
+      "value": [
+        {
+          "description": "",
+          "displayName": "App",
+          "methods": [],
+          "actualName": "App"
+        }
+      ]
+    }
+  ]
+}
