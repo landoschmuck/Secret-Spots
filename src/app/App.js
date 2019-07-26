@@ -1,13 +1,17 @@
 import React from "react";
 import GlobalStyles from "./GlobalStyles";
-import Cards from "../components/Cards";
-//import styled from "styled-components";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import SecretSpots from "../pages/SecretSpots";
 
 function App() {
   return (
     <>
       <GlobalStyles />
-      <Cards />
+      <Router>
+        <Switch>
+          <Route path="/secret_spots" component={SecretSpots} />
+        </Switch>
+      </Router>
     </>
   );
 }
