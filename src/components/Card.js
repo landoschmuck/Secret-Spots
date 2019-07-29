@@ -29,7 +29,7 @@ const StyledCard = styled.div`
   background: #637081;
   padding: 10px;
   border: 2px solid #ccc;
-  border-radius: 5%;
+  border-radius: 15px;
   overflow: auto;
   height: 500px;
   margin: 10px;
@@ -64,7 +64,7 @@ const ImgContainer = styled.div`
   overflow: auto;
   border: solid 1px black;
   margin-top: 5px;
-  border-radius: 5%;
+  border-radius: 15px;
 `;
 
 const TagContainer = styled.div`

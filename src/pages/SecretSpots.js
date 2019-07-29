@@ -20,7 +20,6 @@ function SecretSpots() {
   }
 
   function renderCard(card) {
-    console.log(card._id);
     return (
       <Card
         key={card._id}
