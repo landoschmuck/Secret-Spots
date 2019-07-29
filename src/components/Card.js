@@ -26,7 +26,7 @@ const Bookmark = styled.div`
 const StyledTags = styled.span``;
 
 const StyledCard = styled.div`
-  background: #637081;
+  background-image: url("https://cdn.pixabay.com/photo/2016/04/19/01/00/chalkboard-1337809_1280.jpg");
   padding: 10px;
   border: 2px solid #ccc;
   border-radius: 15px;
@@ -36,6 +36,7 @@ const StyledCard = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
+  color: white;
 `;
 
 const MapContainer = styled.div`
