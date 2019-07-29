@@ -1,0 +1,27 @@
+---
+name: Card
+menu: Components
+---
+
+import { Props, Playground } from "docz";
+import Cards from "./Cards";
+import GlobalStyles from "../app/GlobalStyles";
+
+<GlobalStyles />;
+
+# Cards
+
+<Props of={Cards} />
+
+## Basic Usage
+
+<Playground>
+  <Cards
+    headImg="https://cdn.pixabay.com/photo/2017/01/20/00/30/maldives-1993704_1280.jpg"
+    mapImg="https://cdn.pixabay.com/photo/2019/07/19/09/54/map-4348394_1280.png"
+    title="My card"
+    text="My content"
+    tags={["one", "two"]}
+    active="true"
+  />
+</Playground>
