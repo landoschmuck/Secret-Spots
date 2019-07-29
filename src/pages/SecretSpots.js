@@ -1,7 +1,7 @@
 import Card from "../components/Card";
 import React from "react";
 import styled from "styled-components";
-import cards from "./__Mock__/cards";
+import mockCards from "./__Mock__/cards";
 
 const CardContainer = styled.div`
   display: flex;
@@ -9,22 +9,14 @@ const CardContainer = styled.div`
 `;
 
 function SecretSpots() {
-  const [bookmarked, setBookmarked] = React.useState(false);
-  // const [cards, setCards] = React.useState([mockCards]);
+  const [cards, setCards] = React.useState(mockCards);
 
-  // function handleToggleBookmark(id) {
-  //   const index = cards.findIndex(card => card._id === id);
-  //   const card = cards[index];
-  //   const newCards = cards.slice();
-  //   newCards[index] = { ...cards, bookmarked: !card.bookmarked };
-  //   setCards(newCards);
-  // }
-
-  function onToggleBookmark(event) {
-    event.preventDefault();
-    console.log("handle Show");
-    setBookmarked(!bookmarked);
-    console.log(!bookmarked);
+  function handleToggleBookmark(id) {
+    const index = cards.findIndex(card => card._id === id);
+    const card = cards[index];
+    const newCards = cards.slice();
+    newCards[index] = { ...card, bookmarked: !card.bookmarked };
+    setCards(newCards);
   }
 
   function renderCard(card) {
@@ -37,18 +29,11 @@ function SecretSpots() {
         text={card.text}
         tags={card.tags}
         mapImg={card.mapImg}
-        onBookmark={onToggleBookmark}
         bookmarked={card.bookmarked}
-        // onBookmark={() => onToggleBookmark(card._id)}
-        // onToggleBookmark={handleToggleBookmark}
-        // onShowBookmarks={handleShowBookmarked}
+        onBookmark={() => handleToggleBookmark(card._id)}
       />
     );
   }
-
-  // const filteredCards = bookmarked
-  //   ? cards.filter(card => card.bookmarked)
-  //   : cards;
 
   return (
     <>

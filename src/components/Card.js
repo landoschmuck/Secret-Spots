@@ -53,6 +53,11 @@ const Img = styled.img`
   height: auto;
 `;
 
+const MapImg = styled.img`
+  max-width: 100%;
+  height: auto;
+`;
+
 const ImgContainer = styled.div`
   display: flex;
   width: 100%;
@@ -80,11 +85,10 @@ function Card({
   mapImg,
   bookmarked,
   onBookmark,
-  key,
   ...props
 }) {
   return (
-    <StyledCard key={key}>
+    <StyledCard>
       <Bookmark active={bookmarked} onClick={onBookmark} />
       <ImgContainer>
         <Img src={headImg} />
@@ -95,7 +99,7 @@ function Card({
         <StyledTags>{tags}</StyledTags>
       </TagContainer>
       <MapContainer>
-        <Img src={mapImg} />
+        <MapImg src={mapImg} />
       </MapContainer>
     </StyledCard>
   );

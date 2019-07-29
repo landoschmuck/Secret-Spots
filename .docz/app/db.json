@@ -24,6 +24,119 @@
       }
     }
   },
+  "props": [
+    {
+      "key": "src/app/App.js",
+      "value": [
+        {
+          "description": "",
+          "displayName": "App",
+          "methods": [],
+          "actualName": "App"
+        }
+      ]
+    },
+    {
+      "key": "src/components/Card.js",
+      "value": [
+        {
+          "description": "",
+          "displayName": "Card",
+          "methods": [],
+          "actualName": "Card",
+          "props": {
+            "title": {
+              "type": {
+                "name": "string"
+              },
+              "required": true,
+              "description": ""
+            },
+            "text": {
+              "type": {
+                "name": "string"
+              },
+              "required": true,
+              "description": ""
+            },
+            "tags": {
+              "type": {
+                "name": "arrayOf",
+                "value": {
+                  "name": "string"
+                }
+              },
+              "required": false,
+              "description": ""
+            },
+            "bookmarked": {
+              "type": {
+                "name": "bool"
+              },
+              "required": false,
+              "description": ""
+            },
+            "onBookmark": {
+              "type": {
+                "name": "func"
+              },
+              "required": false,
+              "description": ""
+            }
+          }
+        }
+      ]
+    },
+    {
+      "key": "src/components/Headline.js",
+      "value": [
+        {
+          "description": "",
+          "displayName": "Headline",
+          "methods": [],
+          "actualName": "Headline",
+          "props": {
+            "size": {
+              "type": {
+                "name": "enum",
+                "value": [
+                  {
+                    "value": "\"S\"",
+                    "computed": false
+                  },
+                  {
+                    "value": "\"M\"",
+                    "computed": false
+                  },
+                  {
+                    "value": "\"L\"",
+                    "computed": false
+                  }
+                ]
+              },
+              "required": false,
+              "description": "",
+              "defaultValue": {
+                "value": "\"M\"",
+                "computed": false
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "key": "src/pages/SecretSpots.js",
+      "value": [
+        {
+          "description": "",
+          "displayName": "SecretSpots",
+          "methods": [],
+          "actualName": "SecretSpots"
+        }
+      ]
+    }
+  ],
   "entries": [
     {
       "key": "src/index.mdx",
@@ -96,68 +209,6 @@
           }
         ]
       }
-    }
-  ],
-  "props": [
-    {
-      "key": "src/app/App.js",
-      "value": [
-        {
-          "description": "",
-          "displayName": "App",
-          "methods": [],
-          "actualName": "App"
-        }
-      ]
-    },
-    {
-      "key": "src/components/Cards.js",
-      "value": [
-        {
-          "description": "",
-          "displayName": "Cards",
-          "methods": [],
-          "actualName": "Cards"
-        }
-      ]
-    },
-    {
-      "key": "src/components/Headline.js",
-      "value": [
-        {
-          "description": "",
-          "displayName": "Headline",
-          "methods": [],
-          "actualName": "Headline",
-          "props": {
-            "size": {
-              "type": {
-                "name": "enum",
-                "value": [
-                  {
-                    "value": "\"S\"",
-                    "computed": false
-                  },
-                  {
-                    "value": "\"M\"",
-                    "computed": false
-                  },
-                  {
-                    "value": "\"L\"",
-                    "computed": false
-                  }
-                ]
-              },
-              "required": false,
-              "description": "",
-              "defaultValue": {
-                "value": "\"M\"",
-                "computed": false
-              }
-            }
-          }
-        }
-      ]
     }
   ]
 }
