@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import NavButton from "./components/NavButton";
 
 const Footer = styled.footer`
   height: 80px;
