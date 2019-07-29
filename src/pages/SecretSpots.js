@@ -38,7 +38,8 @@ function SecretSpots() {
 
   return (
     <>
-      <Header title="My Secret Spots" />
+      <Header title="My Secret Spots" icon="fa-map-marker-alt" />
+
       <CardContainer>{cards.map(card => renderCard(card))}</CardContainer>
     </>
   );

@@ -2,10 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import NavButton from "./components/NavButton";
 
 const Footer = styled.footer`
-  height: 80px;
+  height: 65px;
   background: #111;
   width: 100%;
   display: flex;
@@ -13,7 +12,7 @@ const Footer = styled.footer`
   justify-content: center;
   overflow: hidden;
   position: fixed;
-  top: 90%;
+  top: 91%;
   z-index: 1;
   opacity: ${props => (props.visible ? 1 : 0)};
   transition: all 0.5s ease;
@@ -26,7 +25,8 @@ const FooterLink = styled(Link)`
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  font-size: 17px;
+  font-size: 25px;
+  margin: 35px;
 
   &:hover {
     background-color: #ddd;
@@ -34,7 +34,7 @@ const FooterLink = styled(Link)`
   }
 
   &:active {
-    background-color: #ff5a36;
+    background-color: #98c2e0;
     color: white;
   }
 `;
@@ -62,9 +62,9 @@ function FooterNavigation({ links }) {
 
   return (
     <Footer visible={scrollState.visible}>
-      {links.map(({ to, title }) => (
+      {links.map(({ to, icon }) => (
         <FooterLink key={to} to={to}>
-          {title}
+          <i className={`fas ${icon}`} />
         </FooterLink>
       ))}
     </Footer>

@@ -20,10 +20,12 @@ const StyledHeadline = styled(Headline)`
   color: white;
 `;
 
-function Header({ title, ...props }) {
+function Header({ title, icon, ...props }) {
   return (
     <StyledHeader {...props}>
-      <StyledHeadline size="L">{title}</StyledHeadline>
+      <StyledHeadline size="L">
+        {title} <i className={`fas ${icon}`} />
+      </StyledHeadline>
     </StyledHeader>
   );
 }

@@ -14,9 +14,9 @@ function App() {
         </Switch>
         <FooterNavigation
           links={[
-            { to: "/", title: "Home" },
-            { to: "/secret_spots", title: "My Secret Spots" },
-            { to: "/create_spots", title: "Add New Spots" }
+            { to: "/", icon: "fa-map-marker-alt" },
+            { to: "/secret_spots", icon: "fa-list-ul" },
+            { to: "/add_spots", icon: "fa-plus-circle" }
           ]}
         />
       </Router>

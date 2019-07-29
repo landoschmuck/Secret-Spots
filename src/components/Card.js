@@ -9,7 +9,7 @@ const Bookmark = styled.div`
   top: -6px;
   width: 20px;
   height: 15px;
-  background: ${props => (props.active ? "crimson" : "black")};
+  background: ${props => (props.active ? "#98c2e0" : "black")};
   transition: all 0.4s ease;
 
   &:after {
@@ -18,7 +18,7 @@ const Bookmark = styled.div`
     display: block;
     top: 100%;
     content: "";
-    border: 10px solid ${props => (props.active ? "crimson" : "black")};
+    border: 10px solid ${props => (props.active ? "#98c2e0" : "black")};
     border-bottom-color: transparent;
   }
 `;
