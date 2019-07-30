@@ -1,8 +1,8 @@
 import Card from "../components/Card";
 import React from "react";
 import styled from "styled-components";
-import mockCards from "./__Mock__/cards";
 import Header from "../components/Header";
+import ActionButton from "../components/ActionButton";
 
 const CardContainer = styled.div`
   display: flex;
@@ -10,17 +10,23 @@ const CardContainer = styled.div`
   width: 100vw;
 `;
 
-function SecretSpots() {
-  const [cards, setCards] = React.useState(mockCards);
+const BookmarkButton = styled(ActionButton)`
+  position: fixed;
+  top: 0;
+  right: 20px;
+  z-index: 1;
+  width: 38px;
+  height: 38px;
+  margin-top: 4px;
+`;
 
-  function handleToggleBookmark(id) {
-    const index = cards.findIndex(card => card._id === id);
-    const card = cards[index];
-    const newCards = cards.slice();
-    newCards[index] = { ...card, bookmarked: !card.bookmarked };
-    setCards(newCards);
-  }
-
+function SecretSpots({
+  history,
+  cards,
+  onToggleBookmark,
+  showBookmarked,
+  onShowBookmarks
+}) {
   function renderCard(card) {
     return (
       <Card
@@ -31,16 +37,26 @@ function SecretSpots() {
         tags={card.tags}
         mapImg={card.mapImg}
         bookmarked={card.bookmarked}
-        onBookmark={() => handleToggleBookmark(card._id)}
+        onBookmark={() => onToggleBookmark(card._id)}
       />
     );
   }
 
+  const filteredCards = showBookmarked
+    ? cards.filter(card => card.bookmarked)
+    : cards;
+
   return (
     <>
       <Header title="My Secret Spots" icon="fa-map-marker-alt" />
-
-      <CardContainer>{cards.map(card => renderCard(card))}</CardContainer>
+      <BookmarkButton
+        icon="fa-star"
+        active={showBookmarked}
+        onClick={onShowBookmarks}
+      />
+      <CardContainer>
+        {filteredCards.map(card => renderCard(card))}
+      </CardContainer>
     </>
   );
 }
