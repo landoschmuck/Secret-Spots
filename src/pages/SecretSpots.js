@@ -2,10 +2,12 @@ import Card from "../components/Card";
 import React from "react";
 import styled from "styled-components";
 import mockCards from "./__Mock__/cards";
+import Header from "../components/Header";
 
 const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100vw;
 `;
 
 function SecretSpots() {
@@ -36,6 +38,8 @@ function SecretSpots() {
 
   return (
     <>
+      <Header title="My Secret Spots" icon="fa-map-marker-alt" />
+
       <CardContainer>{cards.map(card => renderCard(card))}</CardContainer>
     </>
   );

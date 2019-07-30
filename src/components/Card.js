@@ -9,7 +9,7 @@ const Bookmark = styled.div`
   top: -6px;
   width: 20px;
   height: 15px;
-  background: ${props => (props.active ? "crimson" : "black")};
+  background: ${props => (props.active ? "#98c2e0" : "black")};
   transition: all 0.4s ease;
 
   &:after {
@@ -18,7 +18,7 @@ const Bookmark = styled.div`
     display: block;
     top: 100%;
     content: "";
-    border: 10px solid ${props => (props.active ? "crimson" : "black")};
+    border: 10px solid ${props => (props.active ? "#98c2e0" : "black")};
     border-bottom-color: transparent;
   }
 `;
@@ -26,7 +26,7 @@ const Bookmark = styled.div`
 const StyledTags = styled.span``;
 
 const StyledCard = styled.div`
-  background: #637081;
+  background-image: url("https://cdn.pixabay.com/photo/2016/04/19/01/00/chalkboard-1337809_1280.jpg");
   padding: 10px;
   border: 2px solid #ccc;
   border-radius: 15px;
@@ -36,6 +36,7 @@ const StyledCard = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
+  color: white;
 `;
 
 const MapContainer = styled.div`
