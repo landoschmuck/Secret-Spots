@@ -48,7 +48,7 @@ function SecretSpots({
 
   return (
     <>
-      <Header title="My Secret Spots" icon="fa-map-marker-alt" />
+      <Header title="My Secret Spots" icon="fa-list-ul" />
       <BookmarkButton
         icon="fa-star"
         active={showBookmarked}

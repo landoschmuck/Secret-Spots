@@ -5,6 +5,7 @@ import SecretSpots from "../pages/SecretSpots";
 import AddSpots from "../pages/Add-spots";
 import FooterNavigation from "../components/Footer";
 import mockSpots from "../pages/__Mock__/cards";
+import Landing from "../pages/Landing";
 
 function App() {
   const [spots, setSpots] = React.useState(mockSpots);
@@ -33,8 +34,10 @@ function App() {
       <Router>
         <GlobalStyles />
         <Switch>
+          <Route path="/" exact render={props => <Landing {...props} />} />
           <Route
-            path="/secret_spots"
+            path="/secret-spots"
+            exact
             render={props => (
               <SecretSpots
                 showBookmarked={showBookmarked}
@@ -46,15 +49,16 @@ function App() {
             )}
           />
           <Route
-            path="/add_spots"
+            path="/add-spots"
+            exact
             render={props => <AddSpots onCreate={handleCreate} {...props} />}
           />
         </Switch>
         <FooterNavigation
           links={[
             { to: "/", icon: "fa-map-marker-alt" },
-            { to: "/secret_spots", icon: "fa-list-ul" },
-            { to: "/add_spots", icon: "fa-plus-circle" }
+            { to: "/secret-spots", icon: "fa-list-ul" },
+            { to: "/add-spots", icon: "fa-plus-circle" }
           ]}
         />
       </Router>
