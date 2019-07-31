@@ -22,40 +22,40 @@ const BookmarkButton = styled(ActionButton)`
 
 function SecretSpots({
   history,
-  cards,
+  spots,
   onToggleBookmark,
   showBookmarked,
   onShowBookmarks
 }) {
-  function renderCard(card) {
+  function renderCard(spot) {
     return (
       <Card
-        key={card._id}
-        headImg={card.headImg}
-        title={card.title}
-        text={card.text}
-        tags={card.tags}
-        mapImg={card.mapImg}
-        bookmarked={card.bookmarked}
-        onBookmark={() => onToggleBookmark(card._id)}
+        key={spot._id}
+        headImg={spot.headImg}
+        title={spot.title}
+        text={spot.text}
+        tags={spot.tags}
+        mapImg={spot.mapImg}
+        bookmarked={spot.bookmarked}
+        onBookmark={() => onToggleBookmark(spot._id)}
       />
     );
   }
 
-  const filteredCards = showBookmarked
-    ? cards.filter(card => card.bookmarked)
-    : cards;
+  const filteredSpots = showBookmarked
+    ? spots.filter(spot => spot.bookmarked)
+    : spots;
 
   return (
     <>
-      <Header title="My Secret Spots" icon="fa-map-marker-alt" />
+      <Header title="My Secret Spots" icon="fa-list-ul" />
       <BookmarkButton
         icon="fa-star"
         active={showBookmarked}
         onClick={onShowBookmarks}
       />
       <CardContainer>
-        {filteredCards.map(card => renderCard(card))}
+        {filteredSpots.map(spot => renderCard(spot))}
       </CardContainer>
     </>
   );
