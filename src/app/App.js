@@ -4,23 +4,23 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import SecretSpots from "../pages/SecretSpots";
 import AddSpots from "../pages/Add-spots";
 import FooterNavigation from "../components/Footer";
-import mockCards from "../pages/__Mock__/cards";
+import mockSpots from "../pages/__Mock__/cards";
 
 function App() {
-  const [cards, setCards] = React.useState(mockCards);
+  const [spots, setSpots] = React.useState(mockSpots);
   const [showBookmarked, setShowBookmarked] = React.useState(false);
 
-  function handleCreate(card) {
-    setCards([card, ...cards]);
-    console.log(cards);
+  function handleCreate(spot) {
+    setSpots([spot, ...spots]);
+    console.log(spots);
   }
 
   function handleToggleBookmark(id) {
-    const index = cards.findIndex(card => card._id === id);
-    const card = cards[index];
-    const newCards = cards.slice();
-    newCards[index] = { ...card, bookmarked: !card.bookmarked };
-    setCards(newCards);
+    const index = spots.findIndex(spot => spot._id === id);
+    const spot = spots[index];
+    const newSpots = spots.slice();
+    newSpots[index] = { ...spot, bookmarked: !spot.bookmarked };
+    setSpots(newSpots);
   }
 
   function handleShowBookmarked() {
@@ -39,7 +39,7 @@ function App() {
               <SecretSpots
                 showBookmarked={showBookmarked}
                 onToggleBookmark={handleToggleBookmark}
-                cards={cards}
+                spots={spots}
                 onShowBookmarks={handleShowBookmarked}
                 {...props}
               />

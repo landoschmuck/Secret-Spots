@@ -14,6 +14,9 @@ const Container = styled.div`
   margin: 10px;
 `;
 
+const StyledError = styled.div`
+  color: red;
+`;
 // const TagContainer = styled.div`
 //   padding: 18px;
 //   background: #fafafa;
@@ -64,37 +67,87 @@ const ButtonGroup = styled.div`
   align-content: center;
 `;
 
-function AddSpots({ history, onCreate }) {
+function AddSpots({ history, onCreate, ...props }) {
+  const [formValue, setFormValue] = React.useState({
+    _id: "",
+    headImg: "",
+    title: "",
+    text: "",
+    mapImg:
+      "https://cdn.pixabay.com/photo/2019/07/19/09/54/map-4348394_1280.png",
+    tags: ""
+  });
+
+  const [errors, setErrors] = React.useState({});
+
   function handleCancel() {
     history.push("/");
+  }
+
+  function handleChange(event) {
+    const { name, value } = event.target;
+    setFormValue({ ...formValue, [name]: value });
+  }
+
+  function validate() {
+    const errors = {};
+    if (formValue.title.trim() === "") {
+      errors.title = "Bitte gebe einen Title ein";
+    }
+    if (formValue.text.trim() === "") {
+      errors.text = "Bitte gebe einen Text ein";
+    }
+
+    return Object.keys(errors).length === 0 ? null : errors;
   }
 
   function handleSubmit(event) {
     event.preventDefault();
 
-    const form = event.target;
-    const tags = form.tags.value;
-    const card = {
+    const errors = validate();
+    if (errors) {
+      setErrors(errors);
+      return;
+    }
+    const spot = {
       _id: uuid(Math.random() * 16),
-      headImg: form.headImg.value,
-      title: form.title.value,
-      text: form.text.value,
+      headImg: formValue.headImg,
+      title: formValue.title,
+      text: formValue.text,
       mapImg:
         "https://cdn.pixabay.com/photo/2019/07/19/09/54/map-4348394_1280.png",
-      tags
+      tags: formValue.tags
     };
-    onCreate(card);
+    onCreate(spot);
     history.replace("/secret_spots");
   }
+  console.log(formValue);
   return (
     <>
       <Header title="Add New Spots" />
       <Container>
         <Form onSubmit={handleSubmit}>
-          <HeadImg name="headImg" placeholder="image Url" />
-          <Title name="title" placeholder="Title" />
-          <Text name="text" placeholder="Description..." />
-          <Tags name="tags">
+          <HeadImg
+            name="headImg"
+            placeholder="image Url"
+            value={formValue.headImg}
+            onChange={handleChange}
+          />
+          <Title
+            name="title"
+            placeholder="Title"
+            value={formValue.title}
+            onChange={handleChange}
+          />
+          {errors.title && <StyledError>{errors.title}</StyledError>}
+          <Text
+            name="text"
+            placeholder="Description..."
+            value={formValue.text}
+            onChange={handleChange}
+          />
+          {errors.text && <StyledError>{errors.text}</StyledError>}
+          <Tags name="tags" value={formValue.tags} onChange={handleChange}>
             <option value="Wasser">Wasser</option>
             <option value="Relax">Relax</option>
             <option value="Strand">Strand</option>
