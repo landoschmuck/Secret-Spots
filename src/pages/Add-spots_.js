@@ -124,7 +124,7 @@ function AddSpots({ history, onCreate, ...props }) {
   console.log(formValue);
   return (
     <>
-      <Header title="Add New Spots" />
+      <Header title="Add New Spots" icon="fa-plus-circle" />
       <Container>
         <Form onSubmit={handleSubmit}>
           <HeadImg
