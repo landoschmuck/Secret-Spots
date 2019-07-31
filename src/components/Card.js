@@ -27,7 +27,7 @@ const StyledTags = styled.span``;
 
 const StyledCard = styled.div`
   /* background-image: url("https://cdn.pixabay.com/photo/2013/05/15/06/10/fall-foliage-111315_1280.jpg"); */
-  background: #9DA2AB
+  background: #9da2ab;
   padding: 10px;
   border: 2px solid #ccc;
   border-radius: 15px;
