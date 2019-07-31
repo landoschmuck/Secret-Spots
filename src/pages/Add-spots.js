@@ -81,7 +81,7 @@ function AddSpots({ history, onCreate, ...props }) {
   const [errors, setErrors] = React.useState({});
 
   function handleCancel() {
-    history.push("/");
+    history.push("/secret-spots");
   }
 
   function handleChange(event) {
@@ -119,7 +119,7 @@ function AddSpots({ history, onCreate, ...props }) {
       tags: formValue.tags
     };
     onCreate(spot);
-    history.replace("/secret_spots");
+    history.replace("/secret-spots");
   }
   console.log(formValue);
   return (

@@ -57,6 +57,7 @@ function App() {
         <FooterNavigation
           links={[
             { to: "/", icon: "fa-map-marker-alt" },
+            { to: "/map", icon: "fa-globe-americas" },
             { to: "/secret-spots", icon: "fa-list-ul" },
             { to: "/add-spots", icon: "fa-plus-circle" }
           ]}
