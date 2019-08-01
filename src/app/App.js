@@ -6,16 +6,23 @@ import AddSpots from "../pages/Add-spots";
 import FooterNavigation from "../components/Footer";
 import mockSpots from "../pages/__Mock__/cards";
 import Landing from "../pages/Landing";
+import { getSpots, postSpot } from "../services";
 
 function App() {
-  const [spots, setSpots] = React.useState(mockSpots);
+  const [spots, setSpots] = React.useState([]);
   const [showBookmarked, setShowBookmarked] = React.useState(false);
 
+  React.useEffect(() => {
+    loadSpots();
+  }, []);
+
   function handleCreate(spot) {
-    setSpots([spot, ...spots]);
-    console.log(spots);
+    postSpot(spot).then(result => setSpots([result, ...spots]));
   }
 
+  async function loadSpots() {
+    setSpots(await getSpots());
+  }
   function handleToggleBookmark(id) {
     const index = spots.findIndex(spot => spot._id === id);
     const spot = spots[index];
@@ -25,7 +32,6 @@ function App() {
   }
 
   function handleShowBookmarked() {
-    console.log("handle Show");
     setShowBookmarked(!showBookmarked);
   }
 
