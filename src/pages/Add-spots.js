@@ -69,13 +69,13 @@ const ButtonGroup = styled.div`
 
 function AddSpots({ history, onCreate, ...props }) {
   const [formValue, setFormValue] = React.useState({
-    _id: "",
-    headImg: "",
     title: "",
+    headImg: "",
     text: "",
     mapImg:
       "https://cdn.pixabay.com/photo/2019/07/19/09/54/map-4348394_1280.png",
-    tags: ""
+    tags: "",
+    bookmarked: "false"
   });
 
   const [errors, setErrors] = React.useState({});
@@ -110,18 +110,17 @@ function AddSpots({ history, onCreate, ...props }) {
       return;
     }
     const spot = {
-      _id: uuid(Math.random() * 16),
-      headImg: formValue.headImg,
       title: formValue.title,
+      headImg: formValue.headImg,
       text: formValue.text,
       mapImg:
         "https://cdn.pixabay.com/photo/2019/07/19/09/54/map-4348394_1280.png",
-      tags: formValue.tags
+      tags: formValue.tags,
+      bookmarked: formValue.bookmarked
     };
     onCreate(spot);
     history.replace("/secret-spots");
   }
-  console.log(formValue);
   return (
     <>
       <Header title="Add New Spots" icon="fa-plus-circle" />
@@ -155,7 +154,6 @@ function AddSpots({ history, onCreate, ...props }) {
             <option value="Urban">Urban</option>
           </Tags>
           {/* <TagContainer>{tags.map(tags => renderCard(card))}</TagContainer> */}
-
           <ButtonGroup>
             <Button type="button"> Add Photo </Button>
             <Button type="button" onClick={handleCancel}>
