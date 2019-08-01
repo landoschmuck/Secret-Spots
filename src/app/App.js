@@ -7,6 +7,7 @@ import FooterNavigation from "../components/Footer";
 import mockSpots from "../pages/__Mock__/cards";
 import Landing from "../pages/Landing";
 import { getSpots, postSpot } from "../services";
+import RenderMap from "../pages/Map";
 
 function App() {
   const [spots, setSpots] = React.useState([]);
@@ -40,6 +41,7 @@ function App() {
       <Router>
         <GlobalStyles />
         <Switch>
+          <Route path="/map" exact render={props => <RenderMap {...props} />} />
           <Route path="/" exact render={props => <Landing {...props} />} />
           <Route
             path="/secret-spots"
