@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Header from "../components/Header";
+// import Header from "../components/Header";
 import Fullscreen from "../components/Fullscreen";
 import BackgroundImage from "../components/Backgroundimage";
 import Logo from "../components/Logo";

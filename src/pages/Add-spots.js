@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Header from "../components/Header";
 import Button from "../components/Button";
-import uuid from "uuid";
+// import uuid from "uuid";
 
 const Container = styled.div`
   padding: 18px;
@@ -50,8 +50,6 @@ const Text = styled.textarea`
 const Tags = styled.select`
   margin: 5px;
   width: 100%;
-  border: 2px solid #ccc;
-  border-radius: 4px;
 `;
 
 const HeadImg = styled.input`
@@ -118,6 +116,7 @@ function AddSpots({ history, onCreate, ...props }) {
       tags: formValue.tags,
       bookmarked: formValue.bookmarked
     };
+
     onCreate(spot);
     history.replace("/secret-spots");
   }

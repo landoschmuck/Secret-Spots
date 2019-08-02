@@ -12,7 +12,7 @@ const Footer = styled.footer`
   justify-content: center;
   overflow: hidden;
   position: fixed;
-  top: 91%;
+  bottom: 0%;
   z-index: 1;
   opacity: ${props => (props.visible ? 1 : 0)};
   transition: all 0.5s ease;

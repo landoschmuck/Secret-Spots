@@ -23,7 +23,12 @@ const Bookmark = styled.div`
   }
 `;
 
-const StyledTags = styled.span``;
+const StyledTags = styled.span`
+  border: 3px solid lightblue;
+  display: border-box;
+  padding: 0px 10px;
+  border-radius: 15px;
+`;
 
 const StyledCard = styled.div`
   /* background-image: url("https://cdn.pixabay.com/photo/2013/05/15/06/10/fall-foliage-111315_1280.jpg"); */
@@ -72,7 +77,6 @@ const ImgContainer = styled.div`
 const TagContainer = styled.div`
   display: flex;
   margin: 0px;
-  border: black solid 1px;
   height: 35px;
   width: 100%;
   padding: 2.1px;

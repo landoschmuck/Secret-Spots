@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import SecretSpots from "../pages/SecretSpots";
 import AddSpots from "../pages/Add-spots";
 import FooterNavigation from "../components/Footer";
-import mockSpots from "../pages/__Mock__/cards";
+// import mockSpots from "../pages/__Mock__/cards";
 import Landing from "../pages/Landing";
 import { getSpots, postSpot } from "../services";
 import RenderMap from "../pages/Map";
@@ -18,6 +18,7 @@ function App() {
   }, []);
 
   function handleCreate(spot) {
+    console.log(spot);
     postSpot(spot).then(result => setSpots([result, ...spots]));
   }
 

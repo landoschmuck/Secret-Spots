@@ -28,23 +28,26 @@ function Map() {
   return (
     <GoogleMap
       defaultZoom={10}
-      defaultCenter={{ lat: 45.4211, lng: -75.6903 }}
+      defaultCenter={{ lat: 53.57532, lng: 10.01534 }}
       defaultOptions={{ styles: mapStyles }}
     >
       {parkData.features.map(park => (
         <Marker
           key={park.properties.PARK_ID}
           position={{
-            lat: park.geometry.coordinates[1],
-            lng: park.geometry.coordinates[0]
+            lat: 53.57532,
+            lng: 10.01534
           }}
-          onClick={() => {
-            setSelectedPark(park);
-          }}
-          icon={{
-            url: `/skateboarding.svg`,
-            scaledSize: new window.google.maps.Size(25, 25)
-          }}
+          //   lat: park.geometry.coordinates[1],
+          //   lng: park.geometry.coordinates[0]
+          // }}
+          // onClick={() => {
+          //   setSelectedPark(park);
+          // }}
+          // icon={{
+          //   url: `/skateboarding.svg`,
+          //   scaledSize: new window.google.maps.Size(25, 25)
+          // }}
         />
       ))}
 
