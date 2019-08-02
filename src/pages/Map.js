@@ -24,7 +24,6 @@ function Map() {
       window.removeEventListener("keydown", listener);
     };
   }, []);
-
   return (
     <GoogleMap
       defaultZoom={10}
@@ -35,19 +34,12 @@ function Map() {
         <Marker
           key={park.properties.PARK_ID}
           position={{
-            lat: 53.57532,
-            lng: 10.01534
+            lat: park.geometry.coordinates[1],
+            lng: park.geometry.coordinates[0]
           }}
-          //   lat: park.geometry.coordinates[1],
-          //   lng: park.geometry.coordinates[0]
-          // }}
-          // onClick={() => {
-          //   setSelectedPark(park);
-          // }}
-          // icon={{
-          //   url: `/skateboarding.svg`,
-          //   scaledSize: new window.google.maps.Size(25, 25)
-          // }}
+          onClick={() => {
+            setSelectedPark(park);
+          }}
         />
       ))}
 
@@ -73,7 +65,7 @@ function Map() {
 
 const MapWrapped = withScriptjs(withGoogleMap(Map));
 
-function RenderMap() {
+function RenderMap({ lats, lngs }) {
   return (
     <div style={{ width: "100vw", height: "100vh" }}>
       <MapWrapped

@@ -16,6 +16,13 @@ const StyledHeader = styled.div`
   border-bottom: solid 1px white;
 `;
 
+const StyledLogo = styled.span`
+  color: white;
+  font-size: 20px;
+  padding-right: 5px;
+  margin-top: 4px;
+`;
+
 const StyledHeadline = styled(Headline)`
   color: white;
 `;
@@ -23,9 +30,10 @@ const StyledHeadline = styled(Headline)`
 function Header({ title, icon, ...props }) {
   return (
     <StyledHeader {...props}>
-      <StyledHeadline size="L">
-        {title} <i className={`fas ${icon}`} />
-      </StyledHeadline>
+      <StyledLogo>
+        <i className={`fas ${icon}`} />
+      </StyledLogo>
+      <StyledHeadline size="L">{title} </StyledHeadline>
     </StyledHeader>
   );
 }

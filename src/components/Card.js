@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import Headline from "./Headline";
+import RenderMap from "../pages/Map";
 
 const Bookmark = styled.div`
   position: absolute;
@@ -51,7 +52,7 @@ const MapContainer = styled.div`
   overflow: auto;
   border: solid 1px black;
   margin-top: 5px;
-  height: 150px;
+  height: 300px;
 `;
 
 const Text = styled.p``;
@@ -60,7 +61,7 @@ const Img = styled.img`
   height: auto;
 `;
 
-const MapImg = styled.img`
+const MapArea = styled.div`
   max-width: 100%;
   height: auto;
 `;
@@ -105,7 +106,7 @@ function Card({
         <StyledTags>{tags}</StyledTags>
       </TagContainer>
       <MapContainer>
-        <MapImg src={mapImg} />
+        <RenderMap />
       </MapContainer>
     </StyledCard>
   );
