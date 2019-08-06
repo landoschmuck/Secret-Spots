@@ -4,19 +4,32 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import SecretSpots from "../pages/SecretSpots";
 import AddSpots from "../pages/Add-spots";
 import FooterNavigation from "../components/Footer";
-import mockSpots from "../pages/__Mock__/cards";
+// import mockSpots from "../pages/__Mock__/cards";
 import Landing from "../pages/Landing";
 import { getSpots, postSpot } from "../services";
+import Map from "../pages/Map";
 
 function App() {
   const [spots, setSpots] = React.useState([]);
   const [showBookmarked, setShowBookmarked] = React.useState(false);
+  const [userLocation, setUserLocation] = React.useState(null);
 
   React.useEffect(() => {
     loadSpots();
   }, []);
 
+  React.useEffect(() => {
+    navigator.geolocation.getCurrentPosition(position => {
+      const postionCoordinates = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+      setUserLocation(postionCoordinates);
+    });
+  }, []);
+
   function handleCreate(spot) {
+    console.log(spot);
     postSpot(spot).then(result => setSpots([result, ...spots]));
   }
 
@@ -40,6 +53,13 @@ function App() {
       <Router>
         <GlobalStyles />
         <Switch>
+          <Route
+            path="/map"
+            exact
+            render={props => (
+              <Map {...props} spots={spots} center={userLocation} zoom={3} />
+            )}
+          />
           <Route path="/" exact render={props => <Landing {...props} />} />
           <Route
             path="/secret-spots"

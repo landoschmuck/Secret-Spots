@@ -51,7 +51,7 @@ const ButtonStyled = styled.button`
   ${getKind};
   ${getScale};
   cursor: pointer;
-  border-radius: 3px;
+  border-radius: 20px;
   margin: 10px;
 `;
 
