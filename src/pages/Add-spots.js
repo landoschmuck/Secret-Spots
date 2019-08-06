@@ -78,10 +78,6 @@ function AddSpots({ history, onCreate, ...props }) {
 
   const [errors, setErrors] = React.useState({});
 
-  function handleCancel() {
-    history.push("/secret-spots");
-  }
-
   function handleChange(event) {
     const { name, value } = event.target;
     setFormValue({ ...formValue, [name]: value });
@@ -155,10 +151,6 @@ function AddSpots({ history, onCreate, ...props }) {
           {/* <TagContainer>{tags.map(tags => renderCard(card))}</TagContainer> */}
           <ButtonGroup>
             <Button type="button"> Add Photo </Button>
-            <Button type="button" onClick={handleCancel}>
-              {" "}
-              Cancel
-            </Button>
             <Button>Submit</Button>
           </ButtonGroup>
         </Form>

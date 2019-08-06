@@ -25,7 +25,8 @@ function SecretSpots({
   spots,
   onToggleBookmark,
   showBookmarked,
-  onShowBookmarks
+  onShowBookmarks,
+  zoom
 }) {
   function renderCard(spot) {
     return (
@@ -38,6 +39,9 @@ function SecretSpots({
         mapImg={spot.mapImg}
         bookmarked={spot.bookmarked}
         onBookmark={() => onToggleBookmark(spot._id)}
+        center={spot.location}
+        spots={spots}
+        zoom={zoom}
       />
     );
   }

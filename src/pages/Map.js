@@ -6,16 +6,21 @@ import {
   Marker,
   InfoWindow
 } from "react-google-maps";
-import * as parkData from "./__Mock__/skateboard-parks";
 import mapStyles from "./mapStyles";
+import styled from "styled-components";
 
-function Map() {
-  const [selectedPark, setSelectedPark] = React.useState(null);
+const InfoWindowImg = styled.img`
+  height: auto;
+  width: 100%;
+`;
+
+function Map({ center, spots, zoom }) {
+  const [selectedSpot, setSelectedSpot] = React.useState(null);
 
   React.useEffect(() => {
     const listener = e => {
       if (e.key === "Escape") {
-        setSelectedPark(null);
+        setSelectedSpot(null);
       }
     };
     window.addEventListener("keydown", listener);
@@ -26,36 +31,31 @@ function Map() {
   }, []);
   return (
     <GoogleMap
-      defaultZoom={10}
-      defaultCenter={{ lat: 53.57532, lng: 10.01534 }}
+      defaultZoom={zoom}
+      defaultCenter={center}
       defaultOptions={{ styles: mapStyles }}
     >
-      {parkData.features.map(park => (
+      {spots.map(spot => (
         <Marker
-          key={park.properties.PARK_ID}
-          position={{
-            lat: park.geometry.coordinates[1],
-            lng: park.geometry.coordinates[0]
-          }}
+          key={spot._id}
+          position={spot.location}
           onClick={() => {
-            setSelectedPark(park);
+            setSelectedSpot(spot);
           }}
         />
       ))}
 
-      {selectedPark && (
+      {selectedSpot && (
         <InfoWindow
           onCloseClick={() => {
-            setSelectedPark(null);
+            setSelectedSpot(null);
           }}
-          position={{
-            lat: selectedPark.geometry.coordinates[1],
-            lng: selectedPark.geometry.coordinates[0]
-          }}
+          position={selectedSpot.location}
         >
           <div>
-            <h2>{selectedPark.properties.NAME}</h2>
-            <p>{selectedPark.properties.DESCRIPTIO}</p>
+            <InfoWindowImg src={selectedSpot.headImg} />
+            <h2>{selectedSpot.title}</h2>
+            <p>{selectedSpot.text}</p>
           </div>
         </InfoWindow>
       )}
@@ -65,15 +65,18 @@ function Map() {
 
 const MapWrapped = withScriptjs(withGoogleMap(Map));
 
-function RenderMap({ lats, lngs }) {
+function RenderMap({ center, spots, zoom }) {
   return (
     <div style={{ width: "100vw", height: "100vh" }}>
       <MapWrapped
+        center={center}
+        spots={spots}
+        zoom={zoom}
         googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${
           process.env.REACT_APP_GOOGLE_KEY
         }`}
         loadingElement={<div style={{ height: `100%` }} />}
-        containerElement={<div style={{ height: `100%` }} />}
+        containerElement={<div style={{ height: `90%` }} />}
         mapElement={<div style={{ height: `100%` }} />}
       />
     </div>

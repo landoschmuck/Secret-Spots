@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import Headline from "./Headline";
-import RenderMap from "../pages/Map";
+import Map from "../pages/Map";
 
 const Bookmark = styled.div`
   position: absolute;
@@ -61,11 +61,6 @@ const Img = styled.img`
   height: auto;
 `;
 
-const MapArea = styled.div`
-  max-width: 100%;
-  height: auto;
-`;
-
 const ImgContainer = styled.div`
   display: flex;
   width: 100%;
@@ -92,6 +87,8 @@ function Card({
   mapImg,
   bookmarked,
   onBookmark,
+  spots,
+  center,
   ...props
 }) {
   return (
@@ -106,7 +103,7 @@ function Card({
         <StyledTags>{tags}</StyledTags>
       </TagContainer>
       <MapContainer>
-        <RenderMap />
+        <Map spots={spots} center={center} zoom={10} />
       </MapContainer>
     </StyledCard>
   );
