@@ -3,7 +3,34 @@ import styled from "styled-components";
 import Header from "../components/Header";
 import Button from "../components/Button";
 import ImageUpload from "../components/ImageUpload";
+import Map from "../components/Map";
 // import uuid from "uuid";
+
+// const ModalDialog = styled.div`
+//   width: 70%;
+//   height: 85%;
+//   z-index: 1;
+//   color: #000;
+//   background: white;
+//   opacity: 1;
+//   box-shadow: grey 0px 4px 4px;
+//   border-radius: 10px;
+//   padding: 20px;
+//   display: flex;
+//   flex-direction: column;
+// `;
+
+// const Blur = styled.div`
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   width: 100vw;
+//   height: 100vh;
+//   background: rgba(193, 177, 170, 0.6);
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+// `;
 
 const Container = styled.div`
   padding: 18px;
@@ -82,12 +109,10 @@ const ButtonGroup = styled.div`
   align-content: center;
 `;
 
-function AddSpots({ history, onCreate, url, ...props }) {
+function AddSpots({ history, onCreate, url, newLocation, ...props }) {
   const [formValue, setFormValue] = React.useState({
     title: "",
     text: "",
-    mapImg:
-      "https://cdn.pixabay.com/photo/2019/07/19/09/54/map-4348394_1280.png",
     tags: "",
     bookmarked: "false"
   });
@@ -128,10 +153,9 @@ function AddSpots({ history, onCreate, url, ...props }) {
       title: formValue.title,
       headImg: image,
       text: formValue.text,
-      mapImg:
-        "https://cdn.pixabay.com/photo/2019/07/19/09/54/map-4348394_1280.png",
       tags: formValue.tags,
-      bookmarked: formValue.bookmarked
+      bookmarked: formValue.bookmarked,
+      location: newLocation
     };
 
     onCreate(spot);
@@ -174,6 +198,12 @@ function AddSpots({ history, onCreate, url, ...props }) {
           </ButtonGroup>
         </Form>
       </Container>
+      <Map
+        {...props}
+        spots={spots}
+        onSetLocation={handleSetLocation}
+        center={userLocation}
+      />
     </>
   );
 }

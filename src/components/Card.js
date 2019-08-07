@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import Headline from "./Headline";
-import Map from "../pages/Map";
+import Map from "./Map";
 
 const Bookmark = styled.div`
   position: absolute;
@@ -87,10 +87,11 @@ function Card({
   mapImg,
   bookmarked,
   onBookmark,
-  spots,
-  center,
+  location,
   ...props
 }) {
+  const spots = [{ location }];
+
   return (
     <StyledCard>
       <Bookmark active={bookmarked} onClick={onBookmark} />
@@ -103,7 +104,7 @@ function Card({
         <StyledTags>{tags}</StyledTags>
       </TagContainer>
       <MapContainer>
-        <Map spots={spots} center={center} zoom={10} />
+        <Map center={location} zoom={10} spots={spots} />
       </MapContainer>
     </StyledCard>
   );

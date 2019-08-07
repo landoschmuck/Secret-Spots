@@ -25,10 +25,10 @@ function SecretSpots({
   spots,
   onToggleBookmark,
   showBookmarked,
-  onShowBookmarks,
-  zoom
+  onShowBookmarks
 }) {
   function renderCard(spot) {
+    console.log(spot);
     return (
       <Card
         key={spot._id}
@@ -38,10 +38,8 @@ function SecretSpots({
         tags={spot.tags}
         mapImg={spot.mapImg}
         bookmarked={spot.bookmarked}
+        location={spot.location}
         onBookmark={() => onToggleBookmark(spot._id)}
-        center={spot.location}
-        spots={spots}
-        zoom={zoom}
       />
     );
   }

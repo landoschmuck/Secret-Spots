@@ -14,7 +14,11 @@ const InfoWindowImg = styled.img`
   width: 100%;
 `;
 
-function Map({ center, spots, zoom }) {
+const MAP_URL = `https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${
+  process.env.REACT_APP_GOOGLE_KEY
+}`;
+
+function Map({ center, spots, zoom, onMapClick }) {
   const [selectedSpot, setSelectedSpot] = React.useState(null);
 
   React.useEffect(() => {
@@ -29,21 +33,30 @@ function Map({ center, spots, zoom }) {
       window.removeEventListener("keydown", listener);
     };
   }, []);
+
+  function handleMapClick(event) {
+    if (onMapClick) {
+      onMapClick({ lat: event.latLng.lat(), lng: event.latLng.lng() });
+    }
+  }
+
   return (
     <GoogleMap
       defaultZoom={zoom}
       defaultCenter={center}
       defaultOptions={{ styles: mapStyles }}
+      onClick={handleMapClick}
     >
-      {spots.map(spot => (
-        <Marker
-          key={spot._id}
-          position={spot.location}
-          onClick={() => {
-            setSelectedSpot(spot);
-          }}
-        />
-      ))}
+      {spots &&
+        spots.map(spot => (
+          <Marker
+            key={spot._id}
+            position={spot.location}
+            onClick={() => {
+              setSelectedSpot(spot);
+            }}
+          />
+        ))}
 
       {selectedSpot && (
         <InfoWindow
@@ -65,16 +78,12 @@ function Map({ center, spots, zoom }) {
 
 const MapWrapped = withScriptjs(withGoogleMap(Map));
 
-function RenderMap({ center, spots, zoom }) {
+function RenderMap(props) {
   return (
     <div style={{ width: "100vw", height: "100vh" }}>
       <MapWrapped
-        center={center}
-        spots={spots}
-        zoom={zoom}
-        googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${
-          process.env.REACT_APP_GOOGLE_KEY
-        }`}
+        {...props}
+        googleMapURL={MAP_URL}
         loadingElement={<div style={{ height: `100%` }} />}
         containerElement={<div style={{ height: `90%` }} />}
         mapElement={<div style={{ height: `100%` }} />}
