@@ -58,7 +58,7 @@ function FooterNavigation({ links }) {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [scrollState]);
+  });
 
   return (
     <Footer visible={scrollState.visible}>

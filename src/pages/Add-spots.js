@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Header from "../components/Header";
 import Button from "../components/Button";
+import ImageUpload from "../components/ImageUpload";
 // import uuid from "uuid";
 
 const Container = styled.div`
@@ -13,6 +14,19 @@ const Container = styled.div`
   flex-direction: column;
   margin: 10px;
 `;
+
+// const ButtonLogo = styled.span`
+//   color: white;
+//   margin-right: 10px;
+// `;
+
+// const ImgButton = styled(Button)`
+//   width: 100%;
+//   height: 220px;
+//   border: solid 1px black;
+//   padding: 10px;
+//   font-size: 25;
+// `;
 
 const StyledError = styled.div`
   color: red;
@@ -42,7 +56,7 @@ const Title = styled.input`
 const Text = styled.textarea`
   margin: 5px;
   width: 100%;
-  height: 150px;
+  height: 130px;
   border: 2px solid #ccc;
   border-radius: 4px;
 `;
@@ -50,14 +64,17 @@ const Text = styled.textarea`
 const Tags = styled.select`
   margin: 5px;
   width: 100%;
-`;
-
-const HeadImg = styled.input`
-  margin: 5px;
-  width: 100%;
   border: 2px solid #ccc;
   border-radius: 4px;
 `;
+
+// const HeadImg = styled.input`
+//   margin: 5px;
+//   width: 100%;
+//   border: 2px solid #ccc;
+//   border-radius: 4px;
+//   display: none;
+// `;
 
 const ButtonGroup = styled.div`
   display: flex;
@@ -65,22 +82,26 @@ const ButtonGroup = styled.div`
   align-content: center;
 `;
 
-function AddSpots({ history, onCreate, ...props }) {
+function AddSpots({ history, onCreate, url, ...props }) {
   const [formValue, setFormValue] = React.useState({
     title: "",
-    headImg: "",
     text: "",
     mapImg:
       "https://cdn.pixabay.com/photo/2019/07/19/09/54/map-4348394_1280.png",
     tags: "",
     bookmarked: "false"
   });
-
+  console.log(url);
   const [errors, setErrors] = React.useState({});
+  const [image, setImage] = React.useState("");
 
   function handleChange(event) {
     const { name, value } = event.target;
     setFormValue({ ...formValue, [name]: value });
+  }
+
+  function handleImageChange(url) {
+    setImage(url);
   }
 
   function validate() {
@@ -105,7 +126,7 @@ function AddSpots({ history, onCreate, ...props }) {
     }
     const spot = {
       title: formValue.title,
-      headImg: formValue.headImg,
+      headImg: image,
       text: formValue.text,
       mapImg:
         "https://cdn.pixabay.com/photo/2019/07/19/09/54/map-4348394_1280.png",
@@ -121,11 +142,10 @@ function AddSpots({ history, onCreate, ...props }) {
       <Header title="Add New Spots" icon="fa-plus-circle" />
       <Container>
         <Form onSubmit={handleSubmit}>
-          <HeadImg
+          <ImageUpload
             name="headImg"
-            placeholder="image Url"
-            value={formValue.headImg}
-            onChange={handleChange}
+            url={image}
+            onChange={handleImageChange}
           />
           <Title
             name="title"
@@ -136,7 +156,7 @@ function AddSpots({ history, onCreate, ...props }) {
           {errors.title && <StyledError>{errors.title}</StyledError>}
           <Text
             name="text"
-            placeholder="Description..."
+            placeholder="Text"
             value={formValue.text}
             onChange={handleChange}
           />
@@ -150,7 +170,6 @@ function AddSpots({ history, onCreate, ...props }) {
           </Tags>
           {/* <TagContainer>{tags.map(tags => renderCard(card))}</TagContainer> */}
           <ButtonGroup>
-            <Button type="button"> Add Photo </Button>
             <Button>Submit</Button>
           </ButtonGroup>
         </Form>
