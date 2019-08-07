@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Header from "../components/Header";
 import Button from "../components/Button";
 import ImageUpload from "../components/ImageUpload";
-import Map from "../components/Map";
+import AddSpotMap from "../components/AddSpotMap";
 // import uuid from "uuid";
 
 // const ModalDialog = styled.div`
@@ -109,16 +109,27 @@ const ButtonGroup = styled.div`
   align-content: center;
 `;
 
-function AddSpots({ history, onCreate, url, newLocation, ...props }) {
+function AddSpots({
+  history,
+  onCreate,
+  url,
+  newLocation,
+  spots,
+  onSetLocation,
+  center,
+  handleSetLocation,
+  userLocation,
+  ...props
+}) {
   const [formValue, setFormValue] = React.useState({
     title: "",
     text: "",
     tags: "",
     bookmarked: "false"
   });
-  console.log(url);
   const [errors, setErrors] = React.useState({});
   const [image, setImage] = React.useState("");
+  const [showMap, setShowMap] = React.useState(null);
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -140,6 +151,9 @@ function AddSpots({ history, onCreate, url, newLocation, ...props }) {
 
     return Object.keys(errors).length === 0 ? null : errors;
   }
+  function handleClick() {
+    setShowMap(true);
+  }
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -160,6 +174,7 @@ function AddSpots({ history, onCreate, url, newLocation, ...props }) {
 
     onCreate(spot);
     history.replace("/secret-spots");
+    setShowMap(false);
   }
   return (
     <>
@@ -195,15 +210,18 @@ function AddSpots({ history, onCreate, url, newLocation, ...props }) {
           {/* <TagContainer>{tags.map(tags => renderCard(card))}</TagContainer> */}
           <ButtonGroup>
             <Button>Submit</Button>
+            <Button onClick={handleClick}>Location?</Button>
           </ButtonGroup>
         </Form>
       </Container>
-      <Map
-        {...props}
-        spots={spots}
-        onSetLocation={handleSetLocation}
-        center={userLocation}
-      />
+      {showMap && (
+        <AddSpotMap
+          {...props}
+          spots={spots}
+          onSetLocation={handleSetLocation}
+          center={userLocation}
+        />
+      )}
     </>
   );
 }

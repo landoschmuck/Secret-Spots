@@ -47,16 +47,15 @@ function Map({ center, spots, zoom, onMapClick }) {
       defaultOptions={{ styles: mapStyles }}
       onClick={handleMapClick}
     >
-      {spots &&
-        spots.map(spot => (
-          <Marker
-            key={spot._id}
-            position={spot.location}
-            onClick={() => {
-              setSelectedSpot(spot);
-            }}
-          />
-        ))}
+      {spots.map(spot => (
+        <Marker
+          key={spot._id}
+          position={spot.location}
+          onClick={() => {
+            setSelectedSpot(spot);
+          }}
+        />
+      ))}
 
       {selectedSpot && (
         <InfoWindow

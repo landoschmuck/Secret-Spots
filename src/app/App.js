@@ -49,6 +49,7 @@ function App() {
   }
   function handleSetLocation(location) {
     setNewLocation(location);
+    console.log(newLocation);
   }
   return (
     <>
@@ -86,8 +87,13 @@ function App() {
             exact
             render={props => (
               <AddSpots
-                newLocation={newLocation}
+                spots={spots}
+                onSetLocation={handleSetLocation}
+                center={userLocation}
                 onCreate={handleCreate}
+                handleSetLocation={handleSetLocation}
+                userLocation={userLocation}
+                newLocation={newLocation}
                 {...props}
               />
             )}
