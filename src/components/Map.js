@@ -80,6 +80,9 @@ const MapWrapped = withScriptjs(withGoogleMap(Map));
 function RenderMap(props) {
   return (
     <div style={{ width: "100vw", height: "100vh" }}>
+      {" "}
+      /*props geben und auf addspots und secretSpots auf 100% bei addspots
+      height auf ca. 120%*/
       <MapWrapped
         {...props}
         googleMapURL={MAP_URL}

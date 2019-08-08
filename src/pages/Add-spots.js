@@ -6,31 +6,33 @@ import ImageUpload from "../components/ImageUpload";
 import AddSpotMap from "../components/AddSpotMap";
 // import uuid from "uuid";
 
-// const ModalDialog = styled.div`
-//   width: 70%;
-//   height: 85%;
-//   z-index: 1;
-//   color: #000;
-//   background: white;
-//   opacity: 1;
-//   box-shadow: grey 0px 4px 4px;
-//   border-radius: 10px;
-//   padding: 20px;
-//   display: flex;
-//   flex-direction: column;
-// `;
+const ModalDialog = styled.div`
+  width: 90%;
+  height: 70%;
+  z-index: 1;
+  color: #000;
+  background: white;
+  opacity: 1;
+  box-shadow: grey 0px 4px 4px;
+  border-radius: 10px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  max-width: 100vw;
+  max-height: 100vh;
+`;
 
-// const Blur = styled.div`
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-//   width: 100vw;
-//   height: 100vh;
-//   background: rgba(193, 177, 170, 0.6);
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-// `;
+const Blur = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(193, 177, 170, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 
 const Container = styled.div`
   padding: 18px;
@@ -215,12 +217,16 @@ function AddSpots({
         </Form>
       </Container>
       {showMap && (
-        <AddSpotMap
-          {...props}
-          spots={spots}
-          onSetLocation={handleSetLocation}
-          center={userLocation}
-        />
+        <Blur>
+          <ModalDialog>
+            <AddSpotMap
+              {...props}
+              spots={spots}
+              onSetLocation={handleSetLocation}
+              center={userLocation}
+            />
+          </ModalDialog>
+        </Blur>
       )}
     </>
   );
