@@ -11,7 +11,9 @@ import GlobalStyles from "./GlobalStyles";
 function App() {
   const [spots, setSpots] = React.useState([]);
   const [showBookmarked, setShowBookmarked] = React.useState(false);
-  const [userLocation, setUserLocation] = React.useState(null);
+  const [userLocation, setUserLocation] = React.useState(
+    "lat:53.551086, lng:9.993682"
+  );
   const [newLocation, setNewLocation] = React.useState("");
 
   async function loadSpots() {
@@ -49,8 +51,8 @@ function App() {
   }
   function handleSetLocation(location) {
     setNewLocation(location);
-    console.log(newLocation);
   }
+
   return (
     <>
       <Router>
@@ -65,6 +67,8 @@ function App() {
                 spots={spots}
                 onSetLocation={handleSetLocation}
                 center={userLocation}
+                width="100vw"
+                height="100vh"
               />
             )}
           />

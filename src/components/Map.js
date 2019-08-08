@@ -20,6 +20,7 @@ const MAP_URL = `https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geome
 
 function Map({ center, spots, zoom, onMapClick }) {
   const [selectedSpot, setSelectedSpot] = React.useState(null);
+  const [newSpot, setNewSpot] = React.useState(false);
 
   React.useEffect(() => {
     const listener = e => {
@@ -36,8 +37,14 @@ function Map({ center, spots, zoom, onMapClick }) {
 
   function handleMapClick(event) {
     if (onMapClick) {
+      let clickLocation = { lat: event.latLng.lat(), lng: event.latLng.lng() };
       onMapClick({ lat: event.latLng.lat(), lng: event.latLng.lng() });
+      newMarker(clickLocation);
     }
+  }
+
+  function newMarker(clickLocation) {
+    setNewSpot(clickLocation);
   }
 
   return (
@@ -47,15 +54,19 @@ function Map({ center, spots, zoom, onMapClick }) {
       defaultOptions={{ styles: mapStyles }}
       onClick={handleMapClick}
     >
-      {spots.map(spot => (
-        <Marker
-          key={spot._id}
-          position={spot.location}
-          onClick={() => {
-            setSelectedSpot(spot);
-          }}
-        />
-      ))}
+      {spots.map(spot => {
+        return (
+          <Marker
+            key={spot._id}
+            position={spot.location}
+            onClick={() => {
+              setSelectedSpot(spot);
+            }}
+          />
+        );
+      })}
+
+      {newSpot && <Marker Key="new" position={newSpot} />}
 
       {selectedSpot && (
         <InfoWindow
@@ -78,11 +89,10 @@ function Map({ center, spots, zoom, onMapClick }) {
 const MapWrapped = withScriptjs(withGoogleMap(Map));
 
 function RenderMap(props) {
+  const wi = props.width;
+  const he = props.height;
   return (
-    <div style={{ width: "100vw", height: "100vh" }}>
-      {" "}
-      /*props geben und auf addspots und secretSpots auf 100% bei addspots
-      height auf ca. 120%*/
+    <div style={{ width: wi, height: he }}>
       <MapWrapped
         {...props}
         googleMapURL={MAP_URL}
@@ -95,3 +105,5 @@ function RenderMap(props) {
 }
 
 export default RenderMap;
+/*props geben und auf addspots und secretSpots auf 100% bei addspots
+      height auf ca. 120%*/

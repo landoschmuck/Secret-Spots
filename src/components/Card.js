@@ -88,6 +88,8 @@ function Card({
   bookmarked,
   onBookmark,
   location,
+  height,
+  width,
   ...props
 }) {
   const spots = [{ location }];
@@ -104,7 +106,13 @@ function Card({
         <StyledTags>{tags}</StyledTags>
       </TagContainer>
       <MapContainer>
-        <Map center={location} zoom={10} spots={spots} />
+        <Map
+          center={location}
+          height="100%"
+          width="100%"
+          zoom={10}
+          spots={spots}
+        />
       </MapContainer>
     </StyledCard>
   );

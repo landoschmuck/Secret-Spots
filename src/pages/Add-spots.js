@@ -4,7 +4,10 @@ import Header from "../components/Header";
 import Button from "../components/Button";
 import ImageUpload from "../components/ImageUpload";
 import AddSpotMap from "../components/AddSpotMap";
-// import uuid from "uuid";
+
+const MapButton = styled(Button)`
+  margin: -7px;
+`;
 
 const ModalDialog = styled.div`
   width: 90%;
@@ -27,7 +30,7 @@ const Blur = styled.div`
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh;
+  height: 92vh;
   background: rgba(193, 177, 170, 0.6);
   display: flex;
   align-items: center;
@@ -121,6 +124,8 @@ function AddSpots({
   center,
   handleSetLocation,
   userLocation,
+  width,
+  height,
   ...props
 }) {
   const [formValue, setFormValue] = React.useState({
@@ -176,6 +181,8 @@ function AddSpots({
 
     onCreate(spot);
     history.replace("/secret-spots");
+  }
+  function handleOkClick() {
     setShowMap(false);
   }
   return (
@@ -224,7 +231,10 @@ function AddSpots({
               spots={spots}
               onSetLocation={handleSetLocation}
               center={userLocation}
+              height="124%"
+              width="100%"
             />
+            <MapButton onClick={handleOkClick}>OK</MapButton>
           </ModalDialog>
         </Blur>
       )}

@@ -28,7 +28,6 @@ function SecretSpots({
   onShowBookmarks
 }) {
   function renderCard(spot) {
-    console.log(spot);
     return (
       <Card
         key={spot._id}
