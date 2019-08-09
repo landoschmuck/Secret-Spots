@@ -9,6 +9,19 @@ import {
 import mapStyles from "./mapStyles";
 import styled from "styled-components";
 
+const StyledTags = styled.span`
+  /* border: 3px solid grey; */
+  display: flex;
+  padding: 0px 10px;
+  border-radius: 15px;
+  background: teal;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 12px;
+  height: 20px;
+`;
+
 const InfoWindowImg = styled.img`
   height: auto;
   width: 100%;
@@ -79,7 +92,7 @@ function Map({ center, spots, zoom, onMapClick }) {
             <InfoWindowImg src={selectedSpot.headImg} />
             <h2>{selectedSpot.title}</h2>
             <p>{selectedSpot.text}</p>
-            <p>{selectedSpot.tags}</p>
+            <StyledTags>{selectedSpot.tags}</StyledTags>
           </div>
         </InfoWindow>
       )}

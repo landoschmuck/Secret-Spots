@@ -4,23 +4,15 @@ import PropTypes from "prop-types";
 import Headline from "./Headline";
 import Map from "./Map";
 import Divider from "./Divider";
+import ActionButton from "./ActionButton";
 
-const Bookmark = styled.div`
+const Bookmark = styled(ActionButton)`
   position: absolute;
-  right: 12px;
-  top: -6px;
-  background: ${props => (props.active ? "#98c2e0" : "black")};
+  right: 9px;
+  top: 6px;
+  background: white;
   transition: all 0.4s ease;
-
-  &:after {
-    transition: all 0.4s ease;
-    position: absolute;
-    display: block;
-    top: 100%;
-    content: "";
-    border: 10px solid ${props => (props.active ? "#98c2e0" : "black")};
-    border-bottom-color: transparent;
-  }
+  color: ${props => (props.active ? "gold" : "grey")};
 `;
 
 const StyledTags = styled.span`
@@ -32,6 +24,9 @@ const StyledTags = styled.span`
   justify-content: center;
   align-items: center;
   color: white;
+  font-size: 12px;
+  height: 23px;
+  margin-bottom: 15px;
 `;
 
 const StyledCard = styled.div`
@@ -63,7 +58,9 @@ const MapContainer = styled.div`
   height: 300px;
 `;
 
-const Text = styled.p``;
+const Text = styled.p`
+  font-size: 16px;
+`;
 const Img = styled.img`
   max-width: 100%;
   height: auto;
@@ -76,6 +73,7 @@ const ImgContainer = styled.div`
   /* border: solid 1px black; */
   margin-top: 5px;
   border-radius: 15px;
+  margin-bottom: 15px;
 `;
 
 const TagContainer = styled.div`
@@ -105,17 +103,17 @@ function Card({
   return (
     <>
       <StyledCard>
-        <Bookmark active={bookmarked} onClick={onBookmark}>
-          <i className="far fa-star" />
-        </Bookmark>
+        <Bookmark active={bookmarked} onClick={onBookmark} icon="fa-star" />
         <ImgContainer>
           <Img src={headImg} />
         </ImgContainer>
         <Headline size="S">{title}</Headline>
         <Text>{text}</Text>
-        <TagContainer>
-          <StyledTags>{tags}</StyledTags>
-        </TagContainer>
+        {tags[0].length > 0 && (
+          <TagContainer>
+            <StyledTags>{tags}</StyledTags>
+          </TagContainer>
+        )}
         <MapContainer>
           <Map
             center={location}

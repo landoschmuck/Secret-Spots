@@ -3,12 +3,12 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledButton = styled.button`
-  width: 48px;
-  height: 48px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   border: none;
-  color: ${props => (props.active ? "gold" : "white")};
-  background: black;
+  color: ${props => (props.active ? "gold" : "grey")};
+  background: #45a2a2;
   font-size: 20px;
   cursor: pointer;
 `;

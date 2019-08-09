@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 const Footer = styled.footer`
-  height: 65px;
+  height: 55px;
   background: #45a2a2;
-  width: 100%;
+  width: 100vw;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -46,6 +46,7 @@ function FooterNavigation({ links }) {
     visible: true,
     prevScrollpos: window.pageYOffset
   });
+  console.log(scrollState);
 
   function handleScroll() {
     const currentScrollPos = window.pageYOffset;

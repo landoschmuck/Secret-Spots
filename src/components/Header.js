@@ -16,13 +16,14 @@ const StyledHeader = styled.div`
   border-bottom: solid 1px grey;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
+  height: 55px;
 `;
 
 const StyledLogo = styled.span`
   color: white;
   font-size: 20px;
   padding-right: 5px;
-  margin-top: 4px;
+  margin-top: 7px;
   background: #45a2a2;
 `;
 

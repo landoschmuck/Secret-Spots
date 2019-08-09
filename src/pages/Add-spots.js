@@ -4,6 +4,15 @@ import Header from "../components/Header";
 import Button from "../components/Button";
 import ImageUpload from "../components/ImageUpload";
 import AddSpotMap from "../components/AddSpotMap";
+import { fadePage } from "../utils/animations";
+
+const FadeContainer = styled.div`
+  animation: ${fadePage} 0.5s ease both;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+`;
 
 const MapButton = styled(Button)`
   margin: -7px;
@@ -39,7 +48,7 @@ const Blur = styled.div`
   justify-content: center;
 `;
 
-const Container = styled.div`
+const FormContainer = styled.div`
   padding: 18px;
   background: #fafafa;
   border: 2px solid #ccc;
@@ -47,6 +56,11 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   margin: 10px;
+  height: 80vh;
+
+  @media (min-width: 500px) {
+    width: 350px;
+  }
 `;
 
 // const ButtonLogo = styled.span`
@@ -190,57 +204,60 @@ function AddSpots({
   }
   return (
     <>
-      <Header title="Add New Spots" icon="fa-plus-circle" />
-      <Container>
-        <Form onSubmit={handleSubmit}>
-          <ImageUpload
-            name="headImg"
-            url={image}
-            onChange={handleImageChange}
-          />
-          <Title
-            name="title"
-            placeholder="Title"
-            value={formValue.title}
-            onChange={handleChange}
-          />
-          {errors.title && <StyledError>{errors.title}</StyledError>}
-          <Text
-            name="text"
-            placeholder="Text"
-            value={formValue.text}
-            onChange={handleChange}
-          />
-          {errors.text && <StyledError>{errors.text}</StyledError>}
-          <Tags name="tags" value={formValue.tags} onChange={handleChange}>
-            <option value="Wasser">Wasser</option>
-            <option value="Relax">Relax</option>
-            <option value="Strand">Strand</option>
-            <option value="Natur">Natur</option>
-            <option value="Urban">Urban</option>
-          </Tags>
-          {/* <TagContainer>{tags.map(tags => renderCard(card))}</TagContainer> */}
-          <ButtonGroup>
-            <Button>Submit</Button>
-            <Button onClick={handleClick}>Location?</Button>
-          </ButtonGroup>
-        </Form>
-      </Container>
-      {showMap && (
-        <Blur>
-          <ModalDialog>
-            <AddSpotMap
-              {...props}
-              spots={spots}
-              onSetLocation={handleSetLocation}
-              center={userLocation}
-              height="124%"
-              width="100%"
+      <FadeContainer>
+        <Header title="Add New Spots" icon="fa-plus-circle" />
+        <FormContainer>
+          <Form onSubmit={handleSubmit}>
+            <ImageUpload
+              name="headImg"
+              url={image}
+              onChange={handleImageChange}
             />
-            <MapButton onClick={handleOkClick}>OK</MapButton>
-          </ModalDialog>
-        </Blur>
-      )}
+            <Title
+              name="title"
+              placeholder="Title"
+              value={formValue.title}
+              onChange={handleChange}
+            />
+            {errors.title && <StyledError>{errors.title}</StyledError>}
+            <Text
+              name="text"
+              placeholder="Text"
+              value={formValue.text}
+              onChange={handleChange}
+            />
+            {errors.text && <StyledError>{errors.text}</StyledError>}
+            <Tags name="tags" value={formValue.tags} onChange={handleChange}>
+              <option value="Wasser">Wasser</option>
+              <option value="Relax">Relax</option>
+              <option value="Strand">Strand</option>
+              <option value="Natur">Natur</option>
+              <option value="Urban">Urban</option>
+            </Tags>
+            {/* <TagContainer>{tags.map(tags => renderCard(card))}</TagContainer> */}
+            <ButtonGroup>
+              <Button>Submit</Button>
+              <Button onClick={handleClick}>Location?</Button>
+            </ButtonGroup>
+          </Form>
+        </FormContainer>
+
+        {showMap && (
+          <Blur>
+            <ModalDialog>
+              <AddSpotMap
+                {...props}
+                spots={spots}
+                onSetLocation={handleSetLocation}
+                center={userLocation}
+                height="124%"
+                width="100%"
+              />
+              <MapButton onClick={handleOkClick}>OK</MapButton>
+            </ModalDialog>
+          </Blur>
+        )}
+      </FadeContainer>
     </>
   );
 }
