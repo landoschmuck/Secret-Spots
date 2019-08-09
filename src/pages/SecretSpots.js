@@ -8,6 +8,8 @@ const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100vw;
+  justify-content: center;
+  align-items: center;
 `;
 
 const BookmarkButton = styled(ActionButton)`
@@ -18,7 +20,6 @@ const BookmarkButton = styled(ActionButton)`
   width: 38px;
   height: 38px;
   margin-top: 4px;
-  background: teal;
 `;
 
 function SecretSpots({

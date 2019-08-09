@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 
 const Footer = styled.footer`
   height: 65px;
-  background: teal;
+  background: #45a2a2;
   width: 100%;
   display: flex;
   align-items: center;
@@ -17,6 +17,8 @@ const Footer = styled.footer`
   opacity: ${props => (props.visible ? 1 : 0)};
   transition: all 0.5s ease;
   border-top: solid 1px grey;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 `;
 
 const FooterLink = styled(Link)`
@@ -29,12 +31,12 @@ const FooterLink = styled(Link)`
   margin: 35px 20px 35px;
 
   &:hover {
-    background-color: #ddd;
+    background-color: teal;
     color: black;
   }
 
   &:active {
-    background-color: #98c2e0;
+    background-color: teal;
     color: white;
   }
 `;

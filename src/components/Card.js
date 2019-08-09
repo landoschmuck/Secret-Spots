@@ -3,13 +3,12 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 import Headline from "./Headline";
 import Map from "./Map";
+import Divider from "./Divider";
 
 const Bookmark = styled.div`
   position: absolute;
   right: 12px;
   top: -6px;
-  width: 20px;
-  height: 15px;
   background: ${props => (props.active ? "#98c2e0" : "black")};
   transition: all 0.4s ease;
 
@@ -43,13 +42,16 @@ const StyledCard = styled.div`
   overflow: auto;
   height: 500px;
   margin: 10px;
-  margin-top: 44px;
   display: flex;
   flex-direction: column;
   position: relative;
   color: black;
   background: white;
-  box-shadow: 7px 10px 9px -5px rgba(235, 235, 235, 1);
+  box-shadow: 1px 4px 10px 4px rgba(214, 211, 214, 1);
+
+  @media (min-width: 500px) {
+    width: 350px;
+  }
 `;
 
 const MapContainer = styled.div`
@@ -103,7 +105,9 @@ function Card({
   return (
     <>
       <StyledCard>
-        <Bookmark active={bookmarked} onClick={onBookmark} />
+        <Bookmark active={bookmarked} onClick={onBookmark}>
+          <i className="far fa-star" />
+        </Bookmark>
         <ImgContainer>
           <Img src={headImg} />
         </ImgContainer>
@@ -122,6 +126,7 @@ function Card({
           />
         </MapContainer>
       </StyledCard>
+      <Divider />
     </>
   );
 }

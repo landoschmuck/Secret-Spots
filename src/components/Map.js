@@ -79,6 +79,7 @@ function Map({ center, spots, zoom, onMapClick }) {
             <InfoWindowImg src={selectedSpot.headImg} />
             <h2>{selectedSpot.title}</h2>
             <p>{selectedSpot.text}</p>
+            <p>{selectedSpot.tags}</p>
           </div>
         </InfoWindow>
       )}

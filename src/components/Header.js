@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import Headline from "./Headline";
 
 const StyledHeader = styled.div`
-  background: teal;
+  background: #45a2a2;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14,6 +14,8 @@ const StyledHeader = styled.div`
   width: 100vw;
   z-index: 1;
   border-bottom: solid 1px grey;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 `;
 
 const StyledLogo = styled.span`
@@ -21,7 +23,7 @@ const StyledLogo = styled.span`
   font-size: 20px;
   padding-right: 5px;
   margin-top: 4px;
-  background: teal;
+  background: #45a2a2;
 `;
 
 const StyledHeadline = styled(Headline)`
