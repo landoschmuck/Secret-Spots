@@ -105,7 +105,7 @@ function App() {
         </Switch>
         <FooterNavigation
           links={[
-            { to: "/", icon: "fa-map-marker-alt" },
+            { to: "/", icon: "fa-home" },
             { to: "/map", icon: "fa-globe-americas" },
             { to: "/secret-spots", icon: "fa-list-ul" },
             { to: "/add-spots", icon: "fa-plus-circle" }

@@ -46,6 +46,12 @@ const StyledCard = styled.div`
   flex-direction: column;
   position: relative;
   color: white;
+  background: linear-gradient(
+    90deg,
+    rgba(9, 9, 9, 1) 0%,
+    rgba(20, 20, 20, 1) 49%,
+    rgba(34, 36, 34, 1) 100%
+  );
 `;
 
 const MapContainer = styled.div`
