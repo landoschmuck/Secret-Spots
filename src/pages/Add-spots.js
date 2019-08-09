@@ -3,7 +3,41 @@ import styled from "styled-components";
 import Header from "../components/Header";
 import Button from "../components/Button";
 import ImageUpload from "../components/ImageUpload";
-// import uuid from "uuid";
+import AddSpotMap from "../components/AddSpotMap";
+
+const MapButton = styled(Button)`
+  margin: -7px;
+  margin-top: -30px;
+  font-size: 20px;
+`;
+
+const ModalDialog = styled.div`
+  width: 90%;
+  height: 70%;
+  z-index: 1;
+  color: #000;
+  background: white;
+  opacity: 1;
+  box-shadow: grey 0px 4px 4px;
+  border-radius: 10px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  max-width: 100vw;
+  max-height: 100vh;
+`;
+
+const Blur = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 92vh;
+  background: rgba(193, 177, 170, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 
 const Container = styled.div`
   padding: 18px;
@@ -66,6 +100,7 @@ const Tags = styled.select`
   width: 100%;
   border: 2px solid #ccc;
   border-radius: 4px;
+  background: white;
 `;
 
 // const HeadImg = styled.input`
@@ -82,18 +117,29 @@ const ButtonGroup = styled.div`
   align-content: center;
 `;
 
-function AddSpots({ history, onCreate, url, ...props }) {
+function AddSpots({
+  history,
+  onCreate,
+  url,
+  newLocation,
+  spots,
+  onSetLocation,
+  center,
+  handleSetLocation,
+  userLocation,
+  width,
+  height,
+  ...props
+}) {
   const [formValue, setFormValue] = React.useState({
     title: "",
     text: "",
-    mapImg:
-      "https://cdn.pixabay.com/photo/2019/07/19/09/54/map-4348394_1280.png",
     tags: "",
     bookmarked: "false"
   });
-  console.log(url);
   const [errors, setErrors] = React.useState({});
   const [image, setImage] = React.useState("");
+  const [showMap, setShowMap] = React.useState(null);
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -115,6 +161,9 @@ function AddSpots({ history, onCreate, url, ...props }) {
 
     return Object.keys(errors).length === 0 ? null : errors;
   }
+  function handleClick() {
+    setShowMap(true);
+  }
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -128,14 +177,16 @@ function AddSpots({ history, onCreate, url, ...props }) {
       title: formValue.title,
       headImg: image,
       text: formValue.text,
-      mapImg:
-        "https://cdn.pixabay.com/photo/2019/07/19/09/54/map-4348394_1280.png",
       tags: formValue.tags,
-      bookmarked: formValue.bookmarked
+      bookmarked: formValue.bookmarked,
+      location: newLocation
     };
 
     onCreate(spot);
     history.replace("/secret-spots");
+  }
+  function handleOkClick() {
+    setShowMap(false);
   }
   return (
     <>
@@ -171,9 +222,25 @@ function AddSpots({ history, onCreate, url, ...props }) {
           {/* <TagContainer>{tags.map(tags => renderCard(card))}</TagContainer> */}
           <ButtonGroup>
             <Button>Submit</Button>
+            <Button onClick={handleClick}>Location?</Button>
           </ButtonGroup>
         </Form>
       </Container>
+      {showMap && (
+        <Blur>
+          <ModalDialog>
+            <AddSpotMap
+              {...props}
+              spots={spots}
+              onSetLocation={handleSetLocation}
+              center={userLocation}
+              height="124%"
+              width="100%"
+            />
+            <MapButton onClick={handleOkClick}>OK</MapButton>
+          </ModalDialog>
+        </Blur>
+      )}
     </>
   );
 }

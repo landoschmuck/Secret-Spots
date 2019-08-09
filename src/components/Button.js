@@ -38,7 +38,7 @@ const kinds = outline => {
   const get = kind(outline);
 
   return {
-    primary: get("#ABC8C0", "white"),
+    primary: get("#d8c300", "white"),
     secondary: get("#5352ED", "white"),
     cancel: get("#FF4949", "white")
   };

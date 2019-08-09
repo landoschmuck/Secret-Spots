@@ -12,7 +12,11 @@ const spotSchema = new mongoose.Schema({
     type: Boolean,
     default: false
   },
-  mapImg: String
+  mapImg: String,
+  location: {
+    lat: Number,
+    lng: Number
+  }
 });
 
 module.exports = mongoose.model("Spot", spotSchema);

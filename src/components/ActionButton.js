@@ -7,7 +7,7 @@ const StyledButton = styled.button`
   height: 48px;
   border-radius: 50%;
   border: none;
-  color: ${props => (props.active ? "#98c2e0" : "white")};
+  color: ${props => (props.active ? "gold" : "white")};
   background: black;
   font-size: 20px;
   cursor: pointer;

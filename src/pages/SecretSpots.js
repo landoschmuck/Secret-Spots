@@ -18,6 +18,7 @@ const BookmarkButton = styled(ActionButton)`
   width: 38px;
   height: 38px;
   margin-top: 4px;
+  background: #abc8c0;
 `;
 
 function SecretSpots({
@@ -25,8 +26,7 @@ function SecretSpots({
   spots,
   onToggleBookmark,
   showBookmarked,
-  onShowBookmarks,
-  zoom
+  onShowBookmarks
 }) {
   function renderCard(spot) {
     return (
@@ -38,10 +38,8 @@ function SecretSpots({
         tags={spot.tags}
         mapImg={spot.mapImg}
         bookmarked={spot.bookmarked}
+        location={spot.location}
         onBookmark={() => onToggleBookmark(spot._id)}
-        center={spot.location}
-        spots={spots}
-        zoom={zoom}
       />
     );
   }

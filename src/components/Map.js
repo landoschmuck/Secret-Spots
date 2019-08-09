@@ -14,8 +14,13 @@ const InfoWindowImg = styled.img`
   width: 100%;
 `;
 
-function Map({ center, spots, zoom }) {
+const MAP_URL = `https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${
+  process.env.REACT_APP_GOOGLE_KEY
+}`;
+
+function Map({ center, spots, zoom, onMapClick }) {
   const [selectedSpot, setSelectedSpot] = React.useState(null);
+  const [newSpot, setNewSpot] = React.useState(false);
 
   React.useEffect(() => {
     const listener = e => {
@@ -29,21 +34,39 @@ function Map({ center, spots, zoom }) {
       window.removeEventListener("keydown", listener);
     };
   }, []);
+
+  function handleMapClick(event) {
+    if (onMapClick) {
+      let clickLocation = { lat: event.latLng.lat(), lng: event.latLng.lng() };
+      onMapClick({ lat: event.latLng.lat(), lng: event.latLng.lng() });
+      newMarker(clickLocation);
+    }
+  }
+
+  function newMarker(clickLocation) {
+    setNewSpot(clickLocation);
+  }
+
   return (
     <GoogleMap
       defaultZoom={zoom}
       defaultCenter={center}
       defaultOptions={{ styles: mapStyles }}
+      onClick={handleMapClick}
     >
-      {spots.map(spot => (
-        <Marker
-          key={spot._id}
-          position={spot.location}
-          onClick={() => {
-            setSelectedSpot(spot);
-          }}
-        />
-      ))}
+      {spots.map(spot => {
+        return (
+          <Marker
+            key={spot._id}
+            position={spot.location}
+            onClick={() => {
+              setSelectedSpot(spot);
+            }}
+          />
+        );
+      })}
+
+      {newSpot && <Marker Key="new" position={newSpot} />}
 
       {selectedSpot && (
         <InfoWindow
@@ -65,16 +88,14 @@ function Map({ center, spots, zoom }) {
 
 const MapWrapped = withScriptjs(withGoogleMap(Map));
 
-function RenderMap({ center, spots, zoom }) {
+function RenderMap(props) {
+  const wi = props.width;
+  const he = props.height;
   return (
-    <div style={{ width: "100vw", height: "100vh" }}>
+    <div style={{ width: wi, height: he }}>
       <MapWrapped
-        center={center}
-        spots={spots}
-        zoom={zoom}
-        googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${
-          process.env.REACT_APP_GOOGLE_KEY
-        }`}
+        {...props}
+        googleMapURL={MAP_URL}
         loadingElement={<div style={{ height: `100%` }} />}
         containerElement={<div style={{ height: `90%` }} />}
         mapElement={<div style={{ height: `100%` }} />}
@@ -84,3 +105,5 @@ function RenderMap({ center, spots, zoom }) {
 }
 
 export default RenderMap;
+/*props geben und auf addspots und secretSpots auf 100% bei addspots
+      height auf ca. 120%*/

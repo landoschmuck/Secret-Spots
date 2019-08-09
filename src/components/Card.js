@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import Headline from "./Headline";
-import Map from "../pages/Map";
+import Map from "./Map";
 
 const Bookmark = styled.div`
   position: absolute;
@@ -25,15 +25,17 @@ const Bookmark = styled.div`
 `;
 
 const StyledTags = styled.span`
-  border: 3px solid lightblue;
-  display: border-box;
+  border: 3px solid grey;
+  display: flex;
   padding: 0px 10px;
   border-radius: 15px;
+  background: #d8c300;
+  justify-content: center;
+  align-items: center;
 `;
 
 const StyledCard = styled.div`
-  /* background-image: url("https://cdn.pixabay.com/photo/2013/05/15/06/10/fall-foliage-111315_1280.jpg"); */
-  background: #9da2ab;
+  /* background-image: url("https://cdn.pixabay.com/photo/2017/01/29/13/11/scrapbook-2017957_1280.jpg"); */
   padding: 10px;
   border: 2px solid #ccc;
   border-radius: 15px;
@@ -44,6 +46,12 @@ const StyledCard = styled.div`
   flex-direction: column;
   position: relative;
   color: white;
+  background: linear-gradient(
+    90deg,
+    rgba(9, 9, 9, 1) 0%,
+    rgba(20, 20, 20, 1) 49%,
+    rgba(34, 36, 34, 1) 100%
+  );
 `;
 
 const MapContainer = styled.div`
@@ -87,10 +95,13 @@ function Card({
   mapImg,
   bookmarked,
   onBookmark,
-  spots,
-  center,
+  location,
+  height,
+  width,
   ...props
 }) {
+  const spots = [{ location }];
+
   return (
     <StyledCard>
       <Bookmark active={bookmarked} onClick={onBookmark} />
@@ -103,7 +114,13 @@ function Card({
         <StyledTags>{tags}</StyledTags>
       </TagContainer>
       <MapContainer>
-        <Map spots={spots} center={center} zoom={10} />
+        <Map
+          center={location}
+          height="100%"
+          width="100%"
+          zoom={10}
+          spots={spots}
+        />
       </MapContainer>
     </StyledCard>
   );

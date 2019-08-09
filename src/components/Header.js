@@ -4,7 +4,12 @@ import PropTypes from "prop-types";
 import Headline from "./Headline";
 
 const StyledHeader = styled.div`
-  background: black;
+  background: linear-gradient(
+    90deg,
+    rgba(9, 9, 9, 1) 0%,
+    rgba(20, 20, 20, 1) 49%,
+    rgba(34, 36, 34, 1) 100%
+  );
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13,7 +18,7 @@ const StyledHeader = styled.div`
   top: 0;
   width: 100vw;
   z-index: 1;
-  border-bottom: solid 1px white;
+  border-bottom: solid 1px grey;
 `;
 
 const StyledLogo = styled.span`
@@ -21,6 +26,7 @@ const StyledLogo = styled.span`
   font-size: 20px;
   padding-right: 5px;
   margin-top: 4px;
+  background: #abc8c0;
 `;
 
 const StyledHeadline = styled(Headline)`

@@ -1,18 +1,24 @@
 import React from "react";
-import GlobalStyles from "./GlobalStyles";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import SecretSpots from "../pages/SecretSpots";
-import AddSpots from "../pages/Add-spots";
 import FooterNavigation from "../components/Footer";
-// import mockSpots from "../pages/__Mock__/cards";
+import AddSpots from "../pages/Add-spots";
 import Landing from "../pages/Landing";
+import Overview from "../pages/Overview";
+import SecretSpots from "../pages/SecretSpots";
 import { getSpots, postSpot } from "../services";
-import Map from "../pages/Map";
+import GlobalStyles from "./GlobalStyles";
 
 function App() {
   const [spots, setSpots] = React.useState([]);
   const [showBookmarked, setShowBookmarked] = React.useState(false);
-  const [userLocation, setUserLocation] = React.useState(null);
+  const [userLocation, setUserLocation] = React.useState(
+    "lat:53.551086, lng:9.993682"
+  );
+  const [newLocation, setNewLocation] = React.useState("");
+
+  async function loadSpots() {
+    setSpots(await getSpots());
+  }
 
   React.useEffect(() => {
     loadSpots();
@@ -29,13 +35,9 @@ function App() {
   }, []);
 
   function handleCreate(spot) {
-    console.log(spot);
     postSpot(spot).then(result => setSpots([result, ...spots]));
   }
 
-  async function loadSpots() {
-    setSpots(await getSpots());
-  }
   function handleToggleBookmark(id) {
     const index = spots.findIndex(spot => spot._id === id);
     const spot = spots[index];
@@ -47,6 +49,9 @@ function App() {
   function handleShowBookmarked() {
     setShowBookmarked(!showBookmarked);
   }
+  function handleSetLocation(location) {
+    setNewLocation(location);
+  }
 
   return (
     <>
@@ -57,7 +62,14 @@ function App() {
             path="/map"
             exact
             render={props => (
-              <Map {...props} spots={spots} center={userLocation} zoom={3} />
+              <Overview
+                {...props}
+                spots={spots}
+                onSetLocation={handleSetLocation}
+                center={userLocation}
+                width="100vw"
+                height="100vh"
+              />
             )}
           />
           <Route path="/" exact render={props => <Landing {...props} />} />
@@ -77,12 +89,23 @@ function App() {
           <Route
             path="/add-spots"
             exact
-            render={props => <AddSpots onCreate={handleCreate} {...props} />}
+            render={props => (
+              <AddSpots
+                spots={spots}
+                onSetLocation={handleSetLocation}
+                center={userLocation}
+                onCreate={handleCreate}
+                handleSetLocation={handleSetLocation}
+                userLocation={userLocation}
+                newLocation={newLocation}
+                {...props}
+              />
+            )}
           />
         </Switch>
         <FooterNavigation
           links={[
-            { to: "/", icon: "fa-map-marker-alt" },
+            { to: "/", icon: "fa-home" },
             { to: "/map", icon: "fa-globe-americas" },
             { to: "/secret-spots", icon: "fa-list-ul" },
             { to: "/add-spots", icon: "fa-plus-circle" }
