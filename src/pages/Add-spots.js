@@ -7,6 +7,8 @@ import AddSpotMap from "../components/AddSpotMap";
 
 const MapButton = styled(Button)`
   margin: -7px;
+  margin-top: -30px;
+  font-size: 20px;
 `;
 
 const ModalDialog = styled.div`
@@ -98,6 +100,7 @@ const Tags = styled.select`
   width: 100%;
   border: 2px solid #ccc;
   border-radius: 4px;
+  background: white;
 `;
 
 // const HeadImg = styled.input`

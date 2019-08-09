@@ -7,5 +7,6 @@ export default createGlobalStyle`
 
     html, body {
         margin: 0;
+        background: #061116;
     }
 `;

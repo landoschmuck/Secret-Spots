@@ -25,15 +25,17 @@ const Bookmark = styled.div`
 `;
 
 const StyledTags = styled.span`
-  border: 3px solid lightblue;
-  display: border-box;
+  border: 3px solid grey;
+  display: flex;
   padding: 0px 10px;
   border-radius: 15px;
+  background: #d8c300;
+  justify-content: center;
+  align-items: center;
 `;
 
 const StyledCard = styled.div`
-  /* background-image: url("https://cdn.pixabay.com/photo/2013/05/15/06/10/fall-foliage-111315_1280.jpg"); */
-  background: #9da2ab;
+  /* background-image: url("https://cdn.pixabay.com/photo/2017/01/29/13/11/scrapbook-2017957_1280.jpg"); */
   padding: 10px;
   border: 2px solid #ccc;
   border-radius: 15px;
