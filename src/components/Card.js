@@ -25,40 +25,38 @@ const Bookmark = styled.div`
 `;
 
 const StyledTags = styled.span`
-  border: 3px solid grey;
+  /* border: 3px solid grey; */
   display: flex;
   padding: 0px 10px;
   border-radius: 15px;
-  background: #d8c300;
+  background: teal;
   justify-content: center;
   align-items: center;
+  color: white;
 `;
 
 const StyledCard = styled.div`
   /* background-image: url("https://cdn.pixabay.com/photo/2017/01/29/13/11/scrapbook-2017957_1280.jpg"); */
-  padding: 10px;
-  border: 2px solid #ccc;
+  padding: 25px;
+  border: 0.5px solid whitesmoke;
   border-radius: 15px;
   overflow: auto;
   height: 500px;
   margin: 10px;
+  margin-top: 44px;
   display: flex;
   flex-direction: column;
   position: relative;
-  color: white;
-  background: linear-gradient(
-    90deg,
-    rgba(9, 9, 9, 1) 0%,
-    rgba(20, 20, 20, 1) 49%,
-    rgba(34, 36, 34, 1) 100%
-  );
+  color: black;
+  background: white;
+  box-shadow: 7px 10px 9px -5px rgba(235, 235, 235, 1);
 `;
 
 const MapContainer = styled.div`
   display: flex;
   width: 100%;
   overflow: auto;
-  border: solid 1px black;
+  /* border: solid 1px black; */
   margin-top: 5px;
   height: 300px;
 `;
@@ -73,7 +71,7 @@ const ImgContainer = styled.div`
   display: flex;
   width: 100%;
   overflow: auto;
-  border: solid 1px black;
+  /* border: solid 1px black; */
   margin-top: 5px;
   border-radius: 15px;
 `;
@@ -103,26 +101,28 @@ function Card({
   const spots = [{ location }];
 
   return (
-    <StyledCard>
-      <Bookmark active={bookmarked} onClick={onBookmark} />
-      <ImgContainer>
-        <Img src={headImg} />
-      </ImgContainer>
-      <Headline size="S">{title}</Headline>
-      <Text>{text}</Text>
-      <TagContainer>
-        <StyledTags>{tags}</StyledTags>
-      </TagContainer>
-      <MapContainer>
-        <Map
-          center={location}
-          height="100%"
-          width="100%"
-          zoom={10}
-          spots={spots}
-        />
-      </MapContainer>
-    </StyledCard>
+    <>
+      <StyledCard>
+        <Bookmark active={bookmarked} onClick={onBookmark} />
+        <ImgContainer>
+          <Img src={headImg} />
+        </ImgContainer>
+        <Headline size="S">{title}</Headline>
+        <Text>{text}</Text>
+        <TagContainer>
+          <StyledTags>{tags}</StyledTags>
+        </TagContainer>
+        <MapContainer>
+          <Map
+            center={location}
+            height="100%"
+            width="100%"
+            zoom={10}
+            spots={spots}
+          />
+        </MapContainer>
+      </StyledCard>
+    </>
   );
 }
 

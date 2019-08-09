@@ -5,12 +5,7 @@ import PropTypes from "prop-types";
 
 const Footer = styled.footer`
   height: 65px;
-  background: linear-gradient(
-    90deg,
-    rgba(9, 9, 9, 1) 0%,
-    rgba(20, 20, 20, 1) 49%,
-    rgba(34, 36, 34, 1) 100%
-  );
+  background: teal;
   width: 100%;
   display: flex;
   align-items: center;

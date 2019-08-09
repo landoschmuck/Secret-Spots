@@ -18,7 +18,7 @@ const BookmarkButton = styled(ActionButton)`
   width: 38px;
   height: 38px;
   margin-top: 4px;
-  background: #abc8c0;
+  background: teal;
 `;
 
 function SecretSpots({

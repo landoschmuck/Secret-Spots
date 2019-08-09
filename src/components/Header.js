@@ -4,12 +4,7 @@ import PropTypes from "prop-types";
 import Headline from "./Headline";
 
 const StyledHeader = styled.div`
-  background: linear-gradient(
-    90deg,
-    rgba(9, 9, 9, 1) 0%,
-    rgba(20, 20, 20, 1) 49%,
-    rgba(34, 36, 34, 1) 100%
-  );
+  background: teal;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -26,7 +21,7 @@ const StyledLogo = styled.span`
   font-size: 20px;
   padding-right: 5px;
   margin-top: 4px;
-  background: #abc8c0;
+  background: teal;
 `;
 
 const StyledHeadline = styled(Headline)`
