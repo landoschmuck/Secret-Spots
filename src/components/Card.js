@@ -20,7 +20,7 @@ const StyledTags = styled.span`
   display: flex;
   padding: 0px 10px;
   border-radius: 15px;
-  background: teal;
+  background: #0776b8;
   justify-content: center;
   align-items: center;
   color: white;
@@ -74,6 +74,7 @@ const ImgContainer = styled.div`
   margin-top: 5px;
   border-radius: 15px;
   margin-bottom: 15px;
+  box-shadow: 2px 8px 8px -3px rgba(214, 211, 214, 1);
 `;
 
 const TagContainer = styled.div`
@@ -98,7 +99,7 @@ function Card({
   width,
   ...props
 }) {
-  const spots = [{ location }];
+  const spots = [{ _id: "id", location }];
 
   return (
     <>

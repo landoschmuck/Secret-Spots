@@ -18,13 +18,13 @@ const CardContainer = styled.div`
 `;
 
 const BookmarkButton = styled(ActionButton)`
-  position: fixed;
   top: 0;
   right: 20px;
   z-index: 1;
-  width: 38px;
-  height: 38px;
+  width: 40px;
+  height: 40px;
   margin-top: 4px;
+  position: absolute;
 `;
 
 function SecretSpots({
@@ -56,12 +56,13 @@ function SecretSpots({
 
   return (
     <FadeContainer>
-      <Header icon="fa-list-ul" title="My Secret Spots" />
-      <BookmarkButton
-        icon="fa-star"
-        active={showBookmarked}
-        onClick={onShowBookmarks}
-      />
+      <Header icon="fa-list-ul" title="My Secret Spots">
+        <BookmarkButton
+          icon="fa-star"
+          active={showBookmarked}
+          onClick={onShowBookmarks}
+        />
+      </Header>
       <CardContainer>
         {filteredSpots.map(spot => renderCard(spot))}
       </CardContainer>

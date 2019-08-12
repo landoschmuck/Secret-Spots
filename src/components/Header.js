@@ -3,8 +3,19 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 import Headline from "./Headline";
 
+const RightIconContainer = styled.div`
+  position: absolute;
+  right: 0px;
+  top: 4px;
+`;
+
 const StyledHeader = styled.div`
-  background: #45a2a2;
+  background: linear-gradient(
+    90deg,
+    rgba(3, 86, 135, 1) 0%,
+    rgba(7, 118, 184, 1) 49%,
+    rgba(7, 150, 235, 1) 100%
+  );
   display: flex;
   align-items: center;
   justify-content: center;
@@ -24,20 +35,21 @@ const StyledLogo = styled.span`
   font-size: 20px;
   padding-right: 5px;
   margin-top: 7px;
-  background: #45a2a2;
+  background: transparent;
 `;
 
 const StyledHeadline = styled(Headline)`
   color: white;
 `;
 
-function Header({ title, icon, ...props }) {
+function Header({ title, icon, children, ...props }) {
   return (
     <StyledHeader {...props}>
       <StyledLogo>
         <i className={`fas ${icon}`} />
       </StyledLogo>
       <StyledHeadline size="L">{title} </StyledHeadline>
+      {children && <RightIconContainer>{children}</RightIconContainer>}
     </StyledHeader>
   );
 }

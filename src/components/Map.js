@@ -75,6 +75,10 @@ function Map({ center, spots, zoom, onMapClick }) {
             onClick={() => {
               setSelectedSpot(spot);
             }}
+            icon={{
+              url: "/android-marker-icon-4.jpg",
+              scaledSize: new window.google.maps.Size(50, 50)
+            }}
           />
         );
       })}

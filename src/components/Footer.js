@@ -5,9 +5,14 @@ import PropTypes from "prop-types";
 
 const Footer = styled.footer`
   height: 55px;
-  background: #45a2a2;
+  background: linear-gradient(
+    90deg,
+    rgba(3, 86, 135, 1) 0%,
+    rgba(7, 118, 184, 1) 49%,
+    rgba(7, 150, 235, 1) 100%
+  );
   width: 100vw;
-  display: flex;
+  display: ${props => props.clickable};
   align-items: center;
   justify-content: center;
   overflow: hidden;
@@ -31,12 +36,12 @@ const FooterLink = styled(Link)`
   margin: 35px 20px 35px;
 
   &:hover {
-    background-color: teal;
-    color: black;
+    background-color: black;
+    color: white;
   }
 
   &:active {
-    background-color: teal;
+    background-color: black;
     color: white;
   }
 `;
@@ -46,7 +51,7 @@ function FooterNavigation({ links }) {
     visible: true,
     prevScrollpos: window.pageYOffset
   });
-  console.log(scrollState);
+  const [clickable, setClickable] = React.useState("flex");
 
   function handleScroll() {
     const currentScrollPos = window.pageYOffset;
@@ -63,8 +68,21 @@ function FooterNavigation({ links }) {
     };
   });
 
+  function handleAnimationEnd() {
+    if (scrollState.visible) {
+      setClickable("flex");
+    } else {
+      setClickable("none");
+    }
+    console.log("animationEnd");
+  }
+
   return (
-    <Footer visible={scrollState.visible}>
+    <Footer
+      visible={scrollState.visible}
+      onAnimationEnd={handleAnimationEnd}
+      clickable={clickable}
+    >
       {links.map(({ to, icon }) => (
         <FooterLink key={to} to={to}>
           <i className={`fas ${icon}`} />

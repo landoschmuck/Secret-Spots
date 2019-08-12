@@ -56,7 +56,8 @@ const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin: 10px;
-  height: 80vh;
+  height: auto;
+  box-shadow: 1px 4px 10px 4px rgba(214, 211, 214, 1);
 
   @media (min-width: 500px) {
     width: 350px;
@@ -169,12 +170,14 @@ function AddSpots({
     if (formValue.title.trim() === "") {
       errors.title = "Bitte gebe einen Title ein";
     }
+
     if (formValue.text.trim() === "") {
       errors.text = "Bitte gebe einen Text ein";
     }
 
     return Object.keys(errors).length === 0 ? null : errors;
   }
+
   function handleClick() {
     setShowMap(true);
   }
