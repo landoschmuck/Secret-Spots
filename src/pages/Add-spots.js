@@ -92,60 +92,58 @@ function AddSpots({
   }
   return (
     <>
-      <FadeContainer>
-        <Header title="Add New Spots" icon="fa-plus-circle" />
-        <FormContainer>
-          <Form onSubmit={handleSubmit}>
-            <ImageUpload
-              name="headImg"
-              url={image}
-              onChange={handleImageChange}
-            />
-            <Title
-              name="title"
-              placeholder="Title"
-              value={formValue.title}
-              onChange={handleChange}
-            />
-            {errors.title && <StyledError>{errors.title}</StyledError>}
-            <Text
-              name="text"
-              placeholder="Text"
-              value={formValue.text}
-              onChange={handleChange}
-            />
-            {errors.text && <StyledError>{errors.text}</StyledError>}
-            <Tags name="tags" value={formValue.tags} onChange={handleChange}>
-              <option value="Wasser">Wasser</option>
-              <option value="Relax">Relax</option>
-              <option value="Strand">Strand</option>
-              <option value="Natur">Natur</option>
-              <option value="Urban">Urban</option>
-            </Tags>
-            {/* <TagContainer>{tags.map(tags => renderCard(card))}</TagContainer> */}
-            <ButtonGroup>
-              <Button>Submit</Button>
-              <Button onClick={handleClick}>Location?</Button>
-            </ButtonGroup>
-          </Form>
-        </FormContainer>
+      <Header title="Add New Spots" icon="fa-plus-circle" />
+      <FormContainer>
+        <Form onSubmit={handleSubmit}>
+          <ImageUpload
+            name="headImg"
+            url={image}
+            onChange={handleImageChange}
+          />
+          <Title
+            name="title"
+            placeholder="Title"
+            value={formValue.title}
+            onChange={handleChange}
+          />
+          {errors.title && <StyledError>{errors.title}</StyledError>}
+          <Text
+            name="text"
+            placeholder="Text"
+            value={formValue.text}
+            onChange={handleChange}
+          />
+          {errors.text && <StyledError>{errors.text}</StyledError>}
+          <Tags name="tags" value={formValue.tags} onChange={handleChange}>
+            <option value="Wasser">Wasser</option>
+            <option value="Relax">Relax</option>
+            <option value="Strand">Strand</option>
+            <option value="Natur">Natur</option>
+            <option value="Urban">Urban</option>
+          </Tags>
+          {/* <TagContainer>{tags.map(tags => renderCard(card))}</TagContainer> */}
+          <ButtonGroup>
+            <Button>Submit</Button>
+            <Button onClick={handleClick}>Location?</Button>
+          </ButtonGroup>
+        </Form>
+      </FormContainer>
 
-        {showMap && (
-          <Blur>
-            <ModalDialog>
-              <AddSpotMap
-                {...props}
-                spots={spots}
-                onSetLocation={handleSetLocation}
-                center={userLocation}
-                height="124%"
-                width="100%"
-              />
-              <MapButton onClick={handleOkClick}>OK</MapButton>
-            </ModalDialog>
-          </Blur>
-        )}
-      </FadeContainer>
+      {showMap && (
+        <Blur>
+          <ModalDialog>
+            <AddSpotMap
+              {...props}
+              spots={spots}
+              onSetLocation={handleSetLocation}
+              center={userLocation}
+              height="124%"
+              width="100%"
+            />
+            <MapButton onClick={handleOkClick}>OK</MapButton>
+          </ModalDialog>
+        </Blur>
+      )}
     </>
   );
 }

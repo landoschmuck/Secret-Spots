@@ -75,6 +75,7 @@ export const FormContainer = styled.div`
 
 export const StyledError = styled.div`
   color: red;
+  font-size: 13px;
 `;
 // const TagContainer = styled.div`
 //   padding: 18px;
@@ -95,18 +96,19 @@ export const Title = styled.input`
   width: 100%;
   border: 2px solid #ccc;
   border-radius: 4px;
-  margin-bottom: 18px;
+  margin-bottom: 13px;
   margin-top: 18px;
+  height: 30px;
 `;
 
 export const Text = styled.textarea`
   margin: 5px;
   width: 100%;
-  height: 130px;
+  height: 100px;
   border: 2px solid #ccc;
   border-radius: 4px;
-  margin-bottom: 18px;
-  margin-top: 18px;
+  margin-bottom: 13px;
+  margin-top: 13px;
 `;
 
 export const Tags = styled.select`
@@ -116,6 +118,7 @@ export const Tags = styled.select`
   border-radius: 4px;
   background: white;
   margin-bottom: 18px;
+  height: 30px;
 `;
 
 // const HeadImg = styled.input`

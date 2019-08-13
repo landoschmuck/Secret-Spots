@@ -17,7 +17,7 @@ const Label = styled.label`
   background-color: black;
   display: inline-block;
   padding: 5px;
-  width: 280px;
+  width: 310px;
   height: 150px;
   display: flex;
   justify-content: center;
@@ -56,7 +56,7 @@ function ImageUpload({ url, onChange }) {
   return (
     <div>
       {url ? (
-        <img src={url} alt="" style={{ width: "280px", height: "auto" }} />
+        <img src={url} alt="" style={{ width: "310px", height: "auto" }} />
       ) : (
         <>
           <Input type="file" id="file" name="file" onChange={upload} />
