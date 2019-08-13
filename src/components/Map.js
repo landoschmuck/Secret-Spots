@@ -10,7 +10,6 @@ import mapStyles from "./mapStyles";
 import styled from "styled-components";
 
 const StyledTags = styled.span`
-  /* border: 3px solid grey; */
   display: flex;
   padding: 0px 10px;
   border-radius: 15px;
@@ -83,7 +82,16 @@ function Map({ center, spots, zoom, onMapClick }) {
         );
       })}
 
-      {newSpot && <Marker Key="new" position={newSpot} />}
+      {newSpot && (
+        <Marker
+          icon={{
+            url: "/clipart193878.png",
+            scaledSize: new window.google.maps.Size(30, 50)
+          }}
+          Key="new"
+          position={newSpot}
+        />
+      )}
 
       {selectedSpot && (
         <InfoWindow
@@ -123,5 +131,3 @@ function RenderMap(props) {
 }
 
 export default RenderMap;
-/*props geben und auf addspots und secretSpots auf 100% bei addspots
-      height auf ca. 120%*/

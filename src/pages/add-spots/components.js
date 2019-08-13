@@ -92,10 +92,11 @@ export const Form = styled.form`
   align-items: center;
 `;
 export const Title = styled.input`
-  margin: 5px;
   width: 100%;
   border: 2px solid #ccc;
   border-radius: 4px;
+  margin-bottom: 18px;
+  margin-top: 18px;
 `;
 
 export const Text = styled.textarea`
@@ -104,6 +105,8 @@ export const Text = styled.textarea`
   height: 130px;
   border: 2px solid #ccc;
   border-radius: 4px;
+  margin-bottom: 18px;
+  margin-top: 18px;
 `;
 
 export const Tags = styled.select`
@@ -112,6 +115,7 @@ export const Tags = styled.select`
   border: 2px solid #ccc;
   border-radius: 4px;
   background: white;
+  margin-bottom: 18px;
 `;
 
 // const HeadImg = styled.input`
