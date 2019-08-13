@@ -12,7 +12,7 @@ const Footer = styled.footer`
     rgba(7, 150, 235, 1) 100%
   );
   width: 100vw;
-  display: ${props => props.clickable};
+  display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
@@ -36,12 +36,10 @@ const FooterLink = styled(Link)`
   margin: 35px 20px 35px;
 
   &:hover {
-    background-color: black;
-    color: white;
+    color: #6dc0d5;
   }
 
   &:active {
-    background-color: black;
     color: white;
   }
 `;
@@ -51,7 +49,7 @@ function FooterNavigation({ links }) {
     visible: true,
     prevScrollpos: window.pageYOffset
   });
-  const [clickable, setClickable] = React.useState("flex");
+  const [clickable, setClickable] = React.useState("all");
 
   function handleScroll() {
     const currentScrollPos = window.pageYOffset;
@@ -69,12 +67,11 @@ function FooterNavigation({ links }) {
   });
 
   function handleAnimationEnd() {
-    if (scrollState.visible) {
-      setClickable("flex");
+    if (scrollState.visible === true) {
+      setClickable("all");
     } else {
       setClickable("none");
     }
-    console.log("animationEnd");
   }
 
   return (
