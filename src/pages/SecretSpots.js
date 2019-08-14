@@ -37,7 +37,6 @@ function SecretSpots({
         title={spot.title}
         text={spot.text}
         tags={spot.tags}
-        mapImg={spot.mapImg}
         bookmarked={spot.bookmarked}
         location={spot.location}
         onBookmark={() => onToggleBookmark(spot._id)}

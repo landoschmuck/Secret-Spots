@@ -1,0 +1,29 @@
+---
+name: Footer
+menu: Components
+---
+
+import { Props, Playground } from "docz";
+import Footer from "./Footer";
+import GlobalStyles from "../app/GlobalStyles";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+<GlobalStyles />
+
+# Footer
+
+<Props of={Footer} />
+
+<Playground>
+  <Router>
+    <Footer
+      style={{ width: "400px" }}
+      links={[
+        { to: "/", icon: "fa-home" },
+        { to: "/map", icon: "fa-globe-americas" },
+        { to: "/secret-spots", icon: "fa-list-ul" },
+        { to: "/add-spots", icon: "fa-plus-circle" }
+      ]}
+    />
+  </Router>
+</Playground>

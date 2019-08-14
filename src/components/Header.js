@@ -56,7 +56,7 @@ function Header({ title, icon, children, ...props }) {
 
 Header.propTypes = {
   title: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   icon: PropTypes.string.isRequired
 };
 

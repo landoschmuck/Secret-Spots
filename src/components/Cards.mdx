@@ -4,24 +4,26 @@ menu: Components
 ---
 
 import { Props, Playground } from "docz";
-import Cards from "./Cards";
+import Card from "./Card";
 import GlobalStyles from "../app/GlobalStyles";
 
-<GlobalStyles />;
+<GlobalStyles />
 
 # Cards
 
-<Props of={Cards} />
-
-## Basic Usage
+<Props of={Card} />
 
 <Playground>
-  <Cards
-    headImg="https://cdn.pixabay.com/photo/2017/01/20/00/30/maldives-1993704_1280.jpg"
-    mapImg="https://cdn.pixabay.com/photo/2019/07/19/09/54/map-4348394_1280.png"
-    title="My card"
-    text="My content"
-    tags={["one", "two"]}
-    active="true"
+  <Card
+    key={12}
+    headImg={
+      "https://cdn.pixabay.com/photo/2019/03/08/19/52/galata-4043037_1280.jpg"
+    }
+    title={"Testcard"}
+    text={"Lore Imspum Apps sind toll lorem Imspum "}
+    tags={"Urban"}
+    bookmarked={true}
+    location={"lat: 41.015137, lng: 28.97953"}
+    onBookmark={() => onToggleBookmark(12)}
   />
 </Playground>
