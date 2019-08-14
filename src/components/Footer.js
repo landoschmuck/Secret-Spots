@@ -90,7 +90,8 @@ function FooterNavigation({ links }) {
 }
 
 FooterNavigation.propTypes = {
-  links: PropTypes.array.isRequired
+  links: PropTypes.array.isRequired,
+  icon: PropTypes.string.isRequired
 };
 
 export default FooterNavigation;

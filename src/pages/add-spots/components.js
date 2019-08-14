@@ -1,14 +1,5 @@
 import styled from "styled-components";
-import { fadePage } from "../../utils/animations";
 import Button from "../../components/Button";
-
-export const FadeContainer = styled.div`
-  animation: ${fadePage} 0.5s ease both;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-`;
 
 export const MapButton = styled(Button)`
   margin: -7px;

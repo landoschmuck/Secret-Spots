@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 const Input = styled.input`
   width: 0.1px;
@@ -25,6 +26,7 @@ const Label = styled.label`
   background: #0776b8;
   opacity: 0.6;
   margin-bottom: 10px;
+  border: 1px solid lightgray;
 `;
 const AddPhotoLogo = styled.div`
   margin-left: 5px;
@@ -71,5 +73,9 @@ function ImageUpload({ url, onChange }) {
     </div>
   );
 }
+ImageUpload.propTypes = {
+  url: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired
+};
 
 export default ImageUpload;

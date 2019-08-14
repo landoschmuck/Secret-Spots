@@ -3,11 +3,6 @@ import React from "react";
 import styled from "styled-components";
 import Header from "../components/Header";
 import ActionButton from "../components/ActionButton";
-import { fadePage } from "../utils/animations";
-
-const FadeContainer = styled.div`
-  animation: ${fadePage} 0.5s ease both;
-`;
 
 const CardContainer = styled.div`
   display: flex;
@@ -55,7 +50,7 @@ function SecretSpots({
     : spots;
 
   return (
-    <FadeContainer>
+    <>
       <Header icon="fa-list-ul" title="My Secret Spots">
         <BookmarkButton
           icon="fa-star"
@@ -66,7 +61,7 @@ function SecretSpots({
       <CardContainer>
         {filteredSpots.map(spot => renderCard(spot))}
       </CardContainer>
-    </FadeContainer>
+    </>
   );
 }
 

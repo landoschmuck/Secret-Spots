@@ -19,7 +19,6 @@ function Card({
   text,
   tags,
   headImg,
-  mapImg,
   bookmarked,
   onBookmark,
   location,
@@ -48,7 +47,7 @@ function Card({
             center={location}
             height="100%"
             width="100%"
-            zoom={10}
+            zoom={7}
             spots={spots}
           />
         </MapContainer>
@@ -62,8 +61,10 @@ Card.propTypes = {
   title: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
   tags: PropTypes.arrayOf(PropTypes.string),
-  bookmarked: PropTypes.bool,
-  onBookmark: PropTypes.func
+  headImg: PropTypes.string.isRequired,
+  bookmarked: PropTypes.bool.isRequired,
+  onBookmark: PropTypes.func.isRequired,
+  location: PropTypes.object.isRequired
 };
 
 export default Card;

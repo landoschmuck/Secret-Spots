@@ -4,7 +4,6 @@ import Button from "../components/Button";
 import ImageUpload from "../components/ImageUpload";
 import AddSpotMap from "../components/AddSpotMap";
 import {
-  FadeContainer,
   MapButton,
   ModalDialog,
   Blur,
@@ -124,7 +123,9 @@ function AddSpots({
           {/* <TagContainer>{tags.map(tags => renderCard(card))}</TagContainer> */}
           <ButtonGroup>
             <Button>Submit</Button>
-            <Button onClick={handleClick}>Location?</Button>
+            <Button type="Button" onClick={handleClick}>
+              Location?
+            </Button>
           </ButtonGroup>
         </Form>
       </FormContainer>

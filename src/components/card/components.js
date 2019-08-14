@@ -30,7 +30,6 @@ export const StyledCard = styled.div`
   border: 0.5px solid whitesmoke;
   border-radius: 15px;
   overflow: auto;
-  height: 500px;
   min-width: 350px;
   margin: 10px;
   display: flex;
@@ -52,6 +51,7 @@ export const MapContainer = styled.div`
   /* border: solid 1px black; */
   margin-top: 5px;
   height: 300px;
+  max-height: 130px;
 `;
 
 export const Text = styled.p`
@@ -66,8 +66,10 @@ export const ImgContainer = styled.div`
   display: flex;
   width: 100%;
   overflow: auto;
+  min-height: 150px;
   /* border: solid 1px black; */
   margin-top: 5px;
+  max-height: 200px;
   border-radius: 15px;
   margin-bottom: 15px;
   box-shadow: 2px 8px 8px -3px rgba(214, 211, 214, 1);

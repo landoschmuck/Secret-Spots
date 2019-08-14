@@ -55,7 +55,9 @@ function Header({ title, icon, children, ...props }) {
 }
 
 Header.propTypes = {
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+  icon: PropTypes.string.isRequired
 };
 
 export default Header;
