@@ -25,8 +25,9 @@ const Subtitle = styled.h2`
 const AnimatedTitle = styled(Title)`
   animation: ${fadeIn} 1s ease-out 1 both;
   animation-delay: 1.2s;
+  color: #0776b8;
+  text-shadow: 0 -1px black, 1px 0 black, 0 1px black, -1px 0;
 `;
-
 const AnimatedLogo = styled(Logo)`
   animation: ${fadeInFromCorner} 1s ease-out 1 both;
   animation-delay: 0.2s;
@@ -37,7 +38,7 @@ function Landing() {
     <>
       {/* <Header title="Home" icon="fa-map-marker-alt" /> */}
       <Fullscreen>
-        <BackgroundImage src="https://cdn.pixabay.com/photo/2019/06/30/11/56/istanbul-4307896_1280.jpg" />
+        <BackgroundImage src="https://cdn.pixabay.com/photo/2017/06/14/08/20/map-of-the-world-2401458_1280.jpg" />
         <LogoContainer>
           <AnimatedLogo />
           <AnimatedTitle>Secret Spots</AnimatedTitle>

@@ -142,10 +142,10 @@ function RenderMap(props) {
 }
 
 Map.propTypes = {
-  center: PropTypes.string.isRequired,
-  spots: PropTypes.object.isRequired,
-  zoom: PropTypes.string.isRequired,
-  onMapClick: PropTypes.func.isRequired
+  center: PropTypes.object.isRequired,
+  spots: PropTypes.array.isRequired,
+  zoom: PropTypes.number.isRequired,
+  onMapClick: PropTypes.func
 };
 
 export default RenderMap;
