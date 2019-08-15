@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-// import Header from "../components/Header";
 import Fullscreen from "../components/Fullscreen";
 import BackgroundImage from "../components/Backgroundimage";
 import Logo from "../components/Logo";
@@ -25,7 +24,7 @@ const Subtitle = styled.h2`
 const AnimatedTitle = styled(Title)`
   animation: ${fadeIn} 1s ease-out 1 both;
   animation-delay: 1.2s;
-  color: #0776b8;
+  color: white;
   text-shadow: 0 -1px black, 1px 0 black, 0 1px black, -1px 0;
 `;
 const AnimatedLogo = styled(Logo)`

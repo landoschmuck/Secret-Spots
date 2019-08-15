@@ -3,7 +3,6 @@ import Map from "./Map";
 import PropTypes from "prop-types";
 
 function AddSpotMap({ width, height, spots, center, onSetLocation }) {
-  console.log(spots);
   return (
     <Map
       spots={spots}

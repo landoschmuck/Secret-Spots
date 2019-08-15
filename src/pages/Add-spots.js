@@ -74,6 +74,7 @@ function AddSpots({
       setErrors(errors);
       return;
     }
+
     const spot = {
       title: formValue.title,
       headImg: image,
@@ -86,9 +87,11 @@ function AddSpots({
     onCreate(spot);
     history.replace("/secret-spots");
   }
+
   function handleOkClick() {
     setShowMap(false);
   }
+
   return (
     <>
       <Header title="Add New Spots" icon="fa-plus-circle" />

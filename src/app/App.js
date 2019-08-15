@@ -50,6 +50,7 @@ function App() {
   function handleShowBookmarked() {
     setShowBookmarked(!showBookmarked);
   }
+
   function handleSetLocation(location) {
     setNewLocation(location);
   }

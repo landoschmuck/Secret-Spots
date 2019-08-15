@@ -51,32 +51,10 @@ export const FormContainer = styled.div`
   }
 `;
 
-// const ButtonLogo = styled.span`
-//   color: white;
-//   margin-right: 10px;
-// `;
-
-// const ImgButton = styled(Button)`
-//   width: 100%;
-//   height: 220px;
-//   border: solid 1px black;
-//   padding: 10px;
-//   font-size: 25;
-// `;
-
 export const StyledError = styled.div`
   color: red;
   font-size: 13px;
 `;
-// const TagContainer = styled.div`
-//   padding: 18px;
-//   background: #fafafa;
-//   border: 2px solid #ccc;
-//   border-radius: 4px;
-//   display: grid;
-//   grid-gap: 1;
-//   margin: 10px;
-// `;
 
 export const Form = styled.form`
   display: flex;
@@ -111,14 +89,6 @@ export const Tags = styled.select`
   margin-bottom: 18px;
   height: 30px;
 `;
-
-// const HeadImg = styled.input`
-//   margin: 5px;
-//   width: 100%;
-//   border: 2px solid #ccc;
-//   border-radius: 4px;
-//   display: none;
-// `;
 
 export const ButtonGroup = styled.div`
   display: flex;
