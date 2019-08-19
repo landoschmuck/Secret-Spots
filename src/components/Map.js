@@ -8,10 +8,29 @@ import {
 } from "react-google-maps";
 import mapStyles from "./mapStyles";
 import styled from "styled-components";
+import PropTypes from "prop-types";
+
+const Title = styled.h3``;
+const TextContainer = styled.div`
+  width: 150px;
+  font-size: 10px;
+`;
+
+const StyledTags = styled.span`
+  display: flex;
+  padding: 0px 10px;
+  border-radius: 15px;
+  background: #0776b8;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 12px;
+  height: 23px;
+`;
 
 const InfoWindowImg = styled.img`
-  height: auto;
-  width: 100%;
+  max-height: 100px;
+  width: auto;
 `;
 
 const MAP_URL = `https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${
@@ -62,11 +81,24 @@ function Map({ center, spots, zoom, onMapClick }) {
             onClick={() => {
               setSelectedSpot(spot);
             }}
+            icon={{
+              url: "/android-marker-icon-4.jpg",
+              scaledSize: new window.google.maps.Size(50, 50)
+            }}
           />
         );
       })}
 
-      {newSpot && <Marker Key="new" position={newSpot} />}
+      {newSpot && (
+        <Marker
+          icon={{
+            url: "/clipart193878.png",
+            scaledSize: new window.google.maps.Size(30, 50)
+          }}
+          Key="new"
+          position={newSpot}
+        />
+      )}
 
       {selectedSpot && (
         <InfoWindow
@@ -77,8 +109,13 @@ function Map({ center, spots, zoom, onMapClick }) {
         >
           <div>
             <InfoWindowImg src={selectedSpot.headImg} />
-            <h2>{selectedSpot.title}</h2>
-            <p>{selectedSpot.text}</p>
+            <Title>{selectedSpot.title}</Title>
+            <TextContainer>
+              <p>{selectedSpot.text}</p>
+            </TextContainer>
+            {selectedSpot.tags[0].length > 0 && (
+              <StyledTags>{selectedSpot.tags}</StyledTags>
+            )}
           </div>
         </InfoWindow>
       )}
@@ -104,6 +141,11 @@ function RenderMap(props) {
   );
 }
 
+Map.propTypes = {
+  center: PropTypes.object.isRequired,
+  spots: PropTypes.array.isRequired,
+  zoom: PropTypes.number.isRequired,
+  onMapClick: PropTypes.func
+};
+
 export default RenderMap;
-/*props geben und auf addspots und secretSpots auf 100% bei addspots
-      height auf ca. 120%*/

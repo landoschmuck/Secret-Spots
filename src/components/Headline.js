@@ -15,7 +15,6 @@ function getSize(size) {
 const StyledHeadline = styled.h1`
   margin: 0;
   font-size: ${props => getSize(props.size)};
-  font-family: "Roboto", sans-serif;
   margin-top: 5px;
 `;
 

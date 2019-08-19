@@ -7,5 +7,9 @@ export default createGlobalStyle`
 
     html, body {
         margin: 0;
+        font-family: 'Cousine', monospace;
+    }
+    body, #root {
+        height: 100vh;
     }
 `;

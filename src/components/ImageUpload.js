@@ -1,5 +1,36 @@
 import React from "react";
 import axios from "axios";
+import styled from "styled-components";
+import PropTypes from "prop-types";
+
+const Input = styled.input`
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+`;
+const Label = styled.label`
+  font-size: 1.25em;
+  font-weight: 700;
+  color: white;
+  background-color: black;
+  display: inline-block;
+  padding: 5px;
+  width: 310px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #0776b8;
+  opacity: 0.6;
+  margin-bottom: 10px;
+  border: 1px solid lightgray;
+`;
+const AddPhotoLogo = styled.div`
+  margin-left: 5px;
+`;
 
 const CLOUDNAME = process.env.REACT_APP_CLOUDINARY_CLOUDNAME;
 const PRESET = process.env.REACT_APP_CLOUDINARY_PRESET;
@@ -21,19 +52,31 @@ function ImageUpload({ url, onChange }) {
   }
 
   function onImageSave(response) {
+    console.log(response.data.url);
     onChange(response.data.url);
   }
 
   return (
     <div>
-      <h4>Photo</h4>
       {url ? (
-        <img src={url} alt="" style={{ width: "100%", height: "auto" }} />
+        <img src={url} alt="" style={{ width: "310px", height: "auto" }} />
       ) : (
-        <input type="file" name="file" onChange={upload} />
+        <>
+          <Input type="file" id="file" name="file" onChange={upload} />
+          <Label for="file">
+            +{" "}
+            <AddPhotoLogo>
+              <i className="fas fa-camera" />
+            </AddPhotoLogo>
+          </Label>
+        </>
       )}
     </div>
   );
 }
+ImageUpload.propTypes = {
+  url: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired
+};
 
 export default ImageUpload;

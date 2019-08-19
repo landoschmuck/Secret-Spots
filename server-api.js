@@ -13,6 +13,13 @@ module.exports = function(app) {
       .catch(err => res.json(err));
   });
 
+  app.delete("/api/spots/:id", (req, res) => {
+    Spot.findOneAndRemove({ spots: req.params.id }).then(data => {
+      console.log("deleted");
+      res.send(data);
+    });
+  });
+
   app.patch("/api/spots/:id", (req, res) => {
     const { id } = req.params;
     Spot.findByIdAndUpdate(id, req.body, { new: true })

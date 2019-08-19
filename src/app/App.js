@@ -5,15 +5,16 @@ import AddSpots from "../pages/Add-spots";
 import Landing from "../pages/Landing";
 import Overview from "../pages/Overview";
 import SecretSpots from "../pages/SecretSpots";
-import { getSpots, postSpot } from "../services";
+import { getSpots, postSpot, deletSpot } from "../services";
 import GlobalStyles from "./GlobalStyles";
 
 function App() {
   const [spots, setSpots] = React.useState([]);
   const [showBookmarked, setShowBookmarked] = React.useState(false);
-  const [userLocation, setUserLocation] = React.useState(
-    "lat:53.551086, lng:9.993682"
-  );
+  const [userLocation, setUserLocation] = React.useState({
+    lat: 53.551086,
+    lng: 9.993682
+  });
   const [newLocation, setNewLocation] = React.useState("");
 
   async function loadSpots() {
@@ -43,76 +44,84 @@ function App() {
     const spot = spots[index];
     const newSpots = spots.slice();
     newSpots[index] = { ...spot, bookmarked: !spot.bookmarked };
-    setSpots(newSpots);
   }
 
   function handleShowBookmarked() {
     setShowBookmarked(!showBookmarked);
   }
+
   function handleSetLocation(location) {
     setNewLocation(location);
   }
 
+  function handleDeleteCard(id) {
+    const index = spots.findIndex(spot => spot._id === id);
+    const newSpots = [...spots.slice(0, index), ...spots.slice(index + 1)];
+    const item = spots[index];
+    setSpots(newSpots);
+    deletSpot(item, id);
+    console.log(newSpots);
+  }
+
   return (
-    <>
-      <Router>
-        <GlobalStyles />
-        <Switch>
-          <Route
-            path="/map"
-            exact
-            render={props => (
-              <Overview
-                {...props}
-                spots={spots}
-                onSetLocation={handleSetLocation}
-                center={userLocation}
-                width="100vw"
-                height="100vh"
-              />
-            )}
-          />
-          <Route path="/" exact render={props => <Landing {...props} />} />
-          <Route
-            path="/secret-spots"
-            exact
-            render={props => (
-              <SecretSpots
-                showBookmarked={showBookmarked}
-                onToggleBookmark={handleToggleBookmark}
-                spots={spots}
-                onShowBookmarks={handleShowBookmarked}
-                {...props}
-              />
-            )}
-          />
-          <Route
-            path="/add-spots"
-            exact
-            render={props => (
-              <AddSpots
-                spots={spots}
-                onSetLocation={handleSetLocation}
-                center={userLocation}
-                onCreate={handleCreate}
-                handleSetLocation={handleSetLocation}
-                userLocation={userLocation}
-                newLocation={newLocation}
-                {...props}
-              />
-            )}
-          />
-        </Switch>
-        <FooterNavigation
-          links={[
-            { to: "/", icon: "fa-home" },
-            { to: "/map", icon: "fa-globe-americas" },
-            { to: "/secret-spots", icon: "fa-list-ul" },
-            { to: "/add-spots", icon: "fa-plus-circle" }
-          ]}
+    <Router>
+      <GlobalStyles />
+      <Switch>
+        <Route
+          path="/map"
+          exact
+          render={props => (
+            <Overview
+              {...props}
+              spots={spots}
+              onSetLocation={handleSetLocation}
+              center={userLocation}
+              width="100vw"
+              height="103vh"
+            />
+          )}
         />
-      </Router>
-    </>
+        <Route path="/" exact render={props => <Landing {...props} />} />
+        <Route
+          path="/secret-spots"
+          exact
+          render={props => (
+            <SecretSpots
+              showBookmarked={showBookmarked}
+              onToggleBookmark={handleToggleBookmark}
+              onDeleteCard={handleDeleteCard}
+              spots={spots}
+              onShowBookmarks={handleShowBookmarked}
+              {...props}
+            />
+          )}
+        />
+        <Route
+          path="/add-spots"
+          exact
+          render={props => (
+            <AddSpots
+              spots={spots}
+              onSetLocation={handleSetLocation}
+              center={userLocation}
+              onCreate={handleCreate}
+              handleSetLocation={handleSetLocation}
+              userLocation={userLocation}
+              newLocation={newLocation}
+              {...props}
+            />
+          )}
+        />
+      </Switch>
+      <FooterNavigation
+        links={[
+          { to: "/", icon: "fa-home" },
+          { to: "/map", icon: "fa-globe-americas" },
+          { to: "/secret-spots", icon: "fa-list-ul" },
+          { to: "/add-spots", icon: "fa-plus-circle" }
+        ]}
+      />
+    </Router>
   );
 }
 

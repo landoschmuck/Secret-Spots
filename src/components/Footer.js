@@ -4,14 +4,14 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 const Footer = styled.footer`
-  height: 65px;
+  height: 55px;
   background: linear-gradient(
     90deg,
-    rgba(9, 9, 9, 1) 0%,
-    rgba(20, 20, 20, 1) 49%,
-    rgba(34, 36, 34, 1) 100%
+    rgba(3, 86, 135, 1) 0%,
+    rgba(7, 118, 184, 1) 49%,
+    rgba(7, 150, 235, 1) 100%
   );
-  width: 100%;
+  width: 100vw;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -22,6 +22,8 @@ const Footer = styled.footer`
   opacity: ${props => (props.visible ? 1 : 0)};
   transition: all 0.5s ease;
   border-top: solid 1px grey;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 `;
 
 const FooterLink = styled(Link)`
@@ -34,12 +36,10 @@ const FooterLink = styled(Link)`
   margin: 35px 20px 35px;
 
   &:hover {
-    background-color: #ddd;
-    color: black;
+    color: #6dc0d5;
   }
 
   &:active {
-    background-color: #98c2e0;
     color: white;
   }
 `;
@@ -49,6 +49,7 @@ function FooterNavigation({ links }) {
     visible: true,
     prevScrollpos: window.pageYOffset
   });
+  const [clickable, setClickable] = React.useState("all");
 
   function handleScroll() {
     const currentScrollPos = window.pageYOffset;
@@ -65,8 +66,20 @@ function FooterNavigation({ links }) {
     };
   });
 
+  function handleAnimationEnd() {
+    if (scrollState.visible === true) {
+      setClickable("all");
+    } else {
+      setClickable("none");
+    }
+  }
+
   return (
-    <Footer visible={scrollState.visible}>
+    <Footer
+      visible={scrollState.visible}
+      onAnimationEnd={handleAnimationEnd}
+      clickable={clickable}
+    >
       {links.map(({ to, icon }) => (
         <FooterLink key={to} to={to}>
           <i className={`fas ${icon}`} />

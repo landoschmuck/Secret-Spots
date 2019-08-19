@@ -3,12 +3,18 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 import Headline from "./Headline";
 
+const RightIconContainer = styled.div`
+  position: absolute;
+  right: 0px;
+  top: 4px;
+`;
+
 const StyledHeader = styled.div`
   background: linear-gradient(
     90deg,
-    rgba(9, 9, 9, 1) 0%,
-    rgba(20, 20, 20, 1) 49%,
-    rgba(34, 36, 34, 1) 100%
+    rgba(3, 86, 135, 1) 0%,
+    rgba(7, 118, 184, 1) 49%,
+    rgba(7, 150, 235, 1) 100%
   );
   display: flex;
   align-items: center;
@@ -19,33 +25,39 @@ const StyledHeader = styled.div`
   width: 100vw;
   z-index: 1;
   border-bottom: solid 1px grey;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  height: 55px;
 `;
 
 const StyledLogo = styled.span`
   color: white;
   font-size: 20px;
   padding-right: 5px;
-  margin-top: 4px;
-  background: #abc8c0;
+  margin-top: 7px;
+  background: transparent;
 `;
 
 const StyledHeadline = styled(Headline)`
   color: white;
 `;
 
-function Header({ title, icon, ...props }) {
+function Header({ title, icon, children, ...props }) {
   return (
     <StyledHeader {...props}>
       <StyledLogo>
         <i className={`fas ${icon}`} />
       </StyledLogo>
       <StyledHeadline size="L">{title} </StyledHeadline>
+      {children && <RightIconContainer>{children}</RightIconContainer>}
     </StyledHeader>
   );
 }
 
 Header.propTypes = {
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
+  children: PropTypes.node,
+  icon: PropTypes.string.isRequired
 };
 
 export default Header;
