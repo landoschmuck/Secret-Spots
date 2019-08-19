@@ -11,6 +11,7 @@ import {
   Text,
   Img,
   ImgContainer,
+  DeletButton,
   TagContainer
 } from "./card/components";
 
@@ -21,6 +22,7 @@ function Card({
   headImg,
   bookmarked,
   onBookmark,
+  onDelete,
   location,
   height,
   width,
@@ -31,6 +33,7 @@ function Card({
   return (
     <>
       <StyledCard>
+        <DeletButton onClick={onDelete} icon="fa-trash-alt" />
         <Bookmark active={bookmarked} onClick={onBookmark} icon="fa-star" />
         <ImgContainer>
           <Img src={headImg} />

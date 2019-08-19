@@ -5,7 +5,7 @@ import AddSpots from "../pages/Add-spots";
 import Landing from "../pages/Landing";
 import Overview from "../pages/Overview";
 import SecretSpots from "../pages/SecretSpots";
-import { getSpots, postSpot } from "../services";
+import { getSpots, postSpot, deletSpot } from "../services";
 import GlobalStyles from "./GlobalStyles";
 
 function App() {
@@ -44,7 +44,6 @@ function App() {
     const spot = spots[index];
     const newSpots = spots.slice();
     newSpots[index] = { ...spot, bookmarked: !spot.bookmarked };
-    setSpots(newSpots);
   }
 
   function handleShowBookmarked() {
@@ -53,6 +52,15 @@ function App() {
 
   function handleSetLocation(location) {
     setNewLocation(location);
+  }
+
+  function handleDeleteCard(id) {
+    const index = spots.findIndex(spot => spot._id === id);
+    const newSpots = [...spots.slice(0, index), ...spots.slice(index + 1)];
+    const item = spots[index];
+    setSpots(newSpots);
+    deletSpot(item, id);
+    console.log(newSpots);
   }
 
   return (
@@ -69,7 +77,7 @@ function App() {
               onSetLocation={handleSetLocation}
               center={userLocation}
               width="100vw"
-              height="100vh"
+              height="103vh"
             />
           )}
         />
@@ -81,6 +89,7 @@ function App() {
             <SecretSpots
               showBookmarked={showBookmarked}
               onToggleBookmark={handleToggleBookmark}
+              onDeleteCard={handleDeleteCard}
               spots={spots}
               onShowBookmarks={handleShowBookmarked}
               {...props}

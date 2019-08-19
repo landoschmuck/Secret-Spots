@@ -1,13 +1,25 @@
 import styled from "styled-components";
 import ActionButton from "../ActionButton";
 
+export const DeletButton = styled(ActionButton)`
+  position: absolute;
+  left: -5px;
+  top: -4px;
+  background: transparent;
+  transition: all 0.4s ease;
+  color: grey;
+   outline: none;
+  /* color: ${props => (props.active ? "gold" : "grey")}; */
+`;
+
 export const Bookmark = styled(ActionButton)`
   position: absolute;
-  right: 9px;
-  top: 6px;
-  background: white;
+  right: -5px;
+  top: -4px;
+  background: transparent;
   transition: all 0.4s ease;
   color: ${props => (props.active ? "gold" : "grey")};
+  outline: none;
 `;
 
 export const StyledTags = styled.span`

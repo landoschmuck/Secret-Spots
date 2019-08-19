@@ -4,6 +4,17 @@ import styled from "styled-components";
 import Header from "../components/Header";
 import ActionButton from "../components/ActionButton";
 
+const SearchButton = styled(ActionButton)`
+  top: 1;
+  right: 330px;
+  z-index: 1;
+  width: 40px;
+  height: 40px;
+  margin-top: 4px;
+  position: absolute;
+  color: white;
+`;
+
 const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -14,7 +25,7 @@ const CardContainer = styled.div`
 
 const BookmarkButton = styled(ActionButton)`
   top: 0;
-  right: 20px;
+  right: 7px;
   z-index: 1;
   width: 40px;
   height: 40px;
@@ -26,6 +37,7 @@ function SecretSpots({
   history,
   spots,
   onToggleBookmark,
+  onDeleteCard,
   showBookmarked,
   onShowBookmarks
 }) {
@@ -40,6 +52,7 @@ function SecretSpots({
         bookmarked={spot.bookmarked}
         location={spot.location}
         onBookmark={() => onToggleBookmark(spot._id)}
+        onDelete={() => onDeleteCard(spot._id)}
       />
     );
   }
@@ -51,6 +64,7 @@ function SecretSpots({
   return (
     <>
       <Header icon="fa-list-ul" title="My Secret Spots">
+        <SearchButton icon="fa-search" active="true" />
         <BookmarkButton
           icon="fa-star"
           active={showBookmarked}

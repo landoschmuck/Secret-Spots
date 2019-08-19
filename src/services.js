@@ -13,6 +13,9 @@ export function getSpots() {
 export function postSpot(data) {
   return fetchSpot("POST", data);
 }
+export function deletSpot(data, id) {
+  return fetchSpot("DELETE", data, id);
+}
 
 export function patchSpot(data, id) {
   return fetchSpot("PATCH", data, id);

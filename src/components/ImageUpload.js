@@ -52,6 +52,7 @@ function ImageUpload({ url, onChange }) {
   }
 
   function onImageSave(response) {
+    console.log(response.data.url);
     onChange(response.data.url);
   }
 

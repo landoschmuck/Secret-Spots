@@ -10,7 +10,6 @@ const StyledButton = styled.button`
   color: ${props => (props.active ? "gold" : "white")};
   background: transparent;
   font-size: 20px;
-  cursor: pointer;
 `;
 
 function ActionButton({ icon, active, onClick, ...props }) {
