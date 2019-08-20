@@ -9,23 +9,14 @@ import {
 import mapStyles from "./mapStyles";
 import styled from "styled-components";
 import PropTypes from "prop-types";
+import Tag from "./card/Tag";
+import { TagList } from "./card/components";
 
 const Title = styled.h3``;
+
 const TextContainer = styled.div`
   width: 150px;
   font-size: 10px;
-`;
-
-const StyledTags = styled.span`
-  display: flex;
-  padding: 0px 10px;
-  border-radius: 15px;
-  background: #0776b8;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  font-size: 12px;
-  height: 23px;
 `;
 
 const InfoWindowImg = styled.img`
@@ -64,6 +55,9 @@ function Map({ center, spots, zoom, onMapClick }) {
 
   function newMarker(clickLocation) {
     setNewSpot(clickLocation);
+  }
+  function renderTag(tag) {
+    return <Tag key={tag}>{tag}</Tag>;
   }
 
   return (
@@ -113,8 +107,11 @@ function Map({ center, spots, zoom, onMapClick }) {
             <TextContainer>
               <p>{selectedSpot.text}</p>
             </TextContainer>
-            {selectedSpot.tags[0].length > 0 && (
-              <StyledTags>{selectedSpot.tags}</StyledTags>
+            {selectedSpot.tags && selectedSpot.tags.length && (
+              <TagList>{selectedSpot.tags.map(renderTag)}</TagList>
+            )}
+            {(!selectedSpot.tags || !selectedSpot.tags.length) && (
+              <TagList>-</TagList>
             )}
           </div>
         </InfoWindow>

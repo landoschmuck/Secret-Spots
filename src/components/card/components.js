@@ -1,6 +1,13 @@
 import styled from "styled-components";
 import ActionButton from "../ActionButton";
 
+export const TagList = styled.div`
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  padding: 0;
+`;
+
 export const DeletButton = styled(ActionButton)`
   position: absolute;
   left: -5px;
@@ -8,8 +15,7 @@ export const DeletButton = styled(ActionButton)`
   background: transparent;
   transition: all 0.4s ease;
   color: grey;
-   outline: none;
-  /* color: ${props => (props.active ? "gold" : "grey")}; */
+  outline: none;
 `;
 
 export const Bookmark = styled(ActionButton)`
@@ -22,26 +28,10 @@ export const Bookmark = styled(ActionButton)`
   outline: none;
 `;
 
-export const StyledTags = styled.span`
-  /* border: 3px solid grey; */
-  display: flex;
-  padding: 0px 10px;
-  border-radius: 15px;
-  background: #0776b8;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  font-size: 12px;
-  height: 23px;
-  margin-bottom: 15px;
-`;
-
 export const StyledCard = styled.div`
-  /* background-image: url("https://cdn.pixabay.com/photo/2017/01/29/13/11/scrapbook-2017957_1280.jpg"); */
   padding: 25px;
   border: 0.5px solid whitesmoke;
   border-radius: 15px;
-  overflow: auto;
   min-width: 350px;
   margin: 10px;
   display: flex;

@@ -53,7 +53,6 @@ function App() {
       { bookmarked: !spot.bookmarked },
       spot._id
     );
-    console.log(toogledBookmark.data);
     updateSpotInState(toogledBookmark.data);
   }
 

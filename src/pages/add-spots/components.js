@@ -80,7 +80,7 @@ export const Text = styled.textarea`
   margin-top: 13px;
 `;
 
-export const Tags = styled.select`
+export const Tags = styled.input`
   margin: 5px;
   width: 100%;
   border: 2px solid #ccc;
