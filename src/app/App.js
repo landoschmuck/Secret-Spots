@@ -5,7 +5,7 @@ import AddSpots from "../pages/Add-spots";
 import Landing from "../pages/Landing";
 import Overview from "../pages/Overview";
 import SecretSpots from "../pages/SecretSpots";
-import { getSpots, postSpot, deletSpot } from "../services";
+import { getSpots, postSpot, deleteSpot, patchSpot } from "../services";
 import GlobalStyles from "./GlobalStyles";
 
 function App() {
@@ -39,11 +39,16 @@ function App() {
     postSpot(spot).then(result => setSpots([result, ...spots]));
   }
 
+  function updateSpotInState(data) {
+    const index = spots.findIndex(spot => spot._id === data._id);
+    setSpots([...spots.slice(0, index), data, ...spots.slice(index + 1)]);
+  }
+
   function handleToggleBookmark(id) {
-    const index = spots.findIndex(spot => spot._id === id);
-    const spot = spots[index];
-    const newSpots = spots.slice();
-    newSpots[index] = { ...spot, bookmarked: !spot.bookmarked };
+    const spot = spots.find(spot => spot._id === id);
+    patchSpot({ bookmarked: !spot.bookmarked }, spot._id).then(result =>
+      updateSpotInState(result)
+    );
   }
 
   function handleShowBookmarked() {
@@ -55,12 +60,10 @@ function App() {
   }
 
   function handleDeleteCard(id) {
-    const index = spots.findIndex(spot => spot._id === id);
-    const newSpots = [...spots.slice(0, index), ...spots.slice(index + 1)];
-    const item = spots[index];
-    setSpots(newSpots);
-    deletSpot(item, id);
-    console.log(newSpots);
+    deleteSpot(id).then(result => {
+      const index = spots.findIndex(spot => spot._id === id);
+      setSpots([...spots.slice(0, index), ...spots.slice(index + 1)]);
+    });
   }
 
   return (

@@ -64,7 +64,7 @@ function SecretSpots({
   return (
     <>
       <Header icon="fa-list-ul" title="My Secret Spots">
-        <SearchButton icon="fa-search" active="true" />
+        <SearchButton icon="fa-search" />
         <BookmarkButton
           icon="fa-star"
           active={showBookmarked}

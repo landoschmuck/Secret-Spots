@@ -14,10 +14,10 @@ module.exports = function(app) {
   });
 
   app.delete("/api/spots/:id", (req, res) => {
-    Spot.findOneAndRemove({ spots: req.params.id }).then(data => {
-      console.log("deleted");
-      res.send(data);
-    });
+    const { id } = req.params;
+    Spot.findByIdAndRemove(id)
+      .then(spots => res.json({ success: true }))
+      .catch(err => res.json(err));
   });
 
   app.patch("/api/spots/:id", (req, res) => {
