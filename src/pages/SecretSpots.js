@@ -60,7 +60,7 @@ function SecretSpots({
   const filteredSpots = showBookmarked
     ? spots.filter(spot => spot.bookmarked)
     : spots;
-
+  console.log(spots);
   return (
     <>
       <Header icon="fa-list-ul" title="My Secret Spots">
