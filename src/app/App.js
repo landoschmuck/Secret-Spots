@@ -18,7 +18,8 @@ function App() {
   const [newLocation, setNewLocation] = React.useState("");
 
   async function loadSpots() {
-    setSpots(await getSpots());
+    const foundSpots = await getSpots();
+    setSpots(foundSpots.data);
   }
 
   React.useEffect(() => {
@@ -35,8 +36,10 @@ function App() {
     });
   }, []);
 
-  function handleCreate(spot) {
-    postSpot(spot).then(result => setSpots([result, ...spots]));
+  async function handleCreate(spot) {
+    const createdSpot = await postSpot(spot);
+
+    setSpots([createdSpot.data, ...spots]);
   }
 
   function updateSpotInState(data) {
@@ -44,11 +47,14 @@ function App() {
     setSpots([...spots.slice(0, index), data, ...spots.slice(index + 1)]);
   }
 
-  function handleToggleBookmark(id) {
+  async function handleToggleBookmark(id) {
     const spot = spots.find(spot => spot._id === id);
-    patchSpot({ bookmarked: !spot.bookmarked }, spot._id).then(result =>
-      updateSpotInState(result)
+    const toogledBookmark = await patchSpot(
+      { bookmarked: !spot.bookmarked },
+      spot._id
     );
+    console.log(toogledBookmark.data);
+    updateSpotInState(toogledBookmark.data);
   }
 
   function handleShowBookmarked() {
@@ -60,10 +66,9 @@ function App() {
   }
 
   function handleDeleteCard(id) {
-    deleteSpot(id).then(result => {
-      const index = spots.findIndex(spot => spot._id === id);
-      setSpots([...spots.slice(0, index), ...spots.slice(index + 1)]);
-    });
+    deleteSpot(id);
+    const index = spots.findIndex(spot => spot._id === id);
+    setSpots([...spots.slice(0, index), ...spots.slice(index + 1)]);
   }
 
   return (

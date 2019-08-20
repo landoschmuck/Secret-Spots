@@ -1,33 +1,17 @@
-// export function getFromLocal(name) {
-//   return JSON.parse(localStorage.getItem(name));
-// }
-
-// export function setToLocal(name, data) {
-//   localStorage.setItem(name, JSON.stringify(data));
-// }
+import axios from "axios";
 
 export function getSpots() {
-  return fetch("/api/spots").then(res => res.json());
+  return axios.get("/api/spots");
 }
 
 export function postSpot(data) {
-  return fetchSpot("POST", data);
+  return axios.post("/api/spots/", data);
 }
 
 export function deleteSpot(id) {
-  return fetchSpot("DELETE", null, id);
+  return axios.delete("/api/spots/" + id, id);
 }
 
 export function patchSpot(data, id) {
-  return fetchSpot("PATCH", data, id);
-}
-
-function fetchSpot(method, data, id = "") {
-  return fetch("/api/spots/" + id, {
-    method,
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: data ? JSON.stringify(data) : undefined
-  }).then(res => res.json());
+  return axios.patch("/api/spots/" + id, data, id);
 }
