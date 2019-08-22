@@ -3,7 +3,7 @@ import Button from "../../components/Button";
 
 export const MapButton = styled(Button)`
   margin: -7px;
-  margin-top: -30px;
+  margin-top: -21px;
   font-size: 20px;
 `;
 
@@ -80,7 +80,7 @@ export const Text = styled.textarea`
   margin-top: 13px;
 `;
 
-export const Tags = styled.select`
+export const Tags = styled.input`
   margin: 5px;
   width: 100%;
   border: 2px solid #ccc;

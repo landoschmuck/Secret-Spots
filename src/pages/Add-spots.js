@@ -74,12 +74,14 @@ function AddSpots({
       setErrors(errors);
       return;
     }
+    const tags =
+      formValue.tags && formValue.tags.split(",").map(tag => tag.trim());
 
     const spot = {
       title: formValue.title,
       headImg: image,
       text: formValue.text,
-      tags: formValue.tags,
+      tags,
       bookmarked: formValue.bookmarked,
       location: newLocation
     };
@@ -104,25 +106,25 @@ function AddSpots({
           />
           <Title
             name="title"
-            placeholder="Title"
+            placeholder="Wie heißt dein Spot?"
             value={formValue.title}
             onChange={handleChange}
           />
           {errors.title && <StyledError>{errors.title}</StyledError>}
           <Text
             name="text"
-            placeholder="Text"
+            placeholder="Beschreibe kurz was dir zu deinem Spot einfällt..."
             value={formValue.text}
             onChange={handleChange}
           />
           {errors.text && <StyledError>{errors.text}</StyledError>}
-          <Tags name="tags" value={formValue.tags} onChange={handleChange}>
-            <option value="Wasser">Wasser</option>
-            <option value="Relax">Relax</option>
-            <option value="Strand">Strand</option>
-            <option value="Natur">Natur</option>
-            <option value="Urban">Urban</option>
-          </Tags>
+          <Tags
+            name="tags"
+            placeholder="#Hashtag"
+            value={formValue.tags}
+            onChange={handleChange}
+          />
+
           {/* <TagContainer>{tags.map(tags => renderCard(card))}</TagContainer> */}
           <ButtonGroup>
             <Button>Submit</Button>
