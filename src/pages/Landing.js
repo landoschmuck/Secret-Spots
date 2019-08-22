@@ -40,7 +40,7 @@ function Landing() {
         <BackgroundImage src="https://cdn.pixabay.com/photo/2017/06/14/08/20/map-of-the-world-2401458_1280.jpg" />
         <LogoContainer>
           <AnimatedLogo />
-          <AnimatedTitle>Secret Spots</AnimatedTitle>
+          <AnimatedTitle data-cy="page-title-text">Secret Spots</AnimatedTitle>
         </LogoContainer>
         <ScrollTo to="about">Scroll Down</ScrollTo>
       </Fullscreen>
