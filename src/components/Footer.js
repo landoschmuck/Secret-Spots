@@ -81,7 +81,7 @@ function FooterNavigation({ links }) {
       clickable={clickable}
     >
       {links.map(({ to, icon }) => (
-        <FooterLink key={to} to={to}>
+        <FooterLink key={to} to={to} data-cy="nav">
           <i className={`fas ${icon}`} />
         </FooterLink>
       ))}

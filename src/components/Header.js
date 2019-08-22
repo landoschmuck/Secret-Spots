@@ -48,7 +48,9 @@ function Header({ title, icon, children, ...props }) {
       <StyledLogo>
         <i className={`fas ${icon}`} />
       </StyledLogo>
-      <StyledHeadline size="L">{title} </StyledHeadline>
+      <StyledHeadline data-cy="header-title" size="L">
+        {title}{" "}
+      </StyledHeadline>
       {children && <RightIconContainer>{children}</RightIconContainer>}
     </StyledHeader>
   );
