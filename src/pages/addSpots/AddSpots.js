@@ -1,8 +1,8 @@
 import React from "react";
-import Header from "../components/Header";
-import Button from "../components/Button";
-import ImageUpload from "../components/ImageUpload";
-import AddSpotMap from "../components/AddSpotMap";
+import Header from "../../components/Header";
+import Button from "../../components/Button";
+import ImageUpload from "../../components/ImageUpload";
+import AddSpotMap from "../../components/AddSpotMap";
 import {
   MapButton,
   ModalDialog,
@@ -14,7 +14,7 @@ import {
   Text,
   Tags,
   ButtonGroup
-} from "./add-spots/components";
+} from "./components";
 
 function AddSpots({
   history,
@@ -87,7 +87,7 @@ function AddSpots({
     };
 
     onCreate(spot);
-    history.replace("/secret-spots");
+    history.replace("/secretSpots");
   }
 
   function handleOkClick() {
@@ -124,8 +124,6 @@ function AddSpots({
             value={formValue.tags}
             onChange={handleChange}
           />
-
-          {/* <TagContainer>{tags.map(tags => renderCard(card))}</TagContainer> */}
           <ButtonGroup>
             <Button>Submit</Button>
             <Button type="Button" onClick={handleClick}>
@@ -134,7 +132,6 @@ function AddSpots({
           </ButtonGroup>
         </Form>
       </FormContainer>
-
       {showMap && (
         <Blur>
           <ModalDialog>

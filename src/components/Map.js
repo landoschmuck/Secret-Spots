@@ -79,7 +79,7 @@ function Map({ center, spots, zoom, onMapClick }) {
               setSelectedSpot(spot);
             }}
             icon={{
-              url: "/android-marker-icon-4.jpg",
+              url: "/mapMarker/blueMapMarker.jpg",
               scaledSize: new window.google.maps.Size(50, 50)
             }}
           />
@@ -89,7 +89,7 @@ function Map({ center, spots, zoom, onMapClick }) {
       {newSpot && (
         <Marker
           icon={{
-            url: "/clipart193878.png",
+            url: "/mapMarker/greyMapMarker.png",
             scaledSize: new window.google.maps.Size(30, 50)
           }}
           position={newSpot}

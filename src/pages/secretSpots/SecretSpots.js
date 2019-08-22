@@ -1,6 +1,6 @@
-import Card from "../components/Card";
+import Card from "../../components/Card";
 import React from "react";
-import Header from "../components/Header";
+import Header from "../../components/Header";
 
 import {
   SearchBox,
@@ -8,7 +8,7 @@ import {
   SearchButton,
   CardContainer,
   BookmarkButton
-} from "./secretSpots/components";
+} from "./components";
 
 function SecretSpots({
   spots,

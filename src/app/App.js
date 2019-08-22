@@ -1,10 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import FooterNavigation from "../components/Footer";
-import AddSpots from "../pages/Add-spots";
+import AddSpots from "../pages/addSpots/AddSpots";
 import Landing from "../pages/Landing";
 import Overview from "../pages/Overview";
-import SecretSpots from "../pages/SecretSpots";
+import SecretSpots from "../pages/secretSpots/SecretSpots";
 import { getSpots, postSpot, deleteSpot, patchSpot } from "../services";
 import GlobalStyles from "./GlobalStyles";
 
@@ -94,7 +94,7 @@ function App() {
         />
 
         <Route
-          path="/secret-spots"
+          path="/secretSpots"
           render={props => (
             <SecretSpots
               showBookmarked={showBookmarked}
@@ -107,7 +107,7 @@ function App() {
           )}
         />
         <Route
-          path="/add-spots"
+          path="/addSpots"
           render={props => (
             <AddSpots
               spots={spots}
@@ -127,8 +127,8 @@ function App() {
         links={[
           { to: "/", icon: "fa-home" },
           { to: "/map", icon: "fa-globe-americas" },
-          { to: "/secret-spots", icon: "fa-list-ul" },
-          { to: "/add-spots", icon: "fa-plus-circle" }
+          { to: "/secretSpots", icon: "fa-list-ul" },
+          { to: "/addSpots", icon: "fa-plus-circle" }
         ]}
       />
     </Router>
