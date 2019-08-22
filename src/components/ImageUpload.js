@@ -27,6 +27,8 @@ const Label = styled.label`
   opacity: 0.6;
   margin-bottom: 10px;
   border: 1px solid lightgray;
+  border-radius: 15px;
+  box-shadow: 2px 8px 8px -3px rgba(214, 211, 214, 1);
 `;
 const AddPhotoLogo = styled.div`
   margin-left: 5px;
@@ -52,7 +54,6 @@ function ImageUpload({ url, onChange }) {
   }
 
   function onImageSave(response) {
-    console.log(response.data.url);
     onChange(response.data.url);
   }
 
@@ -63,7 +64,7 @@ function ImageUpload({ url, onChange }) {
       ) : (
         <>
           <Input type="file" id="file" name="file" onChange={upload} />
-          <Label for="file">
+          <Label htmlFor="file">
             +{" "}
             <AddPhotoLogo>
               <i className="fas fa-camera" />

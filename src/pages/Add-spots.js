@@ -106,21 +106,21 @@ function AddSpots({
           />
           <Title
             name="title"
-            placeholder="Title"
+            placeholder="Wie heißt dein Spot?"
             value={formValue.title}
             onChange={handleChange}
           />
           {errors.title && <StyledError>{errors.title}</StyledError>}
           <Text
             name="text"
-            placeholder="Text"
+            placeholder="Beschreibe kurz was dir zu deinem Spot einfällt..."
             value={formValue.text}
             onChange={handleChange}
           />
           {errors.text && <StyledError>{errors.text}</StyledError>}
           <Tags
             name="tags"
-            placeholder="Tags"
+            placeholder="#Hashtag"
             value={formValue.tags}
             onChange={handleChange}
           />

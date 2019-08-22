@@ -8,6 +8,7 @@ const StyledTag = styled.span`
   padding: 5px;
   margin-right: 5px;
   font-size: 12px;
+  margin: 2px;
 `;
 
 function Tag(props) {

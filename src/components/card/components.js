@@ -6,6 +6,7 @@ export const TagList = styled.div`
   width: 100%;
   flex-wrap: wrap;
   padding: 0;
+  max-width: 200px;
 `;
 
 export const DeletButton = styled(ActionButton)`
@@ -50,10 +51,10 @@ export const MapContainer = styled.div`
   display: flex;
   width: 100%;
   overflow: auto;
-  /* border: solid 1px black; */
   margin-top: 5px;
   height: 300px;
   max-height: 130px;
+  border-radius: 15px;
 `;
 
 export const Text = styled.p`
@@ -69,7 +70,6 @@ export const ImgContainer = styled.div`
   width: 100%;
   overflow: auto;
   min-height: 150px;
-  /* border: solid 1px black; */
   margin-top: 5px;
   max-height: 200px;
   border-radius: 15px;

@@ -15,12 +15,12 @@ import { TagList } from "./card/components";
 const Title = styled.h3``;
 
 const TextContainer = styled.div`
-  width: 150px;
+  width: 140px;
   font-size: 10px;
 `;
 
 const InfoWindowImg = styled.img`
-  max-height: 100px;
+  max-height: 140px;
   width: auto;
 `;
 
@@ -48,7 +48,7 @@ function Map({ center, spots, zoom, onMapClick }) {
   function handleMapClick(event) {
     if (onMapClick) {
       let clickLocation = { lat: event.latLng.lat(), lng: event.latLng.lng() };
-      onMapClick({ lat: event.latLng.lat(), lng: event.latLng.lng() });
+      onMapClick(clickLocation);
       newMarker(clickLocation);
     }
   }
