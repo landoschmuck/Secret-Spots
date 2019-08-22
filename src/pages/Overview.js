@@ -1,18 +1,9 @@
 import React from "react";
 import Map from "../components/Map";
 
-function Overview({ width, height, spots, center, onSetLocation }) {
+function Overview({ spots, center }) {
   return (
-    <>
-      <Map
-        spots={spots}
-        center={center}
-        zoom={3}
-        height={height}
-        width={width}
-        onMapClick={onSetLocation}
-      />
-    </>
+    <Map spots={spots} center={center} zoom={3} height="100vh" width="100vw" />
   );
 }
 

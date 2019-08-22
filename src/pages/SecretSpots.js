@@ -11,7 +11,6 @@ import {
 } from "./secretSpots/components";
 
 function SecretSpots({
-  history,
   spots,
   onToggleBookmark,
   onDeleteCard,
@@ -19,20 +18,17 @@ function SecretSpots({
   onShowBookmarks
 }) {
   const [show, setShow] = React.useState(null);
-  const [searchResult, setSearchResult] = React.useState("");
+  const [searchValue, setSearchValue] = React.useState("");
 
   function handleFilter(event) {
     const { value } = event.target;
-    setSearchResult(
-      spots.filter(spot =>
-        spot.title.toLowerCase().includes(value.toLowerCase())
-      )
-    );
+    setSearchValue(value);
   }
 
   function handleClick() {
     setShow(!show);
   }
+
   function renderCard(spot) {
     return (
       <Card
@@ -49,9 +45,11 @@ function SecretSpots({
     );
   }
 
-  const filteredSpots = showBookmarked
-    ? spots.filter(spot => spot.bookmarked)
-    : spots;
+  const filteredSpots = spots
+    .filter(spot => (showBookmarked ? spot.bookmarked : true))
+    .filter(spot =>
+      spot.title.toLowerCase().includes(searchValue.toLowerCase())
+    );
 
   return (
     <>
@@ -64,7 +62,6 @@ function SecretSpots({
             />
           )}
           <SearchButton
-            icon="fa-search"
             onClick={handleClick}
             ani="none"
             type="search"
@@ -72,17 +69,9 @@ function SecretSpots({
             boxShadow="0px"
           />
         </SearchBox>
-        <BookmarkButton
-          icon="fa-star"
-          active={showBookmarked}
-          onClick={onShowBookmarks}
-        />
+        <BookmarkButton active={showBookmarked} onClick={onShowBookmarks} />
       </Header>
-      <CardContainer>
-        {searchResult
-          ? searchResult.map(spot => renderCard(spot))
-          : filteredSpots.map(spot => renderCard(spot))}
-      </CardContainer>
+      <CardContainer>{filteredSpots.map(renderCard)}</CardContainer>
     </>
   );
 }

@@ -8,21 +8,23 @@ import SecretSpots from "../pages/SecretSpots";
 import { getSpots, postSpot, deleteSpot, patchSpot } from "../services";
 import GlobalStyles from "./GlobalStyles";
 
+const defaultLocation = {
+  lat: 53.551086,
+  lng: 9.993682
+};
+
 function App() {
   const [spots, setSpots] = React.useState([]);
   const [showBookmarked, setShowBookmarked] = React.useState(false);
-  const [userLocation, setUserLocation] = React.useState({
-    lat: 53.551086,
-    lng: 9.993682
-  });
+  const [userLocation, setUserLocation] = React.useState(defaultLocation);
   const [newLocation, setNewLocation] = React.useState("");
 
-  async function loadSpots() {
-    const foundSpots = await getSpots();
-    setSpots(foundSpots.data);
-  }
-
   React.useEffect(() => {
+    async function loadSpots() {
+      const foundSpots = await getSpots();
+      setSpots(foundSpots.data);
+    }
+
     loadSpots();
   }, []);
 
@@ -37,14 +39,13 @@ function App() {
   }, []);
 
   async function handleCreate(spot) {
-    const createdSpot = await postSpot(spot);
-
-    setSpots([createdSpot.data, ...spots]);
+    const { data } = await postSpot(spot);
+    setSpots([data, ...spots]);
   }
 
-  function updateSpotInState(data) {
-    const index = spots.findIndex(spot => spot._id === data._id);
-    setSpots([...spots.slice(0, index), data, ...spots.slice(index + 1)]);
+  function updateSpotInState(spot) {
+    const index = spots.findIndex(item => item._id === spot._id);
+    setSpots([...spots.slice(0, index), spot, ...spots.slice(index + 1)]);
   }
 
   async function handleToggleBookmark(id) {
@@ -64,10 +65,15 @@ function App() {
     setNewLocation(location);
   }
 
-  function handleDeleteCard(id) {
-    deleteSpot(id);
-    const index = spots.findIndex(spot => spot._id === id);
-    setSpots([...spots.slice(0, index), ...spots.slice(index + 1)]);
+  async function handleDeleteCard(id) {
+    const {
+      data: { success }
+    } = await deleteSpot(id);
+
+    if (success) {
+      const index = spots.findIndex(spot => spot._id === id);
+      setSpots([...spots.slice(0, index), ...spots.slice(index + 1)]);
+    }
   }
 
   return (
@@ -76,22 +82,19 @@ function App() {
       <Switch>
         <Route
           path="/map"
-          exact
           render={props => (
             <Overview
               {...props}
               spots={spots}
-              onSetLocation={handleSetLocation}
               center={userLocation}
               width="100vw"
               height="100vh"
             />
           )}
         />
-        <Route path="/" exact render={props => <Landing {...props} />} />
+
         <Route
           path="/secret-spots"
-          exact
           render={props => (
             <SecretSpots
               showBookmarked={showBookmarked}
@@ -105,7 +108,6 @@ function App() {
         />
         <Route
           path="/add-spots"
-          exact
           render={props => (
             <AddSpots
               spots={spots}
@@ -119,6 +121,7 @@ function App() {
             />
           )}
         />
+        <Route path="/" exact component={Landing} />
       </Switch>
       <FooterNavigation
         links={[

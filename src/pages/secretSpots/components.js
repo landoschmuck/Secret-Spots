@@ -49,7 +49,9 @@ export const SearchInput = styled.input`
   }
 `;
 
-export const SearchButton = styled(ActionButton)`
+export const SearchButton = styled(ActionButton).attrs({
+  icon: "fa-search"
+})`
   top: 1;
   right: 330px;
   z-index: 1;
@@ -69,7 +71,7 @@ export const CardContainer = styled.div`
   align-items: center;
 `;
 
-export const BookmarkButton = styled(ActionButton)`
+export const BookmarkButton = styled(ActionButton).attrs({ icon: "fa-star" })`
   top: 0;
   right: 7px;
   z-index: 1;

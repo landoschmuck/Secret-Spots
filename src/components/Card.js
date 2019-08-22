@@ -23,13 +23,8 @@ function Card({
   bookmarked,
   onBookmark,
   onDelete,
-  location,
-  height,
-  width,
-  ...props
+  location
 }) {
-  const spots = [{ _id: "id", location }];
-
   function renderTag(tag) {
     return <Tag key={tag}>{tag}</Tag>;
   }
@@ -37,22 +32,21 @@ function Card({
   return (
     <>
       <StyledCard>
-        <DeletButton onClick={onDelete} icon="fa-trash-alt" />
-        <Bookmark active={bookmarked} onClick={onBookmark} icon="fa-star" />
+        <DeletButton onClick={onDelete} />
+        <Bookmark active={bookmarked} onClick={onBookmark} />
         <ImgContainer>
           <Img src={headImg} />
         </ImgContainer>
         <Headline size="S">{title}</Headline>
         <Text>{text}</Text>
         {tags && tags.length && <TagList>{tags.map(renderTag)}</TagList>}
-        {(!tags || !tags.length) && <TagList>-</TagList>}
         <MapContainer>
           <Map
             center={location}
             height="100%"
             width="100%"
             zoom={7}
-            spots={spots}
+            spots={[{ _id: "id", location }]}
           />
         </MapContainer>
       </StyledCard>

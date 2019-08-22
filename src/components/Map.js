@@ -47,7 +47,10 @@ function Map({ center, spots, zoom, onMapClick }) {
 
   function handleMapClick(event) {
     if (onMapClick) {
-      let clickLocation = { lat: event.latLng.lat(), lng: event.latLng.lng() };
+      const clickLocation = {
+        lat: event.latLng.lat(),
+        lng: event.latLng.lng()
+      };
       onMapClick(clickLocation);
       newMarker(clickLocation);
     }
@@ -89,7 +92,6 @@ function Map({ center, spots, zoom, onMapClick }) {
             url: "/clipart193878.png",
             scaledSize: new window.google.maps.Size(30, 50)
           }}
-          Key="new"
           position={newSpot}
         />
       )}
@@ -110,9 +112,7 @@ function Map({ center, spots, zoom, onMapClick }) {
             {selectedSpot.tags && selectedSpot.tags.length && (
               <TagList>{selectedSpot.tags.map(renderTag)}</TagList>
             )}
-            {(!selectedSpot.tags || !selectedSpot.tags.length) && (
-              <TagList>-</TagList>
-            )}
+            {!selectedSpot.tags || !selectedSpot.tags.length}
           </div>
         </InfoWindow>
       )}
@@ -122,11 +122,9 @@ function Map({ center, spots, zoom, onMapClick }) {
 
 const MapWrapped = withScriptjs(withGoogleMap(Map));
 
-function RenderMap(props) {
-  const wi = props.width;
-  const he = props.height;
+function RenderMap({ width, height, ...props }) {
   return (
-    <div style={{ width: wi, height: he }}>
+    <div style={{ width, height }}>
       <MapWrapped
         {...props}
         googleMapURL={MAP_URL}

@@ -9,7 +9,9 @@ export const TagList = styled.div`
   max-width: 200px;
 `;
 
-export const DeletButton = styled(ActionButton)`
+export const DeletButton = styled(ActionButton).attrs({
+  icon: "fa-trash-alt"
+})`
   position: absolute;
   left: -5px;
   top: -4px;
@@ -19,7 +21,7 @@ export const DeletButton = styled(ActionButton)`
   outline: none;
 `;
 
-export const Bookmark = styled(ActionButton)`
+export const Bookmark = styled(ActionButton).attrs({ icon: "fa-star" })`
   position: absolute;
   right: -5px;
   top: -4px;

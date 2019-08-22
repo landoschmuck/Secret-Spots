@@ -6,8 +6,6 @@ import Logo from "../components/Logo";
 import { fadeIn, fadeInFromCorner } from "../utils/animations";
 import Title from "../components/Title";
 import Divider from "../components/Divider";
-import Content from "../components/Content";
-import Section from "../components/Section";
 import ScrollTo from "../components/ScrollTo";
 
 const LogoContainer = styled.div`
@@ -18,7 +16,7 @@ const LogoContainer = styled.div`
 
 const Subtitle = styled.h2`
   font-size: 28px;
-  color: white;
+  color: grey;
 `;
 
 const AnimatedTitle = styled(Title)`
@@ -35,7 +33,6 @@ const AnimatedLogo = styled(Logo)`
 function Landing() {
   return (
     <>
-      {/* <Header title="Home" icon="fa-map-marker-alt" /> */}
       <Fullscreen>
         <BackgroundImage src="https://cdn.pixabay.com/photo/2017/06/14/08/20/map-of-the-world-2401458_1280.jpg" />
         <LogoContainer>
@@ -44,19 +41,15 @@ function Landing() {
         </LogoContainer>
         <ScrollTo to="about">Scroll Down</ScrollTo>
       </Fullscreen>
-      <Section>
-        <Subtitle id="about">About Secret Spots</Subtitle>
-        <Divider />
-        <Content>
-          <p>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-            erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-            et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
-          </p>
-          <Divider />
-        </Content>
-      </Section>
+      <Subtitle id="about">About Secret Spots</Subtitle>
+      <Divider />
+      <p>
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+        eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+        voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
+        clita kasd gubergren, no sea takimata sanctus est
+      </p>
+      <Divider />
     </>
   );
 }
