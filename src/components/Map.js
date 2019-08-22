@@ -131,7 +131,7 @@ function RenderMap(props) {
         {...props}
         googleMapURL={MAP_URL}
         loadingElement={<div style={{ height: `100%` }} />}
-        containerElement={<div style={{ height: `90%` }} />}
+        containerElement={<div style={{ height: `95%` }} />}
         mapElement={<div style={{ height: `100%` }} />}
       />
     </div>

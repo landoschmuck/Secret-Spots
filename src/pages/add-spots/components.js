@@ -3,7 +3,7 @@ import Button from "../../components/Button";
 
 export const MapButton = styled(Button)`
   margin: -7px;
-  margin-top: -46px;
+  margin-top: -21px;
   font-size: 20px;
 `;
 

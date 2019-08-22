@@ -84,7 +84,7 @@ function App() {
               onSetLocation={handleSetLocation}
               center={userLocation}
               width="100vw"
-              height="103vh"
+              height="100vh"
             />
           )}
         />
