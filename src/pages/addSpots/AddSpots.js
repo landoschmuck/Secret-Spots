@@ -13,7 +13,8 @@ import {
   Title,
   Text,
   Tags,
-  ButtonGroup
+  ButtonGroup,
+  LandosFavoriteDiv
 } from "./components";
 
 function AddSpots({
@@ -97,41 +98,43 @@ function AddSpots({
   return (
     <>
       <Header title="Add New Spots" icon="fa-plus-circle" />
-      <FormContainer>
-        <Form onSubmit={handleSubmit}>
-          <ImageUpload
-            name="headImg"
-            url={image}
-            onChange={handleImageChange}
-          />
-          <Title
-            name="title"
-            placeholder="Wie heißt dein Spot?"
-            value={formValue.title}
-            onChange={handleChange}
-          />
-          {errors.title && <StyledError>{errors.title}</StyledError>}
-          <Text
-            name="text"
-            placeholder="Beschreibe kurz was dir zu deinem Spot einfällt..."
-            value={formValue.text}
-            onChange={handleChange}
-          />
-          {errors.text && <StyledError>{errors.text}</StyledError>}
-          <Tags
-            name="tags"
-            placeholder="#Hashtag"
-            value={formValue.tags}
-            onChange={handleChange}
-          />
-          <ButtonGroup>
-            <Button>Submit</Button>
-            <Button type="Button" onClick={handleClick}>
-              Location?
-            </Button>
-          </ButtonGroup>
-        </Form>
-      </FormContainer>
+      <LandosFavoriteDiv>
+        <FormContainer>
+          <Form onSubmit={handleSubmit}>
+            <ImageUpload
+              name="headImg"
+              url={image}
+              onChange={handleImageChange}
+            />
+            <Title
+              name="title"
+              placeholder="Wie heißt dein Spot?"
+              value={formValue.title}
+              onChange={handleChange}
+            />
+            {errors.title && <StyledError>{errors.title}</StyledError>}
+            <Text
+              name="text"
+              placeholder="Beschreibe kurz was dir zu deinem Spot einfällt..."
+              value={formValue.text}
+              onChange={handleChange}
+            />
+            {errors.text && <StyledError>{errors.text}</StyledError>}
+            <Tags
+              name="tags"
+              placeholder="#Hashtag"
+              value={formValue.tags}
+              onChange={handleChange}
+            />
+            <ButtonGroup>
+              <Button>Submit</Button>
+              <Button type="Button" onClick={handleClick}>
+                Location?
+              </Button>
+            </ButtonGroup>
+          </Form>
+        </FormContainer>
+      </LandosFavoriteDiv>
       {showMap && (
         <Blur>
           <ModalDialog>

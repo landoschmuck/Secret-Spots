@@ -22,7 +22,8 @@
     "uuid": "^3.3.2"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "run-p react server",
+    "react": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "server": "nodemon server.js",

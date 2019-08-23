@@ -45,9 +45,13 @@ export const FormContainer = styled.div`
   margin: 10px;
   height: auto;
   box-shadow: 1px 4px 10px 4px rgba(214, 211, 214, 1);
+  justify-content: center;
+  align-items: center;
 
   @media (min-width: 500px) {
     width: 350px;
+    justify-content: center;
+    align-items: center;
   }
 `;
 
@@ -94,4 +98,11 @@ export const ButtonGroup = styled.div`
   display: flex;
   justify-content: space-around;
   align-content: center;
+`;
+
+export const LandosFavoriteDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;

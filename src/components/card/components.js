@@ -13,8 +13,8 @@ export const DeletButton = styled(ActionButton).attrs({
   icon: "fa-trash-alt"
 })`
   position: absolute;
-  left: -5px;
-  top: -4px;
+  left: 0;
+  top: -1px;
   background: transparent;
   transition: all 0.4s ease;
   color: grey;
@@ -23,8 +23,8 @@ export const DeletButton = styled(ActionButton).attrs({
 
 export const Bookmark = styled(ActionButton).attrs({ icon: "fa-star" })`
   position: absolute;
-  right: -5px;
-  top: -4px;
+  right: 0;
+  top: -1px;
   background: transparent;
   transition: all 0.4s ease;
   color: ${props => (props.active ? "gold" : "grey")};
