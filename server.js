@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const fs = require("fs");
 const api = require("./server-api");
+const path = require("path");
 
 const app = express();
 app.use(express.json());
@@ -25,7 +26,6 @@ mongoose
   })
   .then(() => console.log("Connected to MongoDB"))
   .catch(err => console.error(err));
-
 // static file serving
 app.use(express.static(path.join(__dirname, "build")));
 
