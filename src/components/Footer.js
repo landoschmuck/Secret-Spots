@@ -18,7 +18,6 @@ const Footer = styled.footer`
   overflow: hidden;
   position: fixed;
   bottom: 0%;
-  z-index: 1;
   opacity: ${props => (props.visible ? 1 : 0)};
   transition: all 0.5s ease;
   border-top: solid 1px grey;
@@ -33,7 +32,7 @@ const FooterLink = styled(Link)`
   padding: 14px 16px;
   text-decoration: none;
   font-size: 25px;
-  margin: 35px 20px 35px;
+  margin: -1px 20px -5px 20px
 
   &:hover {
     color: #6dc0d5;

@@ -16,12 +16,12 @@ import {
   Text,
   Tags,
   ButtonGroup,
-  LandosFavoriteDiv
+  Container
 } from "./components";
 
 const Grid = styled.div`
   display: grid;
-  grid-template-rows: 80px auto 80px;
+  grid-template-rows: 50px auto 50px;
 `;
 
 function AddSpots({
@@ -103,55 +103,55 @@ function AddSpots({
   }
 
   return (
-    <>
-      <Grid>
-        <Header title="Add New Spots" icon="fa-plus-circle" />
-        <LandosFavoriteDiv>
-          <FormContainer>
-            <Form onSubmit={handleSubmit}>
-              <ImageUpload
-                name="headImg"
-                url={image}
-                onChange={handleImageChange}
-              />
-              <Title
-                name="title"
-                placeholder="Wie heißt dein Spot?"
-                value={formValue.title}
-                onChange={handleChange}
-              />
-              {errors.title && <StyledError>{errors.title}</StyledError>}
-              <Text
-                name="text"
-                placeholder="Beschreibe kurz was dir zu deinem Spot einfällt..."
-                value={formValue.text}
-                onChange={handleChange}
-              />
-              {errors.text && <StyledError>{errors.text}</StyledError>}
-              <Tags
-                name="tags"
-                placeholder="#Hashtag"
-                value={formValue.tags}
-                onChange={handleChange}
-              />
-              <ButtonGroup>
-                <Button>Submit</Button>
-                <Button type="Button" onClick={handleClick}>
-                  Location?
-                </Button>
-              </ButtonGroup>
-            </Form>
-          </FormContainer>
-        </LandosFavoriteDiv>
-        <FooterNavigation
-          links={[
-            { to: "/", icon: "fa-home" },
-            { to: "/map", icon: "fa-globe-americas" },
-            { to: "/secretSpots", icon: "fa-list-ul" },
-            { to: "/addSpots", icon: "fa-plus-circle" }
-          ]}
-        />
-      </Grid>
+    <Grid>
+      <Header title="Add New Spots" icon="fa-plus-circle" />
+      <Container>
+        <FormContainer>
+          <Form onSubmit={handleSubmit}>
+            <ImageUpload
+              name="headImg"
+              url={image}
+              onChange={handleImageChange}
+            />
+            <Title
+              name="title"
+              placeholder="Wie heißt dein Spot?"
+              value={formValue.title}
+              onChange={handleChange}
+            />
+            {errors.title && <StyledError>{errors.title}</StyledError>}
+            <Text
+              name="text"
+              placeholder="Beschreibe kurz was dir zu deinem Spot einfällt..."
+              value={formValue.text}
+              onChange={handleChange}
+            />
+            {errors.text && <StyledError>{errors.text}</StyledError>}
+            <Tags
+              name="tags"
+              placeholder="#Hashtag"
+              value={formValue.tags}
+              onChange={handleChange}
+            />
+            <ButtonGroup>
+              <Button>Submit</Button>
+              <Button type="Button" onClick={handleClick}>
+                Location?
+              </Button>
+            </ButtonGroup>
+          </Form>
+        </FormContainer>
+      </Container>
+      <FooterNavigation
+        visible="true"
+        links={[
+          { to: "/", icon: "fa-home" },
+          { to: "/map", icon: "fa-globe-americas" },
+          { to: "/secretSpots", icon: "fa-list-ul" },
+          { to: "/addSpots", icon: "fa-plus-circle" }
+        ]}
+      />
+
       {showMap && (
         <Blur>
           <ModalDialog>
@@ -167,7 +167,7 @@ function AddSpots({
           </ModalDialog>
         </Blur>
       )}
-    </>
+    </Grid>
   );
 }
 

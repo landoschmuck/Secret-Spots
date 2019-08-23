@@ -69,6 +69,7 @@ export const CardContainer = styled.div`
   width: 100vw;
   justify-content: center;
   align-items: center;
+  overflow: auto;
 `;
 
 export const BookmarkButton = styled(ActionButton).attrs({ icon: "fa-star" })`

@@ -20,10 +20,9 @@ const StyledHeader = styled.div`
   align-items: center;
   justify-content: center;
   padding: 5px;
-  position: sticky;
   top: 0;
   width: 100vw;
-  z-index: 1;
+  z-index: 0;
   border-bottom: solid 1px grey;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
