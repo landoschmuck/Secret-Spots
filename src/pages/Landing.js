@@ -7,6 +7,7 @@ import { fadeIn, fadeInFromCorner } from "../utils/animations";
 import Title from "../components/Title";
 import Divider from "../components/Divider";
 import ScrollTo from "../components/ScrollTo";
+import FooterNavigation from "../components/Footer";
 
 const LogoContainer = styled.div`
   display: flex;
@@ -50,6 +51,14 @@ function Landing() {
         clita kasd gubergren, no sea takimata sanctus est
       </p>
       <Divider />
+      <FooterNavigation
+        links={[
+          { to: "/", icon: "fa-home" },
+          { to: "/map", icon: "fa-globe-americas" },
+          { to: "/secretSpots", icon: "fa-list-ul" },
+          { to: "/addSpots", icon: "fa-plus-circle" }
+        ]}
+      />
     </>
   );
 }
