@@ -21,7 +21,8 @@ import {
 
 const Grid = styled.div`
   display: grid;
-  grid-template-rows: 50px auto 50px;
+  grid-template-rows: 63px auto 63px;
+  height: 100vh;
 `;
 
 function AddSpots({

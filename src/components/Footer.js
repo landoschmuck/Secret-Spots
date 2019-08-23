@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 const Footer = styled.footer`
-  height: 55px;
   background: linear-gradient(
     90deg,
     rgba(3, 86, 135, 1) 0%,
@@ -15,11 +14,6 @@ const Footer = styled.footer`
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
-  position: fixed;
-  bottom: 0%;
-  opacity: ${props => (props.visible ? 1 : 0)};
-  transition: all 0.5s ease;
   border-top: solid 1px grey;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
@@ -44,41 +38,8 @@ const FooterLink = styled(Link)`
 `;
 
 function FooterNavigation({ links }) {
-  const [scrollState, setScrollState] = React.useState({
-    visible: true,
-    prevScrollpos: window.pageYOffset
-  });
-  const [clickable, setClickable] = React.useState("all");
-
-  function handleScroll() {
-    const currentScrollPos = window.pageYOffset;
-    setScrollState({
-      visible: scrollState.prevScrollpos > currentScrollPos,
-      prevScrollpos: currentScrollPos
-    });
-  }
-
-  React.useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  });
-
-  function handleAnimationEnd() {
-    if (scrollState.visible === true) {
-      setClickable("all");
-    } else {
-      setClickable("none");
-    }
-  }
-
   return (
-    <Footer
-      visible={scrollState.visible}
-      onAnimationEnd={handleAnimationEnd}
-      clickable={clickable}
-    >
+    <Footer>
       {links.map(({ to, icon }) => (
         <FooterLink key={to} to={to} data-cy="nav">
           <i className={`fas ${icon}`} />

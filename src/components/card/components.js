@@ -32,14 +32,12 @@ export const Bookmark = styled(ActionButton).attrs({ icon: "fa-star" })`
 `;
 
 export const StyledCard = styled.div`
+  position: relative;
   padding: 25px;
   border: 0.5px solid whitesmoke;
   border-radius: 15px;
   min-width: 350px;
   margin: 10px;
-  display: flex;
-  flex-direction: column;
-  position: relative;
   color: black;
   background: white;
   box-shadow: 1px 4px 10px 4px rgba(214, 211, 214, 1);

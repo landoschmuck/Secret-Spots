@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Fullscreen = styled.div`
-  height: 95vh;
+  height: 91vh;
   width: 100vw;
   display: flex;
   align-items: center;
@@ -9,6 +9,7 @@ const Fullscreen = styled.div`
   position: relative;
   overflow: hidden;
   margin-top: 0;
+  flex-direction: column;
 `;
 
 export default Fullscreen;

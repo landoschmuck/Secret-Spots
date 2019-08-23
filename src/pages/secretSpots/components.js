@@ -64,12 +64,8 @@ export const SearchButton = styled(ActionButton).attrs({
 `;
 
 export const CardContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100vw;
-  justify-content: center;
-  align-items: center;
   overflow: auto;
+  margin: 0 auto;
 `;
 
 export const BookmarkButton = styled(ActionButton).attrs({ icon: "fa-star" })`

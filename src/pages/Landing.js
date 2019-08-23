@@ -5,8 +5,6 @@ import BackgroundImage from "../components/Backgroundimage";
 import Logo from "../components/Logo";
 import { fadeIn, fadeInFromCorner } from "../utils/animations";
 import Title from "../components/Title";
-import Divider from "../components/Divider";
-import ScrollTo from "../components/ScrollTo";
 import FooterNavigation from "../components/Footer";
 
 const LogoContainer = styled.div`
@@ -17,7 +15,9 @@ const LogoContainer = styled.div`
 
 const Subtitle = styled.h2`
   font-size: 28px;
-  color: grey;
+  color: white;
+  margin: 53px;
+  text-align: center;
 `;
 
 const AnimatedTitle = styled(Title)`
@@ -30,27 +30,28 @@ const AnimatedLogo = styled(Logo)`
   animation: ${fadeInFromCorner} 1s ease-out 1 both;
   animation-delay: 0.2s;
 `;
+const Grid = styled.div`
+  display: grid;
+  grid-template-rows: 0px auto 63px;
+  height: 100vh;
+`;
 
 function Landing() {
   return (
-    <>
+    <Grid>
+      <div />
       <Fullscreen>
         <BackgroundImage src="https://cdn.pixabay.com/photo/2017/06/14/08/20/map-of-the-world-2401458_1280.jpg" />
         <LogoContainer>
           <AnimatedLogo />
           <AnimatedTitle data-cy="page-title-text">Secret Spots</AnimatedTitle>
         </LogoContainer>
-        <ScrollTo to="about">Scroll Down</ScrollTo>
+        <Subtitle>
+          {" "}
+          Mit Secret-Spots kannst du deine LieblingsSpots speichern und wieder
+          besuchen!
+        </Subtitle>
       </Fullscreen>
-      <Subtitle id="about">About Secret Spots</Subtitle>
-      <Divider />
-      <p>
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-        eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-        voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
-        clita kasd gubergren, no sea takimata sanctus est
-      </p>
-      <Divider />
       <FooterNavigation
         links={[
           { to: "/", icon: "fa-home" },
@@ -59,7 +60,7 @@ function Landing() {
           { to: "/addSpots", icon: "fa-plus-circle" }
         ]}
       />
-    </>
+    </Grid>
   );
 }
 export default Landing;
