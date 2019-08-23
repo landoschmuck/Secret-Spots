@@ -3,6 +3,8 @@ import Header from "../../components/Header";
 import Button from "../../components/Button";
 import ImageUpload from "../../components/ImageUpload";
 import AddSpotMap from "../../components/AddSpotMap";
+import styled from "styled-components";
+import FooterNavigation from "../../components/Footer";
 import {
   MapButton,
   ModalDialog,
@@ -14,8 +16,13 @@ import {
   Text,
   Tags,
   ButtonGroup,
-  LandosFavoriteDiv
+  Container
 } from "./components";
+
+const Grid = styled.div`
+  display: grid;
+  grid-template-rows: 50px auto 50px;
+`;
 
 function AddSpots({
   history,
@@ -96,9 +103,9 @@ function AddSpots({
   }
 
   return (
-    <>
+    <Grid>
       <Header title="Add New Spots" icon="fa-plus-circle" />
-      <LandosFavoriteDiv>
+      <Container>
         <FormContainer>
           <Form onSubmit={handleSubmit}>
             <ImageUpload
@@ -134,7 +141,17 @@ function AddSpots({
             </ButtonGroup>
           </Form>
         </FormContainer>
-      </LandosFavoriteDiv>
+      </Container>
+      <FooterNavigation
+        visible="true"
+        links={[
+          { to: "/", icon: "fa-home" },
+          { to: "/map", icon: "fa-globe-americas" },
+          { to: "/secretSpots", icon: "fa-list-ul" },
+          { to: "/addSpots", icon: "fa-plus-circle" }
+        ]}
+      />
+
       {showMap && (
         <Blur>
           <ModalDialog>
@@ -150,7 +167,7 @@ function AddSpots({
           </ModalDialog>
         </Blur>
       )}
-    </>
+    </Grid>
   );
 }
 

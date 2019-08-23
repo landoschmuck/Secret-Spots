@@ -1,6 +1,8 @@
 import Card from "../../components/Card";
 import React from "react";
 import Header from "../../components/Header";
+import FooterNavigation from "../../components/Footer";
+import styled from "styled-components";
 
 import {
   SearchBox,
@@ -10,6 +12,10 @@ import {
   BookmarkButton
 } from "./components";
 
+const Grid = styled.div`
+  display: grid;
+  grid-template-rows: 80px auto 80px;
+`;
 function SecretSpots({
   spots,
   onToggleBookmark,
@@ -52,7 +58,7 @@ function SecretSpots({
     );
 
   return (
-    <>
+    <Grid>
       <Header icon="fa-list-ul" title="My Secret Spots">
         <SearchBox>
           {show && (
@@ -72,7 +78,15 @@ function SecretSpots({
         <BookmarkButton active={showBookmarked} onClick={onShowBookmarks} />
       </Header>
       <CardContainer>{filteredSpots.map(renderCard)}</CardContainer>
-    </>
+      <FooterNavigation
+        links={[
+          { to: "/", icon: "fa-home" },
+          { to: "/map", icon: "fa-globe-americas" },
+          { to: "/secretSpots", icon: "fa-list-ul" },
+          { to: "/addSpots", icon: "fa-plus-circle" }
+        ]}
+      />
+    </Grid>
   );
 }
 

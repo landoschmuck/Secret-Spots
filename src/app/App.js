@@ -79,6 +79,7 @@ function App() {
   return (
     <Router>
       <GlobalStyles />
+
       <Switch>
         <Route
           path="/map"
@@ -123,14 +124,6 @@ function App() {
         />
         <Route path="/" exact component={Landing} />
       </Switch>
-      <FooterNavigation
-        links={[
-          { to: "/", icon: "fa-home" },
-          { to: "/map", icon: "fa-globe-americas" },
-          { to: "/secretSpots", icon: "fa-list-ul" },
-          { to: "/addSpots", icon: "fa-plus-circle" }
-        ]}
-      />
     </Router>
   );
 }

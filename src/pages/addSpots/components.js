@@ -9,7 +9,7 @@ export const MapButton = styled(Button)`
 
 export const ModalDialog = styled.div`
   width: 90%;
-  height: 70%;
+  height: 50%;
   z-index: 1;
   color: #000;
   background: white;
@@ -19,8 +19,6 @@ export const ModalDialog = styled.div`
   padding: 5px;
   display: flex;
   flex-direction: column;
-  max-width: 100vw;
-  max-height: 100vh;
 `;
 
 export const Blur = styled.div`
@@ -28,7 +26,7 @@ export const Blur = styled.div`
   top: 0;
   left: 0;
   width: 100vw;
-  height: 92vh;
+  height: 100vh;
   background: rgba(193, 177, 170, 0.6);
   display: flex;
   align-items: center;
@@ -100,7 +98,7 @@ export const ButtonGroup = styled.div`
   align-content: center;
 `;
 
-export const LandosFavoriteDiv = styled.div`
+export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
