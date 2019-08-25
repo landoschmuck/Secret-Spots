@@ -13,7 +13,13 @@ function Overview({ spots, center }) {
   return (
     <Grid>
       <div />
-      <Map spots={spots} center={center} zoom={3} height="100%" width="100%" />
+      <Map
+        spots={spots}
+        center={center}
+        zoom={3}
+        height="105.2%"
+        width="100%"
+      />
       <FooterNavigation
         links={[
           { to: "/", icon: "fa-home" },
