@@ -14,8 +14,12 @@ import { TagList } from "./card/components";
 
 const Title = styled.h3``;
 
+const Text = styled.p`
+  font-size: 14px;
+`;
+
 const TextContainer = styled.div`
-  width: 140px;
+  width: 150x;
   font-size: 10px;
 `;
 
@@ -107,7 +111,7 @@ function Map({ center, spots, zoom, onMapClick }) {
             <InfoWindowImg src={selectedSpot.headImg} />
             <Title>{selectedSpot.title}</Title>
             <TextContainer>
-              <p>{selectedSpot.text}</p>
+              <Text>{selectedSpot.text}</Text>
             </TextContainer>
             {selectedSpot.tags && selectedSpot.tags.length && (
               <TagList>{selectedSpot.tags.map(renderTag)}</TagList>
