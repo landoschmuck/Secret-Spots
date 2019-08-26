@@ -33,7 +33,11 @@ const AnimatedLogo = styled(Logo)`
 const Grid = styled.div`
   display: grid;
   grid-template-rows: 0px auto 63.3px;
-  height: 100vh;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
 `;
 
 function Landing() {

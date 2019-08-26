@@ -15,7 +15,11 @@ import {
 const Grid = styled.div`
   display: grid;
   grid-template-rows: 63px auto 63px;
-  height: 100vh;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
 `;
 function SecretSpots({
   spots,
