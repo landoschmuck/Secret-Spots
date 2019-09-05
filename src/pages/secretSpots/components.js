@@ -52,7 +52,7 @@ export const SearchInput = styled.input`
 export const SearchButton = styled(ActionButton).attrs({
   icon: "fa-search"
 })`
-  top: 1;
+  top: 0;
   right: 330px;
   z-index: 1;
   width: 40px;
@@ -61,6 +61,10 @@ export const SearchButton = styled(ActionButton).attrs({
   position: absolute;
   color: white;
   outline: none;
+
+  @media(min-width: 500px){
+    right: 1870px;
+  }
 `;
 
 export const CardContainer = styled.div`

@@ -55,6 +55,7 @@ export const MapContainer = styled.div`
   height: 300px;
   max-height: 130px;
   border-radius: 15px;
+  pointer-events: none;
 `;
 
 export const Text = styled.p`
