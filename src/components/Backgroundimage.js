@@ -16,7 +16,7 @@ const move = keyframes`
 const BackgroundImage = styled.img`
   position: absolute;
   z-index: -1;
-  height: calc(100% + 150px);
+  height: calc(90% + 150px);
   width: calc(100% + 150px);
   object-fit: cover;
   filter: grayscale(0.2) brightness(0.8) saturate(0.7);

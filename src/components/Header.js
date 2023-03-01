@@ -20,14 +20,9 @@ const StyledHeader = styled.div`
   align-items: center;
   justify-content: center;
   padding: 5px;
-  position: sticky;
-  top: 0;
-  width: 100vw;
-  z-index: 1;
   border-bottom: solid 1px grey;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
-  height: 55px;
 `;
 
 const StyledLogo = styled.span`
@@ -48,7 +43,9 @@ function Header({ title, icon, children, ...props }) {
       <StyledLogo>
         <i className={`fas ${icon}`} />
       </StyledLogo>
-      <StyledHeadline size="L">{title} </StyledHeadline>
+      <StyledHeadline data-cy="header-title" size="L">
+        {title}{" "}
+      </StyledHeadline>
       {children && <RightIconContainer>{children}</RightIconContainer>}
     </StyledHeader>
   );

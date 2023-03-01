@@ -3,16 +3,16 @@ import PropTypes from "prop-types";
 import Headline from "./Headline";
 import Map from "./Map";
 import Divider from "./Divider";
+import Tag from "./card/Tag";
 import {
   Bookmark,
-  StyledTags,
+  TagList,
   StyledCard,
   MapContainer,
   Text,
   Img,
   ImgContainer,
-  DeletButton,
-  TagContainer
+  DeletButton
 } from "./card/components";
 
 function Card({
@@ -23,35 +23,30 @@ function Card({
   bookmarked,
   onBookmark,
   onDelete,
-  location,
-  height,
-  width,
-  ...props
+  location
 }) {
-  const spots = [{ _id: "id", location }];
+  function renderTag(tag) {
+    return <Tag key={tag}>{tag}</Tag>;
+  }
 
   return (
     <>
       <StyledCard>
-        <DeletButton onClick={onDelete} icon="fa-trash-alt" />
-        <Bookmark active={bookmarked} onClick={onBookmark} icon="fa-star" />
+        <DeletButton onClick={onDelete} />
+        <Bookmark active={bookmarked} onClick={onBookmark} />
         <ImgContainer>
           <Img src={headImg} />
         </ImgContainer>
         <Headline size="S">{title}</Headline>
         <Text>{text}</Text>
-        {tags[0].length > 0 && (
-          <TagContainer>
-            <StyledTags>{tags}</StyledTags>
-          </TagContainer>
-        )}
+        {tags && tags.length && <TagList>{tags.map(renderTag)}</TagList>}
         <MapContainer>
           <Map
             center={location}
             height="100%"
             width="100%"
             zoom={7}
-            spots={spots}
+            spots={[{ _id: "id", location }]}
           />
         </MapContainer>
       </StyledCard>

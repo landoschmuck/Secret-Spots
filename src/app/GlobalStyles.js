@@ -8,6 +8,7 @@ export default createGlobalStyle`
     html, body {
         margin: 0;
         font-family: 'Cousine', monospace;
+        zoom: 100%;
     }
     body, #root {
         height: 100vh;

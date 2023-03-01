@@ -3,13 +3,13 @@ import Button from "../../components/Button";
 
 export const MapButton = styled(Button)`
   margin: -7px;
-  margin-top: -30px;
+  margin-top: -21px;
   font-size: 20px;
 `;
 
 export const ModalDialog = styled.div`
   width: 90%;
-  height: 70%;
+  height: 50%;
   z-index: 1;
   color: #000;
   background: white;
@@ -19,8 +19,6 @@ export const ModalDialog = styled.div`
   padding: 5px;
   display: flex;
   flex-direction: column;
-  max-width: 100vw;
-  max-height: 100vh;
 `;
 
 export const Blur = styled.div`
@@ -28,7 +26,7 @@ export const Blur = styled.div`
   top: 0;
   left: 0;
   width: 100vw;
-  height: 92vh;
+  height: 100vh;
   background: rgba(193, 177, 170, 0.6);
   display: flex;
   align-items: center;
@@ -45,9 +43,13 @@ export const FormContainer = styled.div`
   margin: 10px;
   height: auto;
   box-shadow: 1px 4px 10px 4px rgba(214, 211, 214, 1);
+  justify-content: center;
+  align-items: center;
 
   @media (min-width: 500px) {
     width: 350px;
+    justify-content: center;
+    align-items: center;
   }
 `;
 
@@ -80,7 +82,7 @@ export const Text = styled.textarea`
   margin-top: 13px;
 `;
 
-export const Tags = styled.select`
+export const Tags = styled.input`
   margin: 5px;
   width: 100%;
   border: 2px solid #ccc;
@@ -94,4 +96,11 @@ export const ButtonGroup = styled.div`
   display: flex;
   justify-content: space-around;
   align-content: center;
+`;
+
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
